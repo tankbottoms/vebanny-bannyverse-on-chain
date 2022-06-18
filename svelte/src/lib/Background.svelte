@@ -822,6 +822,7 @@
 			{bottomText}
 		</textPath>
 	</text>
+	<slot />
 </svg>
 
 <style>

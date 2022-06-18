@@ -27,6 +27,8 @@ npm run dev # Will open localhost:5500/web
 
 The JBX range is gotten from the metadata file.
 
+The Banny is created by using it's attributes from the metadata file.
+
 ## Sanity check Bannies and tag incompatible assets
 
 TLDR;

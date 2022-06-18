@@ -6,6 +6,7 @@
 	import BlinkingStar from '$lib/BlinkingStar.svelte';
 	import ThroughSpacePixelized from '$lib/ThroughSpacePixelized.svelte';
 	import Background from '$lib/Background.svelte';
+	import { getLayeredSvgFromBannyIndex } from '$utils/layering';
 
 	export let vibe: 'zoomy-stars' | 'horizontalPixelized' | 'pixelized' = 'pixelized';
 
@@ -16,6 +17,7 @@
 	let front = '';
 	let jbxRange = '';
 	let lockPeriod = lockPeriods[0];
+	let bannyElement: SVGGElement;
 	let purse: HTMLElement;
 
 	let ready = false;
@@ -32,38 +34,33 @@
 		});
 	}
 
-	onMount(() => {
+	function getParams() {
 		const search = window.location.search;
 		const urlSearchParams = new URLSearchParams(search);
 		const tokenId = urlSearchParams.get('banny') || '1';
-		// const cid = urlSearchParams.get("cid");
 		let lock = urlSearchParams.get('lock');
 
+		return { tokenId, lock };
+	}
+
+	onMount(async () => {
+		const { tokenId, lock } = getParams();
 		let index: number | string = parseInt(tokenId);
 		if (index < 10) {
 			index = `0${index}`;
 		}
-		// front = `https://cloudflare-ipfs.com/ipfs/${cid}/${tokenId}.png`;
-		front = `/characters/${index}.png`;
 
-		fetch(`/characters.json`)
-			.then((res) => res.json())
-			.then((json) => {
-				const metadata = json[tokenId].metadata;
-				jbxRange = `${metadata.jbx_range} JBX`;
-			});
+		getLayeredSvgFromBannyIndex(Number(tokenId)).then((res) => {
+			front = res.image;
+			if (res.jbx_range) {
+				jbxRange = `${res.jbx_range} JBX`;
+			}
+		});
 
 		if (lock) {
 			lockPeriod = lockPeriods[parseInt(lock)];
 			barrierColor = barrierColors[parseInt(lock)];
 		}
-
-		const interval = setInterval(() => {
-			if (window.innerWidth > 100) {
-				ready = true;
-				clearInterval(interval);
-			}
-		}, 50);
 
 		initializeTilt();
 	});
@@ -81,6 +78,8 @@
 		return `box-shadow: -10px -10px 25px 0px ${color}, 10px -10px 25px 0px ${color},
 			10px 10px 25px 0px ${color}, -10px 10px 25px 0px ${color}`;
 	}
+
+	$: bannyElement ? (bannyElement.innerHTML = front) : null;
 </script>
 
 <div class="purse">
@@ -94,12 +93,14 @@
 	>
 		<div id="background">
 			<!-- TODO: pass the lockdate and jbx range (need the metadata for this) -->
-			<Background bottomText={jbxRange} topText={lockPeriod} size={320} />
+			<Background bottomText={jbxRange} topText={lockPeriod} size={320}>
+				<g id="bannyPlaceholder" bind:this={bannyElement} />
+			</Background>
 		</div>
 
 		<div class="barrier" style={getBarrierGlowStyle(barrierColor)} />
 
-		<div class="front" style="background-image: url('{front}')" />
+		<!-- <div class="front" style="background-image: url('{front}')" /> -->
 		<div class="side">
 			<!-- TODO: don't just repeat, do data-driven, also dry-ify the styles for each spoke -->
 			<div class="spoke" />
@@ -138,14 +139,12 @@
 	</div>
 </div>
 
-{#if ready}
-	{#if vibe === 'zoomy-stars'}
-		<Space />
-	{:else if vibe === 'pixelized'}
-		<ThroughSpacePixelized />
-	{:else}
-		<HorizontalPixelized />
-	{/if}
+{#if vibe === 'zoomy-stars'}
+	<Space />
+{:else if vibe === 'pixelized'}
+	<ThroughSpacePixelized />
+{:else}
+	<HorizontalPixelized />
 {/if}
 
 <style>

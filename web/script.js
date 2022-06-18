@@ -152,6 +152,7 @@ async function getLayeredSvgFromAttributes(attributes) {
 async function getLayeredSvgFromBannyIndex(bannyIndex) {
   const metadata = await getMetadata(bannyIndex);
   const image = await getLayeredSvgFromAttributes(metadata.attributes);
+  // Check if a standard banny
   if (bannyIndex <= 60) {
     const jbx_range = metadata.attributes.find(
       (attribute) => attribute.trait_type === "Jbx Range"
