@@ -1,15 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import Tilt from 'vanilla-tilt';
-	import Space from '$lib/Space.svelte';
-	import HorizontalPixelized from '$lib/SpacePixelized.svelte';
 	import BlinkingStar from '$lib/BlinkingStar.svelte';
 	import ThroughSpacePixelized from '$lib/ThroughSpacePixelized.svelte';
 	import Background from '$lib/Background.svelte';
 	import { getLayeredSvgFromBannyIndex } from '$utils/layering';
 
-	export let vibe: 'zoomy-stars' | 'horizontalPixelized' | 'pixelized' = 'pixelized';
-
+	// TODO: figure out good barrier colours
 	const barrierColors = ['beige', 'orange', 'green', '#32c8db', '#f5f5f5', 'gold'];
 	const lockPeriods = ['1 WEEK', '1 MONTH', '3 MONTHS', '6 MONTHS', '1 YEAR', '4 YEARS'];
 
@@ -111,32 +108,21 @@
 				<div style={spoke} class="spoke" />
 			{/each}
 		</div>
-		{#if vibe == 'zoomy-stars'}
-			<div class="sparkles" style="pointer-events: none">
-				<img src="./sparkles.gif" alt="" />
-			</div>
-		{:else}
-			<div class="blinkingStars">
-				<BlinkingStar type="small" top={35} left={25} />
-				<BlinkingStar type="small" top={25} left={30} />
-				<BlinkingStar type="small" top={40} left={65} />
-				<BlinkingStar type="small" top={55} left={80} />
-				<BlinkingStar type="small" top={55} left={20} />
-				{#each Array.from({ length: 30 }, (_, i) => i) as i}
-					<BlinkingStar type="dot" top={Math.random() * 60 + 20} left={getRandomLeft()} />
-				{/each}
-			</div>
-		{/if}
+		<!-- These are the stars shown on the token -->
+		<div class="blinkingStars">
+			<BlinkingStar type="small" top={35} left={25} />
+			<BlinkingStar type="small" top={25} left={30} />
+			<BlinkingStar type="small" top={40} left={65} />
+			<BlinkingStar type="small" top={55} left={80} />
+			<BlinkingStar type="small" top={55} left={20} />
+			{#each Array.from({ length: 30 }, (_, i) => i) as i}
+				<BlinkingStar type="dot" top={Math.random() * 60 + 20} left={getRandomLeft()} />
+			{/each}
+		</div>
 	</div>
 </div>
 
-{#if vibe === 'zoomy-stars'}
-	<Space />
-{:else if vibe === 'pixelized'}
-	<ThroughSpacePixelized />
-{:else}
-	<HorizontalPixelized />
-{/if}
+<ThroughSpacePixelized />
 
 <style>
 	:global(body) {
@@ -181,17 +167,6 @@
 		transform-origin: 50%;
 		animation-timing-function: linear;
 	}
-	.purse .sparkles {
-		width: 100%;
-		height: 100%;
-		position: absolute;
-		z-index: 10000;
-		border-radius: 50%;
-		overflow: hidden;
-		transform-style: preserve-3d;
-		transform: translateZ(16px);
-		mix-blend-mode: color-dodge;
-	}
 	.coin,
 	.coin .barrier {
 		position: absolute;
@@ -217,19 +192,7 @@
 		border-style: solid;
 		box-shadow: -10px -10px 25px 0px #32c8db, 10px -10px 25px 0px #32c8db,
 			10px 10px 25px 0px #32c8db, -10px 10px 25px 0px #32c8db;
-		/* box-shadow: -10px -10px 25px 0px #ffff00bb, 10px -10px 25px 0px blue, 10px 10px 25px 0px red,
-      -10px 10px 25px 0px green; */
-		animation: spinin 25s linear infinite;
 	}
-	@keyframes spinin {
-		from {
-			transform: translate(-50%, -50%) rotateZ(0deg);
-		}
-		to {
-			transform: translate(-50%, -50%) rotateZ(360deg);
-		}
-	}
-
 	.coin .side {
 		transform: translateX(144px);
 		transform-style: preserve-3d;
