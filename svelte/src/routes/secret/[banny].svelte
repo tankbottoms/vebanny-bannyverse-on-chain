@@ -38,8 +38,6 @@
 
 	function handleIncompatibleAsset(category: string, asset: string) {
 		const incompatibleAssets = $allIncompatibleAssets as any;
-		console.log(incompatibleAssets);
-		console.log(allIncompatibleAssets);
 		let layers = incompatibleAssets[$page.params.banny];
 		if (!layers[category]) {
 			layers = { ...layers, [category]: [] };
@@ -88,7 +86,7 @@
 </script>
 
 <section>
-	<a href="/bannies">{'<'} Go back to Bannies</a>
+	<a href="/secret">{'<'} Go back to Bannies</a>
 	{#if done}
 		{#await getLayerSvg({ layerValues: currentCharacter.layers })}
 			<p>...</p>

@@ -41,7 +41,7 @@
 			viewBox="0 0 1080 1080"
 			fill="none"
 			on:click={() => {
-				goto(`${banny}/grid`);
+				goto(`secret/${banny}`);
 			}}
 			xmlns="http://www.w3.org/2000/svg"
 		>

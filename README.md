@@ -27,6 +27,22 @@ npm run dev # Will open localhost:5500/web
 
 The JBX range is gotten from the metadata file.
 
+## Sanity check Bannies and tag incompatible assets
+
+TLDR;
+
+```sh
+# In root of this project. Serve the assets over http.
+npm run dev
+# Then, in svelte part of the project
+cd svelte
+npm run dev
+```
+
+- Go to `localhost:3000/bannies` to see the grid of Bannies.
+- Click on a banny and end up on `localhost:3000/{bannyIndex}/grid` and click on the assets that are not working out.
+- Save the json in the modal by copying it to clipboard.
+
 ## Metadata
 
 Create metadata folder with a file for each Banny defined in the `characters.json` by running `createMetadata.mjs`
