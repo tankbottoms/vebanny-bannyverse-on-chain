@@ -61,7 +61,11 @@ Object.keys(characters).forEach((character) => {
     "jbx_range",
     "range_width",
   ].reduce((result, key) => {
-    result[capitalizeFirstLetter(key)] = Number(data.metadata[key]);
+    if (key === "jbx_range") {
+      result[capitalizeFirstLetter(key)] = data.metadata[key];
+    } else {
+      result[capitalizeFirstLetter(key)] = Number(data.metadata[key]);
+    }
     return result;
   }, {});
 

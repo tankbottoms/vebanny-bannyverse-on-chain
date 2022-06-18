@@ -68,6 +68,10 @@
       "value": 5
     },
     {
+      "trait_type": "Jbx Range",
+      "value": "26,000-27,999"
+    },
+    {
       "trait_type": "Range Width",
       "value": 2000
     }

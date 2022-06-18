@@ -66,6 +66,10 @@
     {
       "trait_type": "Shadowiness",
       "value": 4
+    },
+    {
+      "trait_type": "Jbx Range",
+      "value": "100,000,000-599,999,999"
     }
   ]
 }
