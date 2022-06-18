@@ -4,23 +4,20 @@ $pi: 3.14159265359;
 $_precision: 10;
 // List of colors
 $colors: (
-	#563c9b,
-	#8344bd,
 	#14577c,
 	#0be3bd,
-	#145b7e,
 	#118f96,
 	#0b6ae3,
 	#242885,
-	#2c2394,
 	#3c1ab3,
 	#540be3,
-  '#ffaaaa',
+	'#ffaaaa',
 	'#aaffaa',
 	'#aaaaff',
 	'white',
 	'orange',
 	'yellow',
+	'red'
 );
 
 @function pow($base, $exp) {
@@ -178,9 +175,9 @@ $colors: (
 	}
 }
 
-@for $i from 1 to 360 {
+@for $i from 1 to 720 {
 	$t: math.random(20000);
-	$angle: $i - reminder($i, 4);
+	$angle: $i - reminder($i, 8);
 	.stars-axis-#{$i} {
 		animation: anim#{$angle} #{$t}ms, fade#{math.random(10)} #{$t}ms;
 	}
@@ -204,10 +201,10 @@ $colors: (
 }
 
 // MOVE ANIMATION
-@for $i from 1 to 91 {
-	$a: $i * 4;
+@for $i from 1 to 181 {
+	$a: $i * 8;
 	@keyframes anim#{$a} {
-		$angle: $pi * 2 * math.div($a, 360);
+		$angle: $pi * 2 * math.div($a, 720);
 		$y: 80 * sin($angle);
 		$x: 80 * cos($angle);
 		100% {

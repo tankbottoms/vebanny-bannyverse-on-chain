@@ -38,7 +38,7 @@
     const sky = document.querySelector('#stars-sky');
     sky.innerHTML = '';
     const { x, y } = getCenter(sky);
-    for (let i = 1; i < 360; i++) {
+    for (let i = 1; i < 720; i++) {
       const dot = getDot(x, y, i);
       if (dot) {
         sky.appendChild(dot);
