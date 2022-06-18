@@ -1,0 +1,217 @@
+@use 'sass:list';
+@use 'sass:math';
+$pi: 3.14159265359;
+$_precision: 10;
+// List of colors
+$colors: (
+	#563c9b,
+	#8344bd,
+	#14577c,
+	#0be3bd,
+	#145b7e,
+	#118f96,
+	#0b6ae3,
+	#242885,
+	#2c2394,
+	#3c1ab3,
+	#540be3,
+  '#ffaaaa',
+	'#aaffaa',
+	'#aaaaff',
+	'white',
+	'orange',
+	'yellow',
+);
+
+@function pow($base, $exp) {
+	$value: $base;
+	@if $exp > 1 {
+		@for $i from 2 through $exp {
+			$value: $value * $base;
+		}
+	}
+	@if $exp < 1 {
+		@for $i from 0 through -$exp {
+			$value: math.div($value, $base);
+		}
+	}
+	@return $value;
+}
+
+@function fact($num) {
+	$fact: 1;
+	@if $num > 0 {
+		@for $i from 1 through $num {
+			$fact: $fact * $i;
+		}
+	}
+	@return $fact;
+}
+
+@function _to_unitless_rad($angle) {
+	@if math.unit($angle) == 'deg' {
+		$angle: math.div($angle, 180deg) * $pi;
+	}
+	@if math.unit($angle) == 'rad' {
+		$angle: math.div($angle, 1rad);
+	}
+	@return $angle;
+}
+
+@function sin($angle) {
+	$a: _to_unitless_rad($angle);
+	$sin: $a;
+	@for $n from 1 through $_precision {
+		$sin: $sin + math.div(pow(-1, $n), fact(2 * $n + 1)) * pow($a, (2 * $n + 1));
+	}
+	@return $sin;
+}
+
+@function cos($angle) {
+	$a: _to_unitless_rad($angle);
+	$cos: 1;
+	@for $n from 1 through $_precision {
+		$cos: $cos + math.div(pow(-1, $n), fact(2 * $n)) * pow($a, 2 * $n);
+	}
+	@return $cos;
+}
+
+@function tan($angle) {
+	@return math.div(sin($angle), cos($angle));
+}
+
+@function reminder($origin, $mod) {
+	$q: if(
+		math.div($origin, $mod) > 0,
+		math.floor(math.div($origin, $mod)),
+		math.ceil(math.div($origin, $mod))
+	);
+	@return $origin - ($mod * $q);
+}
+
+.stars-outer {
+	width: 100%;
+	height: 100%;
+	background: rgb(0, 0, 0);
+	background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgb(0, 10, 24) 100%);
+}
+
+#stars-sky {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+
+.stars-star {
+	opacity: 0;
+	transform-origin: 0, 0;
+	position: absolute;
+	z-index: 10;
+	animation-timing-function: linear, linear !important;
+	animation-iteration-count: infinite, infinite !important;
+	animation-delay: -30s, -30s !important;
+}
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.stars-size-1 {
+	background: white;
+	width: 0.5px;
+	height: 0.5px;
+}
+
+.stars-size-2 {
+	background: white;
+	width: 1px;
+	height: 1px;
+}
+
+.stars-size-3 {
+	background: white;
+	width: 2px;
+	height: 2px;
+}
+
+.stars-size-4 {
+	background: none;
+	position: absolute;
+	animation-timing-function: linear, linear !important;
+	animation-iteration-count: infinite, infinite !important;
+	animation-delay: -30s, -30s !important;
+	z-index: 100;
+	color: list.nth($colors, math.random(list.length($colors)));
+
+	.star::after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background: currentColor;
+		animation: grow 0.5s linear infinite;
+	}
+	.star__part {
+		position: absolute;
+		background: currentColor;
+	}
+	.star__part:nth-child(1) {
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 100%;
+		height: 20%;
+	}
+	.star__part:nth-child(2) {
+		left: 50%;
+		top: 0;
+		transform: translateX(-50%);
+		width: 20%;
+		height: 100%;
+	}
+}
+
+@for $i from 1 to 360 {
+	$t: math.random(20000);
+	$angle: $i - reminder($i, 4);
+	.stars-axis-#{$i} {
+		animation: anim#{$angle} #{$t}ms, fade#{math.random(10)} #{$t}ms;
+	}
+}
+
+// FADE EFFECT
+@for $i from 1 to 11 {
+	$start: math.random(20);
+	$end: $start + 10;
+	@keyframes fade#{$i} {
+		#{$start + '%'} {
+			opacity: 0;
+		}
+		#{$end + '%'} {
+			opacity: 1;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+}
+
+// MOVE ANIMATION
+@for $i from 1 to 91 {
+	$a: $i * 4;
+	@keyframes anim#{$a} {
+		$angle: $pi * 2 * math.div($a, 360);
+		$y: 80 * sin($angle);
+		$x: 80 * cos($angle);
+		100% {
+			transform: translate(#{$x}vw, #{$y}vh);
+		}
+	}
+}

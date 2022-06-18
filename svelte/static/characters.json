@@ -1,0 +1,1862 @@
+{
+	"1": {
+		"metadata": {
+			"name": "Nammu",
+			"jbx_range": "1-99",
+			"range_width": "99",
+			"arcana": "5",
+			"comms": "0",
+			"grind": "0",
+			"perception": "4",
+			"strength": "0",
+			"shadowiness": "5",
+			"history": "The Banny that started it all. The one. The only. The magnificent, majestic and magnanimous. The OG Banny. All Bannies take some part from illustrious existence. Many Bannies tell tales of a vague, distant memory— some ascribe it to pure chance, others to the supernatural. Then yet other will tell you that OG Banny is bound to come into the world, in full, fleshy banana form. Others say he has come back many times, sometimes as an apple, other times as an orange. And yet others say he is yet to come, and when he comes, existence as we know it will change. And then there’s those who say that he’s far more than any of that: he’s a historical whisper, lost for generations and whose echo reverberates around the lore he inspired. An OG, if ever there was one.",
+			"motto": "In the beginning, there was OG Banny."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "No_Hat",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "No_Outfit",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"2": {
+		"metadata": {
+			"name": "Farceur",
+			"jbx_range": "100-199",
+			"range_width": "100",
+			"arcana": "2",
+			"comms": "4",
+			"grind": "1",
+			"perception": "2",
+			"strength": "1",
+			"shadowiness": "0",
+			"history": "A ostensibly jovial banana if ever there was one, Farceur is stuffed from end to end with silly laughs and slapstick goodness. He’s a proverbial wild-card that you can always count on to get a laugh or shock his eager audience. But something about his expression as of late seems a bit troubling— a certain ennui in the eyes that suggests he, a banana who gives all his joy for others to be entertained, may have nobody to bring joy to him. A sad clown he is not— at least, not yet. They say here and there and everywhere, across all the lands, that Farceur can make anyone laugh at will. Indeed, one day a banana sat forlorn in a confessional and, being at his wits end, confided that he was in desperate straits, and felt like there was not joy in the world. “I’m sorry you feel this way,” the father told him, “I hear that Farceur is in town, and he can make any banana laugh. Please go see his show. He will help you.” “But father,” the banana cried in anguish, “I am Farceur!”",
+			"motto": "You do not yet understand the stage. How could you possibly understand life?"
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Farceur",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "No_Outfit",
+			"Right_Hand": "Lollipop"
+		}
+	},
+	"3": {
+		"metadata": {
+			"name": "Bronson",
+			"jbx_range": "200-299",
+			"range_width": "100",
+			"arcana": "0",
+			"comms": "4",
+			"grind": "4",
+			"perception": "2",
+			"strength": "3",
+			"shadowiness": "0",
+			"history": "Whether you want some fresh hummus, or a nice gyro with a side of sweet potato fries, or even just one of your enemies dismembered by a psycho with a meat cleaver who can also keep rhythm on the beat, Bronson is your banana. Cuddly and unassuming at first glance, he’ll turn up the charm if you’re been nice, and the violence if you’ve been naughty. He runs a tight ship on any kitchen, and he likes to bring the pain when he needs to. Some say the meals he makes can put any man in good spirits. He’s always wanted to cook for Farceur, who he heard was down in the dumps, but so far he’s never had a chance. Will that change in the future?",
+			"motto": "We makin’ enemies or we makin’ kafta over here?"
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Bronson_Hat",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Bronson",
+			"Right_Hand": "Butcher_Knife"
+		}
+	},
+	"4": {
+		"metadata": {
+			"name": "Johnny_Utah",
+			"jbx_range": "300-399",
+			"range_width": "100",
+			"arcana": "0",
+			"comms": "3",
+			"grind": "4",
+			"perception": "1",
+			"strength": "0",
+			"shadowiness": "0",
+			"history": "We makin’ enemies or we makin’ kafta over here?",
+			"motto": "I’m just an ordinary banana who likes to surf. Nothing to see here."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "No_Hat",
+			"Left_Hand": "Surf_Board",
+			"Lower_Accessory": "Sandals",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Johnny_Utah_T-shirt",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"5": {
+		"metadata": {
+			"name": "Musa",
+			"jbx_range": "400-499",
+			"range_width": "100",
+			"arcana": "0",
+			"comms": "2",
+			"grind": "5",
+			"perception": "2",
+			"strength": "4",
+			"shadowiness": "1",
+			"history": "Sweet in nature and with a proven track record of tilling fields and reaping what he sows, Farmer Banny is popular and good-natured, and oddly attractive for apes of all species. He knows how to keep his head down and put in a good bit of elbow grease to get the job done. He’s so consistent, in fact, that one may wonder if there isn’t a second life he may be hiding. After all, who can be so put-together?",
+			"motto": "You reap what you sow."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Musa",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Mouthstraw",
+			"Outfit": "Musa",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"6": {
+		"metadata": {
+			"name": "Primrose",
+			"jbx_range": "500-599",
+			"range_width": "100",
+			"arcana": "1",
+			"comms": "4",
+			"grind": "2",
+			"perception": "4",
+			"strength": "1",
+			"shadowiness": "0",
+			"history": "Primrose is an absolute delight of a Banny if ever there was one. She’s covered in a double-coat of skin and clothing, and when her personality blooms, a fragrant waft of gentle sweetness fills the air. Not unlike a budding flower, Primrose shows the colors of her personality to attract friends and foes alike. But beware— they say she has no thorns, but that may just be because she’s so good at hiding them.",
+			"motto": "Not all thorns have roses."
+		},
+		"layers": {
+			"Body": "Pink",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Brown_Hair",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Primrose",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"7": {
+		"metadata": {
+			"name": "Princess_Peach_Toadstool",
+			"jbx_range": "600-699",
+			"range_width": "100",
+			"arcana": "1",
+			"comms": "5",
+			"grind": "3",
+			"perception": "3",
+			"strength": "2",
+			"shadowiness": "0",
+			"history": "Ostensibly always in need of rescuing, Peach has a habit of finding herself in situations that can seem a bit overwhelming. But notice— each situation is met with a hero to save her, willing to die for her. One rescue we may chalk up to unexpected trauma. Two rescues? Bad luck, to be sure. But dozens? What in her personality is bringing about these constant kidnappings? Could it be that she’s just so sweet that no kidnapper can stay away? Or is her saccharine bubbly beauty nothing more than a honey pot, the mechanisms of which we have yet to figured out?",
+			"motto": "Help meeeee!"
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Princess_Peach_Toadstool_Face",
+			"Headgear": "Princess_Peach_Toadstool",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Princess_Peach_Toadstool",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"8": {
+		"metadata": {
+			"name": "Rose_Bertin",
+			"jbx_range": "700-799",
+			"range_width": "100",
+			"arcana": "0",
+			"comms": "4",
+			"grind": "4",
+			"perception": "2",
+			"strength": "2",
+			"shadowiness": "0",
+			"history": "Nobody has an eye for style like Rose, the most fashion-conscious Banny. Whether strapless, trapeze or princess, there isn’t a type of dress she can’t design with the utmost care and skill. Her artistry and unmatched skill means she is in demand by only the most powerful Bannies in the universe, where she also crafts find hats and serves as an advisor to the powers that be. The hats she makes have crowned royalty, but don’t get it twisted— when the going gets tough, Rose knows how to get out of dodge. When the hammer falls, it’s not Rose’s head that gets smashed to bits— but whoever’s it is may just be wearing one of her hats.",
+			"motto": "Rulers are charming marionettes."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Rose_Bertin_Hat",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Rose_Bertin_Dress",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"9": {
+		"metadata": {
+			"name": "Banmora",
+			"jbx_range": "800-899",
+			"range_width": "100",
+			"arcana": "4",
+			"comms": "4",
+			"grind": "3",
+			"perception": "2",
+			"strength": "4",
+			"shadowiness": "4",
+			"history": "Banmora only knows how to go at breakneck speeds: being the last of your kind will do that to you. Whether she’s ultimately on the side of truth or deception is of no consequence— she will bring the full power of her skills to the battlefield either way. Always good at keeping a Zen-like attitude in the heat of danger, she longs for little more than finding a silver companion to spend eternity with. But with so much hostility in the world and not enough Bannies to fight, how will she ever get the time to do that? Sometimes she feels like she’s fighting infinity wars.",
+			"motto": "Throw your life away for justice."
+		},
+		"layers": {
+			"Body": "Green",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Red_Hair",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Banmora",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"10": {
+		"metadata": {
+			"name": "Banny_Ipkiss",
+			"jbx_range": "900-999",
+			"range_width": "1000",
+			"arcana": "4",
+			"comms": "4",
+			"grind": "2",
+			"perception": "1",
+			"strength": "2",
+			"shadowiness": "0",
+			"history": "You never quite know what you’re getting with this Banny. Sometimes he can be mild mannered, almost meek— unremarkable in the truest sense of the word. But just when you think you’ve got him pegged, another side emerges— a zany side that’s as irreverent as it is violent. A bank teller by day who likes to spend evenings at the Copacabana beating up thugs and gangsters, one could say he’s amongst the most interesting of the Bannies out there. Just hope you don’t meet him on a bad night.",
+			"motto": "It’s t-t-t-token’!"
+		},
+		"layers": {
+			"Body": "Green",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Banny_Ipkiss",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Banny_Ipkiss",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"11": {
+		"metadata": {
+			"name": "John_Row",
+			"jbx_range": "1,000-1,999",
+			"range_width": "1000",
+			"arcana": "0",
+			"comms": "1",
+			"grind": "4",
+			"perception": "4",
+			"strength": "3",
+			"shadowiness": "1",
+			"history": "If he’s not busy smuggling goods and stacking paper like a boss, there are few things John Rowe likes to do more in his spare time than to grab a bit of bait and head out onto the open water. His tranquil nature belies a serious business acumen, and his bait and rod could slay even the most feisty fish in the sea. Whether he’s out on the lake or in the throes of a business deal going south, he always play his cards close to his chest. Forsooth, nary a banana nor a monster of the sea can outsmart this shrewd old banana.",
+			"motto": "Peel softly and carry extra bait."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "John_Row",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "John_Row_Vest",
+			"Right_Hand": "Fishing_Pole"
+		}
+	},
+	"12": {
+		"metadata": {
+			"name": "Dotty_Gale",
+			"jbx_range": "2,000-2,999",
+			"range_width": "1000",
+			"arcana": "1",
+			"comms": "3",
+			"grind": "3",
+			"perception": "2",
+			"strength": "2",
+			"shadowiness": "2",
+			"history": "“Mofo, I don’t think we’re in web2 anymore,” sighed the exuberant yet confused Dotty Gale. An embodiment of web3 moxie and pizzazz, Dotty Gale is embarking on new frontiers with cautious optimism. She doesn’t know her own strength yet, like so many young heroines, but she’s looking forward to the adventure that awaits her. Basket in tow with an adorable little terrier at her side, Dotty will take on the brave new world of web3 with a smile on her face— but beware not to get on her bad side, for with a few small clicks of those ruby-studded slippers you can rest assured that all hell will break loose.",
+			"motto": "There’s no place like web3. There’s no place like web3. There’s no place like web3."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Dotty_Gale",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Dotty_Gale",
+			"Right_Hand": "Basket"
+		}
+	},
+	"13": {
+		"metadata": {
+			"name": "Baobhan_Sith",
+			"jbx_range": "3,000-3,999",
+			"range_width": "1000",
+			"arcana": "4",
+			"comms": "2",
+			"grind": "3",
+			"perception": "4",
+			"strength": "2",
+			"shadowiness": "4",
+			"history": "A she-devil if there ever was one, Ms. Bhaoban Sith will charm you and disarm you in a heartbeat. She enjoys few things more than a nice scotch and good, supple company. You may see here from afar, glimmering in a nice sequin dress, or hear her angelic voice from beyond some nice idyllic hillside, and as if under a magnetic trance be attracted to this beautiful buxom vamp. The old adage rings doubly true for Ms. B: if it looks too good to be true, it is.",
+			"motto": "Why don’t you stay for just one more drink?"
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Baobhan_Sith",
+			"Headgear": "Baobhan_Sith",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Baobhan_Sith",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"14": {
+		"metadata": {
+			"name": "Piers_Plowman",
+			"jbx_range": "4,000-4,999",
+			"range_width": "1000",
+			"arcana": "2",
+			"comms": "5",
+			"grind": "3",
+			"perception": "2",
+			"strength": "2",
+			"shadowiness": "4",
+			"history": "Who can’t get behind a banana that robs from the ripe and gives to the budding? After all, it’s the young generations that will make the banana tree of tomorrow. Robin knows this and he engages in what some would call stealing— though he would call it humanitarian work, to be sure. He’s seen a few bananas around town that look like ripe old targets, in fact, but when he will strike is anyone’s guess. Some would ask how this stealthy banana can live with himself, but Robin will be the first to tell you that he sleeps like a baby.",
+			"motto": "Rob from the ripe to give to the under-ripe."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Piers_Plowman_Hat",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Piers_Plowman_Boots",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Piers_Plowman",
+			"Right_Hand": "Piers_Plowman_Dagger"
+		}
+	},
+	"15": {
+		"metadata": {
+			"name": "Ivar_the_Boneless",
+			"jbx_range": "5,000-5,999",
+			"range_width": "1000",
+			"arcana": "1",
+			"comms": "0",
+			"grind": "5",
+			"perception": "4",
+			"strength": "4",
+			"shadowiness": "2",
+			"history": "Horned and horny, Ivar the Viking is a Banana you don’t want to mess with. Clad in all the trappings of a barbarian invader and with double the gusto, Ivar loves nothing more than a good pillage. This bonerific Banny is not without affliction, however: suffering from brittle bones that are prone to microfracturing, Ivar is a glass canon if there ever was one. His penchant for good scraps and plundering aside, he loves a good meal and a good joke. Some may ask if he feels bad for all the carnage he brings with him, and he probably does deep down— thank goodness for repression.",
+			"motto": "The rippin’ and the tearin’. The rippin’ and the tearin’."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Ivar_the_Boneless",
+			"Left_Hand": "Ivar_the_Boneless_Shield",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "No_Outfit",
+			"Right_Hand": "Ivar_the_Boneless_Axe"
+		}
+	},
+	"16": {
+		"metadata": {
+			"name": "Johnny_Rotten",
+			"jbx_range": "6,000-6,999",
+			"range_width": "1000",
+			"arcana": "2",
+			"comms": "3",
+			"grind": "4",
+			"perception": "2",
+			"strength": "2",
+			"shadowiness": "1",
+			"history": "Have you ever wanted to be smashing around in a mosh pit while a rebellious banana pissed all over you and screamed in your face about anarchy? If so, Punk banny is for you! Whether you like a good show or just some good old fashioned non-conformism, you can purchase a Punk banny to express your distaste for capitalistic commoditization. You can further express your complete abhorrence for such consumerism by buying Punk banny’s complete set of accessories, which you can snatch up right now at a discounted bundle rate! (Terms of bundle rate or actual bundle rate subject to change, or not even exist at all!) Punk banny wants you to support him, but he would never tell you that. He’d tell you to go fuck yourself and embrace anarchy, and he’d show the all the right gift shops to help you express your newfound rebelliousness. Punk banny is on your side. Now open wide, the stream of piss is coming in hot!",
+			"motto": "Go fuck yourself and use coupon code PUNK to get 20% off a dildo."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Headphones",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Johnny_Rotten",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"17": {
+		"metadata": {
+			"name": "Sakura_Haruno",
+			"jbx_range": "7,000-7,999",
+			"range_width": "1000",
+			"arcana": "0",
+			"comms": "2",
+			"grind": "3",
+			"perception": "4",
+			"strength": "4",
+			"shadowiness": "3",
+			"history": "Not everything is at it seems with this saccharine banny. Sakura, while charming and wily in her own rite, has some more layers to her than one might expect at first glance. Often overlooked, she has come into her own as a banny that can dictate the pace, and do so with remarkable ease and sophistication. Her pink hair and sweet demeanor belie a complexity not often seen nor appreciated, but when the going gets tough you always know she’ll have your back. Of late she’s been a bit forlorn, like most bannies who have lost their love interest— but will she find them again soon?",
+			"motto": "Everyone has their soulmate, but where is mine?"
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Sakura_Haruno",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Sakura_Haruno",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"18": {
+		"metadata": {
+			"name": "Smalls",
+			"jbx_range": "8,000-8,999",
+			"range_width": "1000",
+			"arcana": "1",
+			"comms": "3",
+			"grind": "2",
+			"perception": "4",
+			"strength": "1",
+			"shadowiness": "3",
+			"history": "Smalls isn’t a banana that strikes you as remarkable at first glance, but that’s only because it takes him a while to come into his own. He’s a moderately tempered, mellow-headed banana that experienced many rites of passage to get where he is. He may not be the first banana you think of when you need a pinch hitter at the bottom of the ninth, but you can definitely count on him being there and having your back. He’s a good banana, at a time when that old childhood innocent fun-loving life is the exception, not the rule. Wholesome, whether in a bowl of cereal or on top of a 1950’s style banana split, Smalls brings you good times and comfort.",
+			"motto": "I’m a mirror for your adolescence."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Green_Cap",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Smalls",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"19": {
+		"metadata": {
+			"name": "Tafari_Makonnen",
+			"jbx_range": "9,000-9,999",
+			"range_width": "1000",
+			"arcana": "1",
+			"comms": "3",
+			"grind": "2",
+			"perception": "5",
+			"strength": "3",
+			"shadowiness": "2",
+			"history": "There is a regal air about this banana— a hint of royalty that is lasting and enduring. Known for immediately making an impression when he walks into a room, and clad in the most dapper and stately dress, Tafari exudes grace. And he should: he’s got a lifetime under his belt of kingsmanship, and he’s a delight at a banquet or gala, as any royal should be. But just like Chronos eating his children, Tafari is walking gracefully on a tumultuous tightrope. One wonders how it will end for him, but the writing’s on the wall.",
+			"motto": "Let them drink tej."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Tafari_Makonnen",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Tafari_Makonnen",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"20": {
+		"metadata": {
+			"name": "Mick_Mulligan",
+			"jbx_range": "10,000-11,999",
+			"range_width": "2000",
+			"arcana": "2",
+			"comms": "4",
+			"grind": "3",
+			"perception": "3",
+			"strength": "1",
+			"shadowiness": "3",
+			"history": "Musical and light in demeanor, Mick is a banana that knows how to keep it classy and fun at a party. You’ll find few bananas that can blow a horn like Mick. He likes long walks at the horse races and trips to the grocery store. He may not be the most famous banana, but he’s an important part of the crew, and when shit hits the fan and you need a moral-boosting trumpet to blare across the battlefield, you better believe it’ll have Mick’s wet lips all around it.",
+			"motto": "Embouchure is everything."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Mick_Mulligan_Glasses",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Mick_Mulligan",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"21": {
+		"metadata": {
+			"name": "Bannible_Lector",
+			"jbx_range": "12,000-13,999",
+			"range_width": "2000",
+			"arcana": "0",
+			"comms": "0",
+			"grind": "4",
+			"perception": "2",
+			"strength": "3",
+			"shadowiness": "2",
+			"history": "If class and style is what you want, look no further than this very gentlemanly banana. Bannible Lector is someone you can count on for a good classical music recommendation or tips on how to whip up a nice Chateaubriand. His culinary exploits are quite daring and he’s never been afraid to take a risk, whether in or out of the kitchen. With a laser-focused mind that can read you like an open book, he finds all the restraints he’s packaged up in just a tad off-putting. Come help him take off his straitjacket and muzzle— he’ll reward you with a nice home-cooked dish!",
+			"motto": "I eat bananas with a side of fava beans and chianti."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Bannible_Lector",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Bannible_Lector",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"22": {
+		"metadata": {
+			"name": "Wade",
+			"jbx_range": "14,000-15,999",
+			"range_width": "2000",
+			"arcana": "2",
+			"comms": "4",
+			"grind": "3",
+			"perception": "3",
+			"strength": "3",
+			"shadowiness": "3",
+			"history": "Heh, what are you doing here? Trying to save the world, one NFT-drop at a time? I wish I could tell you how great I am, but let’s be honest: I’m not. I’m just a regular old banana in a red skin-tight suit. Yep. Lowkey, don’t even know who my dad is. I started out as a bad guy, and now, well, now I’m even worse! But if you need someone’s ass kicked, whether banana or not, I’m your fruit. What the hell else am I supposed to say? I gotta tell you, I wish they had a bar for us here in web3. All I’m finding is tech bros talking about how everything’s “on-chain”. Pfft. What a bunch of losers.",
+			"motto": "I could really go for a top hat or something, this whole look is starting to bore me."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "No_Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Wade",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Wade",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"23": {
+		"metadata": {
+			"name": "Tamar_of_Georgia",
+			"jbx_range": "16,000-17,999",
+			"range_width": "2000",
+			"arcana": "2",
+			"comms": "4",
+			"grind": "4",
+			"perception": "3",
+			"strength": "2",
+			"shadowiness": "0",
+			"history": "A builder in the truest sense of the world, Tamar shows what a female Banny can do. Between romping with her cornucopia of male concubines and spearheading foreign and domestic affairs, she exudes effortless control of her kingdom. Her acumen should come as no surprise, and she’s battle-tested and hardened from stamping out failed insurrections aplenty. What she’s built appears like it will last 1000 years, but who knows what the future will have in store.",
+			"motto": "Who says a woman can’t be king?"
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "No_Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "No_Hat",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Tamar_of_Georgia",
+			"Right_Hand": "Dagger"
+		}
+	},
+	"24": {
+		"metadata": {
+			"name": "Dolly_Parton",
+			"jbx_range": "18,000-19,999",
+			"range_width": "2000",
+			"arcana": "3",
+			"comms": "5",
+			"grind": "5",
+			"perception": "2",
+			"strength": "2",
+			"shadowiness": "3",
+			"history": "This wholesome banny is quite the talent. Whether she’s throwing down an impromptu concert or throwing back a shot of bourbon, she does it in style. She works a guitar with carefully manicured nails that effortlessly finger pick in travis or other styles, and a sweet smile that tells you everything's okay. Undoubtedly the best banana to ever grow in Tennessee, she takes the fruitcake ten out of ten times. If Elvis was The King, then surely Dolly is The Queen.",
+			"motto": "It costs a lot of money to look this sweet."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Dr_Harleen_Quinzel",
+			"Headgear": "Dolly_Parton",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Dolly_Parton",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"25": {
+		"metadata": {
+			"name": "Baker",
+			"jbx_range": "20,000-21,999",
+			"range_width": "2000",
+			"arcana": "1",
+			"comms": "2",
+			"grind": "2",
+			"perception": "5",
+			"strength": "3",
+			"shadowiness": "2",
+			"history": "Many astronaut bannies came before her, but this is the first one to survive. Oh yes, it was quite a harrowing experience for bananas in space. Nobody seemed to care much if they made it or now— in fact, early on they weren’t even expected to survive. But Astronaut Banny Baker made it back. She was studied carefully, both before, during, and after her trip into the cosmos. She had a good spirit about the whole thing and was never at risk of succumbing. But what nobody could possibly expect is the amazing career she has had after her spaceflight, routinely entertaining children and adults. One of the few bannies to go to space and tell the tale.",
+			"motto": "EEK EEK OOK OOK!"
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "No_Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Baker_Helmet",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Baker",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"26": {
+		"metadata": {
+			"name": "Athos",
+			"jbx_range": "22,000-23,999",
+			"range_width": "2000",
+			"arcana": "3",
+			"comms": "4",
+			"grind": "3",
+			"perception": "3",
+			"strength": "3",
+			"shadowiness": "3",
+			"history": "This banny is principled and deft with a gun and sword. While not the most chirpy musketeer banny out there, he’s among the most lethal. Ever-troubled and a banana that turns to the drink more than most, he will stick up for what’s right, even if it means killing a part of himself in the process. He still grieves from the death of his wife, Ms. Musketeer, who he had to kill when he discovered that she was on the run. Justice trumps personal feelings, but he still loves her. He knows the deep truth to his existence: the banana that lives be the gun dies by it also.",
+			"motto": "Let justice be served, no matter the cost."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "No_Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Feather_Hat",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Athos",
+			"Right_Hand": "Athos_Rapier"
+		}
+	},
+	"27": {
+		"metadata": {
+			"name": "The_Witch_of_Endor",
+			"jbx_range": "24,000-25,999",
+			"range_width": "2000",
+			"arcana": "4",
+			"comms": "4",
+			"grind": "4",
+			"perception": "3",
+			"strength": "3",
+			"shadowiness": "4",
+			"history": "She’s got all the answers, but do you really want them? The Witch of Endor is a banana most mysterious; always willing to offer advice, but with the very important caveat that she can never promise where it will take you. What is fate, really? Are her prophesies the stuff of the divine, or is the very fact that she vocalizes them enough to make them self-fulfilling? Bannies seek her out when they are in need, especially when they don’t want to turn to a more discerning source. But beware— you just may get what you wish for.",
+			"motto": "Be careful what you wish for."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "The_Witch_of_Endor",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "The_Witch_of_Endor_Belt",
+			"Right_Hand": "The_Witch_of_Endor_Broom"
+		}
+	},
+	"28": {
+		"metadata": {
+			"name": "Desmond_Miles",
+			"jbx_range": "26,000-27,999",
+			"range_width": "2000",
+			"arcana": "3",
+			"comms": "2",
+			"grind": "5",
+			"perception": "4",
+			"strength": "3",
+			"shadowiness": "5",
+			"history": "From bar tending to ass kicking, Desmond Miles does it all. Like so many bananas that strike out from home to start a new life, Desmond never thought he’d find a future in being an elite assassin. After all, who wants to carry on a family tradition when the world has so much to offer? Truly, the grass is always greener. But what Desmond never expected was that proverbial truth: people tend to follow in the footsteps of their parents. Little did he know that he was destined to be amongst the greatest bannies, and in so doing become their greatest sacrifice.",
+			"motto": "Be who you are until you aren’t."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Desmond_Miles",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Desmond_Miles",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"29": {
+		"metadata": {
+			"name": "Banhovah",
+			"jbx_range": "28,000-29,999",
+			"range_width": "2000",
+			"arcana": "5",
+			"comms": "2",
+			"grind": "2",
+			"perception": "5",
+			"strength": "5",
+			"shadowiness": "2",
+			"history": "A banny that can turn strawberry smoothies into daiquiris: Banhova has arrived. They say he can walk on whipped cream. They say he hasn’t grown, just risen. They say his father was a great big tree, the likes of which made the Tower of Babel look small. They say he will flip all the fruit stands in the city. They say a lot about Banhova, or as his buddies call him, Yahweh. He likes to hang with OG Banny and the two of them get up to all sorts of mischief. He had a rough time once where he got peeled in front of everybody, but he learned to forgive. And he wants you to forgive, too.",
+			"motto": "For what shall it profit the banana, who gains the whole world, but in the process loses his sweetness?"
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "No_Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Banhovah",
+			"Left_Hand": "Holy_Wine",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Banhovah",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"30": {
+		"metadata": {
+			"name": "Pinkie_Pie",
+			"jbx_range": "30,000-39,999",
+			"range_width": "10000",
+			"arcana": "3",
+			"comms": "5",
+			"grind": "5",
+			"perception": "0",
+			"strength": "5",
+			"shadowiness": "0",
+			"history": "This bubbly banny is sweeter than a pound of aspartame. It’s eyebleach for all occasions. It shits rainbows and pukes butterflies. This banny works hard. This banny has beautiful round eyes that plead helplessly. This banny could go on a killing spree and people would just sit back and go, “Awwwwww! So cute!!!!” This banny gets access to important events because of how cute it looks, and this banny knows its power. This banny will fuck you up.",
+			"motto": "Awwww, I think she’s sleeping! Let’s pet her!"
+		},
+		"layers": {
+			"Body": "Pink",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "No_Hat",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "No_Outfit",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"31": {
+		"metadata": {
+			"name": "Edward_Teach",
+			"jbx_range": "40,000-49,999",
+			"range_width": "10000",
+			"arcana": "1",
+			"comms": "4",
+			"grind": "4",
+			"perception": "4",
+			"strength": "3",
+			"shadowiness": "4",
+			"history": "If looks could kill, then laying eyes on Edward would mean certain death. He fits all the stereotypes of a vicious, opportunistic pirate, and he’s clad in the accoutrements to boot. But looks can be deceiving! This banny is amongst the most suave out there— a careful and intentional deal maker, shrewd beyond his years. He wields his image more deftly than any weapon on earth. Which begs the question— how much of that image can he truly back up? He would tell you simply: come find out.",
+			"motto": "Let your image do the fighting for you."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Edward_Teach",
+			"Left_Hand": "Edward_Teach_Sword",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Edward_Teach",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"32": {
+		"metadata": {
+			"name": "Legolas",
+			"jbx_range": "50,000-59,999",
+			"range_width": "10000",
+			"arcana": "5",
+			"comms": "2",
+			"grind": "3",
+			"perception": "4",
+			"strength": "2",
+			"shadowiness": "4",
+			"history": "This little elven banny is a hard worker and overall just a really good banana. He’s on the sensitive side— likes most elven bananas—but don’t let that fool you, deep down he’s got a heart of gold. He’s got good dexterity and is a killer shot with a longbow, and he’s big enough to put his disagreements with dwarves aside if there is a bigger battle to fight. He’s lived a long life, but he isn’t old by any stretch. He’s happy to fight for the forces of good in the Bannyverse, and he looks forward to polishing off his old bow and putting some nasty bannies in the ground, where they belong.",
+			"motto": "Cross me and thy heart shall rest."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Christmas_Lights",
+			"Face": "Eye_Mouth",
+			"Headgear": "Legolas_Hat",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Legolas_Boots",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Legolas",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"33": {
+		"metadata": {
+			"name": "Naruto",
+			"jbx_range": "60,000-69,999",
+			"range_width": "10000",
+			"arcana": "3",
+			"comms": "4",
+			"grind": "4",
+			"perception": "4",
+			"strength": "4",
+			"shadowiness": "0",
+			"history": "They say character spawns from tragedy, and Naruto will tell you that this must be so. Born out of the marriage of chaos and the innocence of childhood, this banana grew up in darkness, precluded from the violence trapped inside him. But like all great heroes, he turned those overripe bananas into a banana smoothie. He learned to harness his power and to bend its will toward the good and in need. And he developed a strong crush for Sakura, a Banny he seeks out at all costs.",
+			"motto": "I’ve got something growing inside me... For Sakura."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "No_Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Naruto",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Naruto",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"34": {
+		"metadata": {
+			"name": "Pharaoh_King_Banatut",
+			"jbx_range": "70,000-79,999",
+			"range_width": "10000",
+			"arcana": "4",
+			"comms": "3",
+			"grind": "4",
+			"perception": "5",
+			"strength": "3",
+			"shadowiness": "2",
+			"history": "Much conjecture exists around this banny. He’s definitely an oddball who casts a wide shadow. He walks with a slight limp, perhaps the result of a clubbed foot. He may have some neurodegenerative disorders. He’s short and awkward. But nothing surprising for a banny who’s mother is his father’s sister. I mean you’re really scraping the bottom of the genetic barrel on that one. But by the same token, some believe this is all just a subterfuge for a crafty leader. Some would say Pharaoh King Banatut is a shrewd politician. Some would say that mountains were moved for him.",
+			"motto": "I’ll show you, dad!"
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Pharaoh_King_Banatut",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Pharaoh_King_Banatut",
+			"Right_Hand": "Anch"
+		}
+	},
+	"35": {
+		"metadata": {
+			"name": "Agent_J",
+			"jbx_range": "80,000-89,999",
+			"range_width": "10000",
+			"arcana": "3",
+			"comms": "5",
+			"grind": "3",
+			"perception": "4",
+			"strength": "3",
+			"shadowiness": "3",
+			"history": "Finally, a fresh-faced banny who is ready to get some real work done! Agent J may not be the most experienced secret agent banana on the roster, but he’s gung-ho and ready to take down some bad guys and investigate some extraterrestrial mischief! He tries to be a good partner, even in the face of extreme sarcasm and resting bitch face. But he may occasionally lose his temper, and in the worst case will slap a fool.",
+			"motto": "Keep my partner’s name out your motherfuckin’ mouth!"
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Sunglasses",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Smoking",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"36": {
+		"metadata": {
+			"name": "Batbanny",
+			"jbx_range": "90,000-99,999",
+			"range_width": "10000",
+			"arcana": "3",
+			"comms": "2",
+			"grind": "4",
+			"perception": "4",
+			"strength": "4",
+			"shadowiness": "4",
+			"history": "Does the end justify the means? This banny would tell you so. He took some serious childhood drama and turned it into the fuel he needed to clean up a corrupt and crime-ridden city. He’s entered the Bannyverse, and he’s ready to bring some heat on all the bad bananas out there. Does each killing bring him closer to peace? Hell no, but that doesn’t mean he’ll stop trying. Batbanny puts his pain and trauma onto you, and he lets it kill you. He wants you to suffer, just as he did. But ask him who’s the bad guy, and he’ll always say it’s you.",
+			"motto": "Protector. Tormentor."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Batbanny",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Batbanny",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"37": {
+		"metadata": {
+			"name": "Mario",
+			"jbx_range": "100,000-199,999",
+			"range_width": "100000",
+			"arcana": "3",
+			"comms": "4",
+			"grind": "3",
+			"perception": "2",
+			"strength": "5",
+			"shadowiness": "3",
+			"history": "A plumber banana with humble beginnings, Mario is continually thrust into danger as he attempts to help the histrionic apple of his eye, Peach. They are definitely that couple in the Bannyverse: a hot mess, a dumpster fire, a drama factory. Mario will save Peach each and every time, no matter how many bodies he catches along the way. He doesn’t seem to understand that the vast majority of his relationship involves him getting cucked by Bowser. But it’s all worth it in the end, when he can reunite with his cluster-b-personality-disorder companion and lay some serious pipe. And then it starts over all again.",
+			"motto": "Wa-hoooo!"
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Mario",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Mario",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"38": {
+		"metadata": {
+			"name": "Masako_Tanaka",
+			"jbx_range": "200,000-299,999",
+			"range_width": "100000",
+			"arcana": "2",
+			"comms": "5",
+			"grind": "2",
+			"perception": "4",
+			"strength": "3",
+			"shadowiness": "2",
+			"history": "No banana has the grace or poise of Masako, nor do they even begin to approximate the sophistication and class that she exudes. But beware— behind that polished veneer, that culmination of centuries of culture of the highest class— is a world of sacrifice that very few can imagine, let alone withstand. Steeled from such austere upbringing, Masako isn’t one to compromise her principles. She worked too hard to let that happen, and she’ll let you know it.",
+			"motto": "Never compromise who you are."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Masako_Tanaka",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Masako_Tanaka",
+			"Right_Hand": "Wagasa"
+		}
+	},
+	"39": {
+		"metadata": {
+			"name": "Jango_Fett",
+			"jbx_range": "300,000-399,999",
+			"range_width": "100000",
+			"arcana": "3",
+			"comms": "2",
+			"grind": "5",
+			"perception": "3",
+			"strength": "3",
+			"shadowiness": "5",
+			"history": "This taciturn banana doesn’t need a quick mouth or a loud voice to do most of the talking— his presence is enough to send a shockwave through you. He’s an old-school bounty hunter, a gun for hire, a banny on a mission. He’s not fighting for justice or truth—what mere banana would ever deign to know what justice and truth is? No, he’s far more practical. He fights for JBX tokens exclusively, and whoever pays the greatest number gets his service. He’s gritty and practical, with no flare or style outside of pure efficiency. They say the Bannyverse will implode the day he shows emotion.",
+			"motto": "I’m the web3 lord. Let the hodlers pay me."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Jango_Fett",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Jango_Fett",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"40": {
+		"metadata": {
+			"name": "Tinkerbanny",
+			"jbx_range": "400,000-499,999",
+			"range_width": "100000",
+			"arcana": "5",
+			"comms": "3",
+			"grind": "3",
+			"perception": "3",
+			"strength": "3",
+			"shadowiness": "3",
+			"history": "At times sweet, at times sour, Tinkerbanny is a mercurial banana to be sure. She has a penchant for fixing and augmenting all things physical— a tinkerer in the truest sense of the word— and she’s been known to run a shop that other bannies frequent. If you need to modulate your gun to full auto, or get some chips out of your samurai sword, she’s your banana. She’s also a bit moody, to put it lightly, so you better catch her on a good day. Nothing worse than a weapons shop hosted by an angry banny, after all. She definitely likes to be cherished and treated with care. Hopefully the other bannies can remember that.",
+			"motto": "I’m loyal, just don’t be a shithead."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Tinkerbanny",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Tinkerbanny",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"41": {
+		"metadata": {
+			"name": "Banny_Stark",
+			"jbx_range": "500,000-599,999",
+			"range_width": "100000",
+			"arcana": "3",
+			"comms": "4",
+			"grind": "4",
+			"perception": "3",
+			"strength": "5",
+			"shadowiness": "3",
+			"history": "A good-humored banny with a playboy lifestyle, this superhero banana loves nothing more than a night out after saving the world. Banny Stark, like so many superheroes before him, emerged from childhood trauma with the perseverance and drive to change the world. He’s jovial and witty and not without sarcasm, and it’s always best to stay on his good side. That said, like so many superhero bannies out there, he’s nothing without a nemesis. They say a new nemesis is emerging for him, straight from the Bannyverse. Can you guess who it is?",
+			"motto": "Build shit. Blow shit up. Save shit. Repeat."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "No_Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Banny_Stark",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Banny_Stark",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"42": {
+		"metadata": {
+			"name": "Emmett_Doc_Brown",
+			"jbx_range": "600,000-699,999",
+			"range_width": "100000",
+			"arcana": "4",
+			"comms": "3",
+			"grind": "4",
+			"perception": "4",
+			"strength": "2",
+			"shadowiness": "2",
+			"history": "My goodness, reader! Hold on to your horses because you’re about to jump down a rabbit hole here! This banny will take you places you’ve never been! He’ll take you back in time to kiss your own mother! This banny has some kinky fucking fetishes! He’ll take you back to the old west to make you kiss your own great-great-grandfather! And if you read this paragraph at precisely 88 words per minute, you just may get a glimpse of that wild west lemon party! Oh he’d like that! Oh yes he’d love it! Other bannies tend to stay away from him, for obvious reasons.",
+			"motto": "Just one more time. I promise it won’t be like last time!"
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Emmett_Doc_Brown",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Emmett_Doc_Brown",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"43": {
+		"metadata": {
+			"name": "Beatrix_Kiddo",
+			"jbx_range": "700,000-799,999",
+			"range_width": "100000",
+			"arcana": "3",
+			"comms": "2",
+			"grind": "4",
+			"perception": "5",
+			"strength": "3",
+			"shadowiness": "5",
+			"history": "A banny hell bent on revenge and with all the skills to exact it, Black Mamba is coming for her enemies. The erstwhile pregnant banny awoke recently to find that her seeds were stolen. She has a feeling she knows who took them, along with the bannies that helped them. Delving back into a life she swore to leave behind, Black Mamba has suited up and polished off her katana. For all other bannies out there: stay the hell out of her way. She’s going scorched earth in the Bannyverse, and you don’t wanna be around to see it first-hand.",
+			"motto": "Give me my seeds, and I’ll make this quick."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Beatrix_Kiddo",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Beatrix_Kiddo",
+			"Right_Hand": "Katana"
+		}
+	},
+	"44": {
+		"metadata": {
+			"name": "Louise_Burns",
+			"jbx_range": "800,000-899,999",
+			"range_width": "100000",
+			"arcana": "5",
+			"comms": "2",
+			"grind": "3",
+			"perception": "3",
+			"strength": "4",
+			"shadowiness": "5",
+			"history": "Louise is cute as a button. A little girl banny about 8 years old, she loves to people watch. You can find her in dark long hallways, particularly after a long night of strange occurrences. Her only friend seems to be her twin sister, and she loves her bright blue dress, both clean and blood stained. Most of her other friends have been a bit odd, so she’s always happy to meet new people. At the end of the day she’s not unlike most kids— she just wants to play. Won’t you come play with her?",
+			"motto": "Come play with me."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Louise_Burns",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Louise_Burns",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"45": {
+		"metadata": {
+			"name": "Miyamoto_Musashi",
+			"jbx_range": "900,000-999,999",
+			"range_width": "100000",
+			"arcana": "2",
+			"comms": "5",
+			"grind": "5",
+			"perception": "5",
+			"strength": "5",
+			"shadowiness": "5",
+			"history": "No banny can wield a sword like Musashi. His form and technique is pristine and the stuff of legends. Musashi is interested in keeping the peace and punishing social transgressions. He’s excellent at shaming others, which some say cuts deeper than any katana ever could. He’s a bit lonely in the Bannyverse, but he heard that there’s another sword fighter floating around and he’s excited to duel them. After all, he’s never lost a duel. They say he can pluck flies out of the air with nothing more than chop sticks. As far as bar tricks go, that’s gotta take the cake.",
+			"motto": "Think lightly of yourself and deeply of the world."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Miyamoto_Musashi_Ribbon",
+			"Left_Hand": "Katana",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Miyamoto_Musashi",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"46": {
+		"metadata": {
+			"name": "Obiwan_Kenobanana",
+			"jbx_range": "1,000,000-1,999,999",
+			"range_width": "1000000",
+			"arcana": "5",
+			"comms": "5",
+			"grind": "4",
+			"perception": "5",
+			"strength": "5",
+			"shadowiness": "4",
+			"history": "If there’s already a best sword fighter banny, then certainly Obiwan Kenobanana is the best wielder of the light saber. He has fought long and trained many along his path in a uncertain and tumultuous Bannyverse. In fact, he trained a couple of the bannies around here. But like so many tragic portrayals in literature, he is destined to fall at the hands of his own apprentice. But which one is it, and how will it happen? Obiwan has a feeling it’s coming, but he’ll fight like hell until it does.",
+			"motto": "Poor is the apprentice who does not exceed his master."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Obiwan_Kenobanana",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Obiwan_Kenobanana",
+			"Right_Hand": "Lightsaber"
+		}
+	},
+	"47": {
+		"metadata": {
+			"name": "Enlil",
+			"jbx_range": "2,000,000-2,999,999",
+			"range_width": "1000000",
+			"arcana": "4",
+			"comms": "2",
+			"grind": "2",
+			"perception": "4",
+			"strength": "4",
+			"shadowiness": "5",
+			"history": "This divine banny has a lot of stories about him, but all impossible to verify. What’s known is that he is amongst the oldest bannies, and the most wise. He’s also prone to a quick temper and can definitely make it rain when he needs to let off some steam. Some have said he may be an otherwordly banana, who came to the Bannyverse as a guest, or intruder, depending on which side you’re on. But all conjecture aside, this Banny is quite powerful. Some say that OG Banny has some info on him.",
+			"motto": "Akkadians? Please. That’s so last-last-millennium!"
+		},
+		"layers": {
+			"Body": "Green",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Enlil",
+			"Headgear": "No_Hat",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "No_Outfit",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"48": {
+		"metadata": {
+			"name": "Spock",
+			"jbx_range": "3,000,000-3,999,999",
+			"range_width": "1000000",
+			"arcana": "3",
+			"comms": "3",
+			"grind": "4",
+			"perception": "4",
+			"strength": "3",
+			"shadowiness": "5",
+			"history": "Calm, cool and collected, Spock doesn’t make his moves out of whim or anger. Rumored to be half-banana, half-plantain, he is a cool player who does SWOT analyses about which cereal to buy for breakfast. He may not have the most bubbly or energetic personality, but when you need answers that don’t play to your emotions, Spock is your banana. Other bannies are known to seek out Spock for his excellent conflict mediation skills, but what they don’t know is that Spock’s memory is second to none. As a banana who knows everyone’s dirty laundry, his bad side is an inopportune place for you to end up on.",
+			"motto": "Above all things: be pragmatic."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Spock",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Spock",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"49": {
+		"metadata": {
+			"name": "Dr_Harleen_Quinzel",
+			"jbx_range": "4,000,000-4,999,999",
+			"range_width": "1000000",
+			"arcana": "4",
+			"comms": "4",
+			"grind": "4",
+			"perception": "3",
+			"strength": "5",
+			"shadowiness": "3",
+			"history": "Every good banana has a wild side, and Dr. Quinzel is the embodiment of that. A former psychiatrist who did a lot of good helping the most tortured of bananas, she broke out into the Bannyverse with an unmatched eagerness for mayhem. Perhaps she was screwed too tight for most of her life, or maybe, like the strongest diamond shatters in an explosion of magnificent shards, Harleen is unleashed in the Bannyverse in all her mayhem. She’s chasing a long-lost lover— a former patient— and she’s sure she’ll find him. Unless, of course, a careful reader finds him first.",
+			"motto": "If looks could kill, you’d be dead already."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Harleen_Quinzel",
+			"Headgear": "Dr_Harleen_Quinzel",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Dr_Harleen_Quinzel",
+			"Right_Hand": "Dr_Harleen_Quinzel"
+		}
+	},
+	"50": {
+		"metadata": {
+			"name": "Pamela_Anderson",
+			"jbx_range": "5,000,000-5,999,999",
+			"range_width": "1000000",
+			"arcana": "3",
+			"comms": "5",
+			"grind": "5",
+			"perception": "3",
+			"strength": "3",
+			"shadowiness": "3",
+			"history": "This drop-dead gorgeous banny will have your banana sticking up straight. Playboy loves a good time and isn’t afraid to show it. Equally comfortable with a hammer and tool belt or out in the ocean currents, Playboy is a banny of many skills and talents. She’s also quite formidable, and can protect and kick ass as necessary. A seductress that can throw back a tequila shot over a conversation on animal rights, she’s everybody’s type. Which other banny will fall head over heels for her, and will that story have a happy ending? Stay tuned.",
+			"motto": "My vibrant peel? It’s all natural, baby."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Bunny_Eyes",
+			"Headgear": "Pamela_Anderson",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Pamela_Anderson",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"51": {
+		"metadata": {
+			"name": "Princess_Leia",
+			"jbx_range": "6,000,000-6,999,999",
+			"range_width": "1000000",
+			"arcana": "3",
+			"comms": "4",
+			"grind": "3",
+			"perception": "5",
+			"strength": "3",
+			"shadowiness": "3",
+			"history": "Princess Leia is a banny that was kicking ass before it was cool. Whether the whole Bannyverse is at risk or there’s just a little disagreement between bananas at a local pub, Princess Leia will jump in and take care of the situation. She’s well trained to fight and is an excellent shot, like most badass heroines. When the writing’s on the wall and the circumstances seem too dire to recover from, you can count on Princess Leia to come in and save the day, sometimes even doing so in a clanky metal bikini.",
+			"motto": "When the boy bannies are done screwing things up, I come fix it."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Princess_Leia",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Princess_Leia",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"52": {
+		"metadata": {
+			"name": "Lestat_The_Undead",
+			"jbx_range": "7,000,000-7,999,999",
+			"range_width": "1000000",
+			"arcana": "5",
+			"comms": "5",
+			"grind": "4",
+			"perception": "5",
+			"strength": "5",
+			"shadowiness": "5",
+			"history": "Lestat will strike you as quite wise for his age, which is misleading, since he’s amongst the oldest bannies in the Bannyverse. His young appearance is sustained by the fresh banana flesh of the living. He has a penchant for mind-reading, fast healing, and superhuman strength, and those that know him would be the first to tell you that he’s a total brat. Don’t let his good looks and charm deceive you— he’ll just as soon slit your throat as he’ll offer you immortality, the latter being far worse, I assure you.",
+			"motto": "Could I interest you in a hickie?"
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Lestat_The_Undead",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Lestat_The_Undead",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"53": {
+		"metadata": {
+			"name": "Jinx",
+			"jbx_range": "8,000,000-8,999,999",
+			"range_width": "1000000",
+			"arcana": "4",
+			"comms": "4",
+			"grind": "5",
+			"perception": "4",
+			"strength": "5",
+			"shadowiness": "4",
+			"history": "A heroine who you can’t help but to root for, Jinx is a banny that brings the heat when she needs to. Don’t let her petite and unassuming exterior fool you, she’s a badass that wields her childhood trauma into magnificent destruction. She tends to steer clear from most bannies, and they do the same. But her approach to problem solving is a double-edged sword, as some more justice-oriented bannies may peg her for a villain. The eventual confrontation is bound to lead to more than a few fireworks, but who will emerge victorious? Stay tuned.",
+			"motto": "Everything different about you is everything strong about you."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Jinx_Hair",
+			"Left_Hand": "Shark_v2",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Jinx",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"54": {
+		"metadata": {
+			"name": "Spider_Jerusalem",
+			"jbx_range": "9,000,000-9,999,999",
+			"range_width": "1000000",
+			"arcana": "4",
+			"comms": "4",
+			"grind": "3",
+			"perception": "4",
+			"strength": "5",
+			"shadowiness": "3",
+			"history": "Strap in and be prepared to get your mind fucked hard, because Spider Jerusalem doesn’t fuck around. He’s blunt, and if he’s not in the middle of doing a line of coke, he may take a moment out of his day to let you know that you’re a jackass cog in a societal wheel your dumbass doesn’t even comprehend the existence of. He’s easy to get pissed off and he’ll let you know it, and God help you if you bring a dog around this motherfucker because he doesn’t fuck with canines. He doesn’t fuck with anybody. Just give him a spoon, a lighter, and a syringe and get the fuck outta his way. He’s seen some shit.",
+			"motto": "Life’s a bitch, then you die."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Spider_Jerusalem_Glasses",
+			"Left_Hand": "Spider_Jerusalem_Weapon",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Spider_Jerusalem",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"55": {
+		"metadata": {
+			"name": "Diana_Banana",
+			"jbx_range": "10,000,000-19,999,999",
+			"range_width": "20000000",
+			"arcana": "5",
+			"comms": "4",
+			"grind": "5",
+			"perception": "4",
+			"strength": "5",
+			"shadowiness": "4",
+			"history": "Diana Banana has a storied history and a fierce set of skills. Some say she’s half-goddess, with fists that will kill you if her looks don’t. Born from clay carefully sculpted by the hands of ancient deities, and with a pedigree of Amazonian upbringing, Diana started her war-path back in the 1940s beating the living hell out of axis baddies. In the Bannyverse, she can be seen trying to right the wrongs and tip the scales of justice in all the right directions.",
+			"motto": "Love, and kicking ass, will save the world."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Diana_Banana",
+			"Headgear": "Diana_Banana",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Diana_Banana_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Diana_Banana_Dress",
+			"Right_Hand": "Diana_Banana"
+		}
+	},
+	"56": {
+		"metadata": {
+			"name": "Banny_Potter",
+			"jbx_range": "20,000,000-39,999,999",
+			"range_width": "20000000",
+			"arcana": "5",
+			"comms": "4",
+			"grind": "3",
+			"perception": "4",
+			"strength": "5",
+			"shadowiness": "4",
+			"history": "This little meek banana is growing into his own peel. Day to day, he learns more amazing magic tricks and spells to cast. And just in time, too, for a nemesis is on the horizon, the likes of which Banny Potter has never seen before. He’s certain that he can’t overcome any major foe, but he’s about to be thrust before the greatest foe that he’s ever seen. Will he dig deep and find the strength and confidence to overcome this monumental test, or will he shrivel up, like testicles on a cold winter morning, when he rubber hits the road?",
+			"motto": "It does not do well to dwell on dreams, and forget to live."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Banny_Potter",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Banny_Potter",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"57": {
+		"metadata": {
+			"name": "Prince_of_Darkness",
+			"jbx_range": "40,000,000-59,999,999",
+			"range_width": "20000000",
+			"arcana": "5",
+			"comms": "5",
+			"grind": "5",
+			"perception": "4",
+			"strength": "4",
+			"shadowiness": "5",
+			"history": "This diabolical banny will be the first to tell you that he’s just misunderstood. After all, you’ve only heard one side of the story. Equipped with superhuman strength, telekinesis and telepathy, the Prince of Darkness will be the first to point out that he’s not even using any of them on you right now. After all, how bad can he be? Rumors that he erupted from a vessel where he was once entrapped as sentient sludge? Such silliness! And all those people he allegedly hurt? Crisis bananas, nothing more. Come make some deals with him. At the very least: listen to his time-share presentation.",
+			"motto": "Tell me: where do I belong in a sick society?"
+		},
+		"layers": {
+			"Body": "Red",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "No_Hat",
+			"Left_Hand": "Pitchfork",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Prince_of_Darkness",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"58": {
+		"metadata": {
+			"name": "Blondie",
+			"jbx_range": "60,000,000-99,999,999",
+			"range_width": "40000000",
+			"arcana": "4",
+			"comms": "5",
+			"grind": "5",
+			"perception": "5",
+			"strength": "5",
+			"shadowiness": "4",
+			"history": "Eyes squinted, a long poncho draped over a yellow phallus, and a cowboy hat with a six shooter around the girthiest part: that’s Blondie. He doesn’t say much— hell, he doesn’t need to. You know what this banana is about. With the gravel in his gut and the spit in his eye, he’s seen more than your average banana. Nothing fazes him, and nothing should— they say the rattlesnakes whimper when he crosses their path. Where he’s going, where he’s been, and what he wants, well, those are all mysteries to common folk like you or me. But one thing’s for sure: Blondie gets what he wants, and he don’t ask twice.",
+			"motto": "Every banana makes his own way."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Blondie_Hat",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Blondie",
+			"Right_Hand": "Pistol"
+		}
+	},
+	"59": {
+		"metadata": {
+			"name": "Dr_Jonathan_Osterman",
+			"jbx_range": "100,000,000-599,999,999",
+			"range_width": "600,000,000",
+			"arcana": "5",
+			"comms": "5",
+			"grind": "4",
+			"perception": "5",
+			"strength": "5",
+			"shadowiness": "4",
+			"history": "No, this isn’t the banny based on a certain male impotence drug. And no, I don’t blame you for going there. This banny has bigger worries than a limp dick, and notice that six pack? Yeah, he’s definitely on something. Dr. Osterman is a monumental force that has never been fully unleashed on this world. He has tipped the scales in major events across history, and he does so still in the Bannyverse. Only the oldest, most senior bannies can communicate with him, and even then quite sparingly. What will happen when he breaks free from his mysterious constraints? An unfettered Dr. Osterman is a recipe for Armageddon, or so the other God-tier bannies will tell you.",
+			"motto": "Time is a flat circle."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "No_Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Dr_Jonathan_Osterman",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Dr_Jonathan_Osterman",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Dr_Jonathan_Osterman",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"60": {
+		"metadata": {
+			"name": "Gautama_Buddha",
+			"jbx_range": "600,000,000",
+			"range_width": "100,000,000",
+			"arcana": "5",
+			"comms": "5",
+			"grind": "5",
+			"perception": "5",
+			"strength": "5",
+			"shadowiness": "5",
+			"history": "Doesn’t get more laid back than Buddha Banny. He threw it all away— opulence, wealth, fame— in order to find inner peace under a tree. He did so at a young age and rejected his material possessions well into adulthood. He ate pork, sometimes quite greedily. And he inspired a movement that goes on to this day in the Bannyverse. Many bannies seek him out, but he is of few words. They say he won’t even open up to you unless you bring him a nice pork dish. Who knew self-actualization was so transactional.",
+			"motto": "Do not perceive the pork chop. Be it."
+		},
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Gautama_Buddha",
+			"Headgear": "No_Hat",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Gautama_Buddha",
+			"Right_Hand": "Nothing"
+		}
+	},
+	"61": {
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Angry",
+			"Headgear": "No_Hat",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "No_Outfit",
+			"Right_Hand": "Nothing"
+		},
+		"metadata": { "name": "Angry_Banny" }
+	},
+	"62": {
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Blue_Glasses",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Blue_T-Shirt",
+			"Right_Hand": "Nothing"
+		},
+		"metadata": { "name": "Blue_Glasses" }
+	},
+	"63": {
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Firefighter_Helmet",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Firefighter",
+			"Right_Hand": "Firefighter"
+		},
+		"metadata": { "name": "Firefighter" }
+	},
+	"64": {
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Flash",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Flash",
+			"Right_Hand": "Nothing"
+		},
+		"metadata": { "name": "Flash" }
+	},
+	"65": {
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Hawaiian",
+			"Face": "Eye_Mouth",
+			"Headgear": "No_Hat",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Hawaiian",
+			"Right_Hand": "Nothing"
+		},
+		"metadata": { "name": "Hawaii" }
+	},
+	"66": {
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Sakura",
+			"Headgear": "No_Hat",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "JuiceBox_Bunny",
+			"Right_Hand": "Nothing"
+		},
+		"metadata": { "name": "Juicebox_Banny" }
+	},
+	"67": {
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Happy",
+			"Headgear": "No_Hat",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "JuiceBox_Bunny",
+			"Right_Hand": "Juicebox"
+		},
+		"metadata": { "name": "Juicebox_Banny_Cannibal" }
+	},
+	"68": {
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Happy",
+			"Headgear": "No_Hat",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "JuiceBox_Bunny",
+			"Right_Hand": "Nothing"
+		},
+		"metadata": { "name": "Juicebox_Banny_Happy" }
+	},
+	"69": {
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Kiss_Musician",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "No_Outfit",
+			"Right_Hand": "Triangle_guitar"
+		},
+		"metadata": { "name": "Kiss" }
+	},
+	"70": {
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Hat_and_Beard",
+			"Left_Hand": "Chibuxi",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Suit",
+			"Right_Hand": "Nothing"
+		},
+		"metadata": { "name": "Leprechaun" }
+	},
+	"71": {
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Mummy",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Mummy",
+			"Right_Hand": "Nothing"
+		},
+		"metadata": { "name": "Mummy" }
+	},
+	"72": {
+		"layers": {
+			"Body": "Orange",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "No_Hat",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "No_Outfit",
+			"Right_Hand": "Nothing"
+		},
+		"metadata": { "name": "Orange_Banny" }
+	},
+	"73": {
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Panda",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Panda",
+			"Right_Hand": "Nothing"
+		},
+		"metadata": { "name": "Panda" }
+	},
+	"74": {
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "Purple-samurai",
+			"Left_Hand": "Samurai_Dagger",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Purple_Samurai",
+			"Right_Hand": "Nothing"
+		},
+		"metadata": { "name": "Purple_Samurai" }
+	},
+	"75": {
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Rick_Astley",
+			"Headgear": "Rick_Astley",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Rick_Astley_Boots",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Rick_Astley",
+			"Right_Hand": "Nothing"
+		},
+		"metadata": { "name": "Rick_Astley" }
+	},
+	"76": {
+		"layers": {
+			"Body": "Yellow",
+			"Both_Hands": "Nothing",
+			"Choker": "Choker",
+			"Face": "Eye_Mouth",
+			"Headgear": "No_Hat",
+			"Left_Hand": "Nothing",
+			"Lower_Accessory": "Black_Shoes",
+			"Oral_Fixation": "Nothing",
+			"Outfit": "Ducttape",
+			"Right_Hand": "Nothing"
+		},
+		"metadata": { "name": "Tape_Banny" }
+	}
+}
