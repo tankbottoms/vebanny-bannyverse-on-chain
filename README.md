@@ -39,8 +39,8 @@ cd svelte
 npm run dev
 ```
 
-- Go to `localhost:3000/bannies` to see the grid of Bannies.
-- Click on a banny and end up on `localhost:3000/{bannyIndex}/grid` and click on the assets that are not working out.
+- Go to `localhost:3000/secret` to see the grid of Bannies.
+- Click on a banny and end up on `localhost:3000/secret/{bannyIndex}` and click on the assets that are not working out.
 - Save the json in the modal by copying it to clipboard.
 
 ## Metadata
