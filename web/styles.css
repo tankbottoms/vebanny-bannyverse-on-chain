@@ -1,0 +1,89 @@
+@font-face {
+  font-family: Pixel;
+  src: url("./pixel_font.ttf");
+}
+
+text {
+  font-family: Pixel;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  height: 100%;
+}
+
+#token {
+    position: absolute;
+    left: 0;
+}
+
+
+/**
+* Styles for the bezierTool, ignore for now - but might be useful later
+*/
+#bezierTool {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: auto;
+  margin: 0;
+  /* background: radial-gradient(ellipse at center, #fefefe 0%, #cbeeff 100%); */
+  border: 5px solid #333;
+  touch-action: none;
+}
+
+#bezierTool path {
+  stroke-width: 10;
+  stroke: #000;
+  stroke-linecap: round;
+  fill: none;
+}
+
+#bezierTool path.fill {
+  fill: #3ff;
+}
+
+#bezierTool .control {
+  stroke-width: 3;
+  stroke: #c00;
+  fill: #fff;
+}
+
+#bezierTool .control:hover,
+#bezierTool .control.drag {
+  fill: #c00;
+  cursor: move;
+}
+
+#bezierTool line {
+  stroke-width: 2;
+  stroke: #999;
+  stroke-linecap: round;
+  stroke-dasharray: 5, 5;
+}
+
+#output {
+  padding: 0.2em;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  width: 400px;
+}
+
+h1 {
+  font-size: 1.2em;
+}
+
+#path {
+  font-family: monospace;
+  font-size: 1em;
+  padding: 0.3em;
+  border: 1px solid #999;
+  user-select: all;
+}

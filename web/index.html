@@ -1,0 +1,82 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <script src="./script.js"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <script>
+      const lockPeriods = [
+        "1 WEEK",
+        "1 MONTH",
+        "3 MONTHS",
+        "6 MONTHS",
+        "1 YEAR",
+        "4 YEARS",
+      ];
+      const currentLockPeriod = lockPeriods[0];
+      // Get BannyIndex from the URL search params
+      const urlParams = new URLSearchParams(window.location.search);
+      const bannyIndex = urlParams.get("banny") || 1;
+      // Get the lock period from the URL search param,  by index
+      const lockPeriod = urlParams.get("lock")
+        ? lockPeriods[urlParams.get("lock")]
+        : lockPeriods[0];
+
+      getLayeredSvgFromBannyIndex(bannyIndex).then(({ image, jbx_range }) => {
+        // Replace the div with id placeholder with the svg
+        document.getElementById("bannyPlaceholder").innerHTML = image;
+        document.getElementById("topText").innerHTML = lockPeriod;
+        if (jbx_range) {
+          document.getElementById("bottomText").innerHTML = `${jbx_range} JBX`;
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <!-- NOTE: everything in background.svg can just be stuck inside the SVG tag below,
+    I've done it this way to not have the clutter of a thousand paths -->
+    <img src="./background.svg" />
+    <svg
+      id="token"
+      width="300"
+      height="300"
+      viewBox="0 0 1080 1080"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <defs>
+        <path
+          id="textPathBottom"
+          d="M 540 540 m -450,0 a 450,450 0 1,0 900,0"
+        />
+        <path id="textPathTop" d="M 540 540 m -450,0 a 450,450 0 1,1 900,0" />
+      </defs>
+      <!-- NOTE: This is where we're adding Banny -->
+      <g id="bannyPlaceholder"></g>
+      <!-- NOTE: x calculated by 540 + 540/2, then arbitrarily added/removed y by eye-balling... -->
+      <text
+        font-size="90"
+        fill="white"
+        text-anchor="middle"
+        x="700"
+        dominant-baseline="mathematical"
+      >
+        <textPath id="topText" xlink:href="#textPathTop">
+          10 DAYS
+        </textPath>
+      </text>
+      <text
+        font-size="90"
+        fill="white"
+        text-anchor="middle"
+        x="710"
+        dominant-baseline="mathematical"
+      >
+        <textPath id="bottomText" xlink:href="#textPathBottom"></textPath>
+      </text>
+    </svg>
+  </body>
+</html>
