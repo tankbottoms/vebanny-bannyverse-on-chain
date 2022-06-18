@@ -1,0 +1,71 @@
+{
+  "name": "Tamar of Georgia",
+  "external_link": "",
+  "description": "A builder in the truest sense of the world, Tamar shows what a female Banny can do. Between romping with her cornucopia of male concubines and spearheading foreign and domestic affairs, she exudes effortless control of her kingdom. Her acumen should come as no surprise, and she’s battle-tested and hardened from stamping out failed insurrections aplenty. What she’s built appears like it will last 1000 years, but who knows what the future will have in store.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "No Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "No Hat"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Tamar of Georgia"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Dagger"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 2
+    },
+    {
+      "trait_type": "Comms",
+      "value": 4
+    },
+    {
+      "trait_type": "Grind",
+      "value": 4
+    },
+    {
+      "trait_type": "Perception",
+      "value": 3
+    },
+    {
+      "trait_type": "Strength",
+      "value": 2
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 2000
+    }
+  ]
+}

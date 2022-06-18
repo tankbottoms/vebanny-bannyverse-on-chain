@@ -1,0 +1,75 @@
+{
+  "name": "Tinkerbanny",
+  "external_link": "",
+  "description": "At times sweet, at times sour, Tinkerbanny is a mercurial banana to be sure. She has a penchant for fixing and augmenting all things physical— a tinkerer in the truest sense of the word— and she’s been known to run a shop that other bannies frequent. If you need to modulate your gun to full auto, or get some chips out of your samurai sword, she’s your banana. She’s also a bit moody, to put it lightly, so you better catch her on a good day. Nothing worse than a weapons shop hosted by an angry banny, after all. She definitely likes to be cherished and treated with care. Hopefully the other bannies can remember that.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Tinkerbanny"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Tinkerbanny"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 5
+    },
+    {
+      "trait_type": "Comms",
+      "value": 3
+    },
+    {
+      "trait_type": "Grind",
+      "value": 3
+    },
+    {
+      "trait_type": "Perception",
+      "value": 3
+    },
+    {
+      "trait_type": "Strength",
+      "value": 3
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 3
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 100000
+    }
+  ]
+}

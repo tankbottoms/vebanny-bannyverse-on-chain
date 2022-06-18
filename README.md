@@ -1,8 +1,18 @@
 # README
 
+## Metadata
+
+Create metadata folder with a file for each Banny defined in the `characters.json` by running `createMetadata.mjs`
+
+```sh
+node createMetadata.mjs
+```
+
+NOTE: Thinking these won't actually be used in the tokenURI, but are here to crosscheck when we create the function to build up the tokenURI.
+
 ## TLDR
 
-Basically, a Banny is defined by a structure like this;
+A Banny is defined by a structure like this;
 
 ```json
 {
@@ -21,7 +31,7 @@ Basically, a Banny is defined by a structure like this;
 }
 ```
 
-Which will be encoded in the Banny's metadata json in the attributes, e.g.
+Which is encoded in the Banny's metadata json in the attributes, e.g.
 
 ```json
 {

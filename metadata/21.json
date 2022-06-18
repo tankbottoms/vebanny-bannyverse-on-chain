@@ -1,0 +1,67 @@
+{
+  "name": "Bannible Lector",
+  "external_link": "",
+  "description": "If class and style is what you want, look no further than this very gentlemanly banana. Bannible Lector is someone you can count on for a good classical music recommendation or tips on how to whip up a nice Chateaubriand. His culinary exploits are quite daring and he’s never been afraid to take a risk, whether in or out of the kitchen. With a laser-focused mind that can read you like an open book, he finds all the restraints he’s packaged up in just a tad off-putting. Come help him take off his straitjacket and muzzle— he’ll reward you with a nice home-cooked dish!",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Bannible Lector"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Bannible Lector"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Grind",
+      "value": 4
+    },
+    {
+      "trait_type": "Perception",
+      "value": 2
+    },
+    {
+      "trait_type": "Strength",
+      "value": 3
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 2
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 2000
+    }
+  ]
+}

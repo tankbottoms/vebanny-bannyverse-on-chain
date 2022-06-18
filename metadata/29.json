@@ -1,0 +1,75 @@
+{
+  "name": "Banhovah",
+  "external_link": "",
+  "description": "A banny that can turn strawberry smoothies into daiquiris: Banhova has arrived. They say he can walk on whipped cream. They say he hasn’t grown, just risen. They say his father was a great big tree, the likes of which made the Tower of Babel look small. They say he will flip all the fruit stands in the city. They say a lot about Banhova, or as his buddies call him, Yahweh. He likes to hang with OG Banny and the two of them get up to all sorts of mischief. He had a rough time once where he got peeled in front of everybody, but he learned to forgive. And he wants you to forgive, too.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "No Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Banhovah"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Holy Wine"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Banhovah"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 5
+    },
+    {
+      "trait_type": "Comms",
+      "value": 2
+    },
+    {
+      "trait_type": "Grind",
+      "value": 2
+    },
+    {
+      "trait_type": "Perception",
+      "value": 5
+    },
+    {
+      "trait_type": "Strength",
+      "value": 5
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 2
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 2000
+    }
+  ]
+}

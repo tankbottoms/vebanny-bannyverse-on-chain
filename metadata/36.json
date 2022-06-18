@@ -1,0 +1,75 @@
+{
+  "name": "Batbanny",
+  "external_link": "",
+  "description": "Does the end justify the means? This banny would tell you so. He took some serious childhood drama and turned it into the fuel he needed to clean up a corrupt and crime-ridden city. He’s entered the Bannyverse, and he’s ready to bring some heat on all the bad bananas out there. Does each killing bring him closer to peace? Hell no, but that doesn’t mean he’ll stop trying. Batbanny puts his pain and trauma onto you, and he lets it kill you. He wants you to suffer, just as he did. But ask him who’s the bad guy, and he’ll always say it’s you.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Batbanny"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Batbanny"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 3
+    },
+    {
+      "trait_type": "Comms",
+      "value": 2
+    },
+    {
+      "trait_type": "Grind",
+      "value": 4
+    },
+    {
+      "trait_type": "Perception",
+      "value": 4
+    },
+    {
+      "trait_type": "Strength",
+      "value": 4
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 4
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 10000
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "name": "Jinx",
+  "external_link": "",
+  "description": "A heroine who you can’t help but to root for, Jinx is a banny that brings the heat when she needs to. Don’t let her petite and unassuming exterior fool you, she’s a badass that wields her childhood trauma into magnificent destruction. She tends to steer clear from most bannies, and they do the same. But her approach to problem solving is a double-edged sword, as some more justice-oriented bannies may peg her for a villain. The eventual confrontation is bound to lead to more than a few fireworks, but who will emerge victorious? Stay tuned.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Jinx Hair"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Shark v2"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Jinx"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 4
+    },
+    {
+      "trait_type": "Comms",
+      "value": 4
+    },
+    {
+      "trait_type": "Grind",
+      "value": 5
+    },
+    {
+      "trait_type": "Perception",
+      "value": 4
+    },
+    {
+      "trait_type": "Strength",
+      "value": 5
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 4
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 1000000
+    }
+  ]
+}

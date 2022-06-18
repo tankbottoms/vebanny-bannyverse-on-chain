@@ -1,0 +1,75 @@
+{
+  "name": "Obiwan Kenobanana",
+  "external_link": "",
+  "description": "If there’s already a best sword fighter banny, then certainly Obiwan Kenobanana is the best wielder of the light saber. He has fought long and trained many along his path in a uncertain and tumultuous Bannyverse. In fact, he trained a couple of the bannies around here. But like so many tragic portrayals in literature, he is destined to fall at the hands of his own apprentice. But which one is it, and how will it happen? Obiwan has a feeling it’s coming, but he’ll fight like hell until it does.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Obiwan Kenobanana"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Obiwan Kenobanana"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Lightsaber"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 5
+    },
+    {
+      "trait_type": "Comms",
+      "value": 5
+    },
+    {
+      "trait_type": "Grind",
+      "value": 4
+    },
+    {
+      "trait_type": "Perception",
+      "value": 5
+    },
+    {
+      "trait_type": "Strength",
+      "value": 5
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 4
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 1000000
+    }
+  ]
+}

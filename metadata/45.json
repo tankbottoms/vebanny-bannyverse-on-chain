@@ -1,0 +1,75 @@
+{
+  "name": "Miyamoto Musashi",
+  "external_link": "",
+  "description": "No banny can wield a sword like Musashi. His form and technique is pristine and the stuff of legends. Musashi is interested in keeping the peace and punishing social transgressions. He’s excellent at shaming others, which some say cuts deeper than any katana ever could. He’s a bit lonely in the Bannyverse, but he heard that there’s another sword fighter floating around and he’s excited to duel them. After all, he’s never lost a duel. They say he can pluck flies out of the air with nothing more than chop sticks. As far as bar tricks go, that’s gotta take the cake.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Miyamoto Musashi Ribbon"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Katana"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Miyamoto Musashi"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 2
+    },
+    {
+      "trait_type": "Comms",
+      "value": 5
+    },
+    {
+      "trait_type": "Grind",
+      "value": 5
+    },
+    {
+      "trait_type": "Perception",
+      "value": 5
+    },
+    {
+      "trait_type": "Strength",
+      "value": 5
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 5
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 100000
+    }
+  ]
+}

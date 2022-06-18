@@ -1,0 +1,75 @@
+{
+  "name": "Legolas",
+  "external_link": "",
+  "description": "This little elven banny is a hard worker and overall just a really good banana. He’s on the sensitive side— likes most elven bananas—but don’t let that fool you, deep down he’s got a heart of gold. He’s got good dexterity and is a killer shot with a longbow, and he’s big enough to put his disagreements with dwarves aside if there is a bigger battle to fight. He’s lived a long life, but he isn’t old by any stretch. He’s happy to fight for the forces of good in the Bannyverse, and he looks forward to polishing off his old bow and putting some nasty bannies in the ground, where they belong.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Christmas Lights"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Legolas Hat"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Legolas Boots"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Legolas"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 5
+    },
+    {
+      "trait_type": "Comms",
+      "value": 2
+    },
+    {
+      "trait_type": "Grind",
+      "value": 3
+    },
+    {
+      "trait_type": "Perception",
+      "value": 4
+    },
+    {
+      "trait_type": "Strength",
+      "value": 2
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 4
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 10000
+    }
+  ]
+}

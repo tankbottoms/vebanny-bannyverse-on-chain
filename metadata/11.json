@@ -1,0 +1,71 @@
+{
+  "name": "John Row",
+  "external_link": "",
+  "description": "If he’s not busy smuggling goods and stacking paper like a boss, there are few things John Rowe likes to do more in his spare time than to grab a bit of bait and head out onto the open water. His tranquil nature belies a serious business acumen, and his bait and rod could slay even the most feisty fish in the sea. Whether he’s out on the lake or in the throes of a business deal going south, he always play his cards close to his chest. Forsooth, nary a banana nor a monster of the sea can outsmart this shrewd old banana.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "John Row"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "John Row Vest"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Fishing Pole"
+    },
+    {
+      "trait_type": "Comms",
+      "value": 1
+    },
+    {
+      "trait_type": "Grind",
+      "value": 4
+    },
+    {
+      "trait_type": "Perception",
+      "value": 4
+    },
+    {
+      "trait_type": "Strength",
+      "value": 3
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 1
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 1000
+    }
+  ]
+}

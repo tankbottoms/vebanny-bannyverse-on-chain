@@ -1,0 +1,75 @@
+{
+  "name": "Baker",
+  "external_link": "",
+  "description": "Many astronaut bannies came before her, but this is the first one to survive. Oh yes, it was quite a harrowing experience for bananas in space. Nobody seemed to care much if they made it or now— in fact, early on they weren’t even expected to survive. But Astronaut Banny Baker made it back. She was studied carefully, both before, during, and after her trip into the cosmos. She had a good spirit about the whole thing and was never at risk of succumbing. But what nobody could possibly expect is the amazing career she has had after her spaceflight, routinely entertaining children and adults. One of the few bannies to go to space and tell the tale.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "No Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Baker Helmet"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Baker"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 1
+    },
+    {
+      "trait_type": "Comms",
+      "value": 2
+    },
+    {
+      "trait_type": "Grind",
+      "value": 2
+    },
+    {
+      "trait_type": "Perception",
+      "value": 5
+    },
+    {
+      "trait_type": "Strength",
+      "value": 3
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 2
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 2000
+    }
+  ]
+}

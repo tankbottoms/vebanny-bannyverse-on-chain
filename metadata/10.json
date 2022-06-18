@@ -1,0 +1,71 @@
+{
+  "name": "Banny Ipkiss",
+  "external_link": "",
+  "description": "You never quite know what you’re getting with this Banny. Sometimes he can be mild mannered, almost meek— unremarkable in the truest sense of the word. But just when you think you’ve got him pegged, another side emerges— a zany side that’s as irreverent as it is violent. A bank teller by day who likes to spend evenings at the Copacabana beating up thugs and gangsters, one could say he’s amongst the most interesting of the Bannies out there. Just hope you don’t meet him on a bad night.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Green"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Banny Ipkiss"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Banny Ipkiss"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 4
+    },
+    {
+      "trait_type": "Comms",
+      "value": 4
+    },
+    {
+      "trait_type": "Grind",
+      "value": 2
+    },
+    {
+      "trait_type": "Perception",
+      "value": 1
+    },
+    {
+      "trait_type": "Strength",
+      "value": 2
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 1000
+    }
+  ]
+}

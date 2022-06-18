@@ -1,0 +1,75 @@
+{
+  "name": "Pharaoh King Banatut",
+  "external_link": "",
+  "description": "Much conjecture exists around this banny. He’s definitely an oddball who casts a wide shadow. He walks with a slight limp, perhaps the result of a clubbed foot. He may have some neurodegenerative disorders. He’s short and awkward. But nothing surprising for a banny who’s mother is his father’s sister. I mean you’re really scraping the bottom of the genetic barrel on that one. But by the same token, some believe this is all just a subterfuge for a crafty leader. Some would say Pharaoh King Banatut is a shrewd politician. Some would say that mountains were moved for him.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Pharaoh King Banatut"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Pharaoh King Banatut"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Anch"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 4
+    },
+    {
+      "trait_type": "Comms",
+      "value": 3
+    },
+    {
+      "trait_type": "Grind",
+      "value": 4
+    },
+    {
+      "trait_type": "Perception",
+      "value": 5
+    },
+    {
+      "trait_type": "Strength",
+      "value": 3
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 2
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 10000
+    }
+  ]
+}

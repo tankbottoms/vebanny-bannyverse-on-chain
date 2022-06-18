@@ -1,0 +1,75 @@
+{
+  "name": "Edward Teach",
+  "external_link": "",
+  "description": "If looks could kill, then laying eyes on Edward would mean certain death. He fits all the stereotypes of a vicious, opportunistic pirate, and he’s clad in the accoutrements to boot. But looks can be deceiving! This banny is amongst the most suave out there— a careful and intentional deal maker, shrewd beyond his years. He wields his image more deftly than any weapon on earth. Which begs the question— how much of that image can he truly back up? He would tell you simply: come find out.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Edward Teach"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Edward Teach Sword"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Edward Teach"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 1
+    },
+    {
+      "trait_type": "Comms",
+      "value": 4
+    },
+    {
+      "trait_type": "Grind",
+      "value": 4
+    },
+    {
+      "trait_type": "Perception",
+      "value": 4
+    },
+    {
+      "trait_type": "Strength",
+      "value": 3
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 4
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 10000
+    }
+  ]
+}

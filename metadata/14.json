@@ -1,0 +1,75 @@
+{
+  "name": "Piers Plowman",
+  "external_link": "",
+  "description": "Who can’t get behind a banana that robs from the ripe and gives to the budding? After all, it’s the young generations that will make the banana tree of tomorrow. Robin knows this and he engages in what some would call stealing— though he would call it humanitarian work, to be sure. He’s seen a few bananas around town that look like ripe old targets, in fact, but when he will strike is anyone’s guess. Some would ask how this stealthy banana can live with himself, but Robin will be the first to tell you that he sleeps like a baby.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Piers Plowman Hat"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Piers Plowman Boots"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Piers Plowman"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Piers Plowman Dagger"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 2
+    },
+    {
+      "trait_type": "Comms",
+      "value": 5
+    },
+    {
+      "trait_type": "Grind",
+      "value": 3
+    },
+    {
+      "trait_type": "Perception",
+      "value": 2
+    },
+    {
+      "trait_type": "Strength",
+      "value": 2
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 4
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 1000
+    }
+  ]
+}

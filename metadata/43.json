@@ -1,0 +1,75 @@
+{
+  "name": "Beatrix Kiddo",
+  "external_link": "",
+  "description": "A banny hell bent on revenge and with all the skills to exact it, Black Mamba is coming for her enemies. The erstwhile pregnant banny awoke recently to find that her seeds were stolen. She has a feeling she knows who took them, along with the bannies that helped them. Delving back into a life she swore to leave behind, Black Mamba has suited up and polished off her katana. For all other bannies out there: stay the hell out of her way. She’s going scorched earth in the Bannyverse, and you don’t wanna be around to see it first-hand.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Beatrix Kiddo"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Beatrix Kiddo"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Katana"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 3
+    },
+    {
+      "trait_type": "Comms",
+      "value": 2
+    },
+    {
+      "trait_type": "Grind",
+      "value": 4
+    },
+    {
+      "trait_type": "Perception",
+      "value": 5
+    },
+    {
+      "trait_type": "Strength",
+      "value": 3
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 5
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 100000
+    }
+  ]
+}
