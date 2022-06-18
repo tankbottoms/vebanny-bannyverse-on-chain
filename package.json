@@ -1,0 +1,23 @@
+{
+  "name": "vebanny-bannyverse-on-chain",
+  "version": "1.0.0",
+  "description": "## Metadata",
+  "main": "web/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "http-server -a localhost -p 5500 --cors -o ./web"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tankbottoms/vebanny-bannyverse-on-chain.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tankbottoms/vebanny-bannyverse-on-chain/issues"
+  },
+  "homepage": "https://github.com/tankbottoms/vebanny-bannyverse-on-chain#readme",
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}
