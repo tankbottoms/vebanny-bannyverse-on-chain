@@ -1,5 +1,32 @@
 # README
 
+## Minimal layering page
+
+To see the layering of a Banny given it's index,
+
+```sh
+npm install # Will install http-server
+npm run dev # Will open localhost:5500/web
+```
+
+- Define which banny to show in the url by adding `/?banny=20`
+- Define lock period in the url `/?banny=20&lock=2`
+
+  - Lock period defined by index in the url, so 2 corresponds to `3 Months`
+
+    ```js
+    const lockPeriods = [
+      "1 WEEK",
+      "1 MONTH",
+      "3 MONTHS",
+      "6 MONTHS",
+      "1 YEAR",
+      "4 YEARS",
+    ];
+    ```
+
+The JBX range is gotten from the metadata file.
+
 ## Metadata
 
 Create metadata folder with a file for each Banny defined in the `characters.json` by running `createMetadata.mjs`
@@ -16,18 +43,18 @@ A Banny is defined by a structure like this;
 
 ```json
 {
-    "layers": {
-        "Body": "Yellow",
-        "Both_Hands": "Nothing",
-        "Choker": "Choker",
-        "Face": "Gautama_Buddha",
-        "Headgear": "No_Hat",
-        "Left_Hand": "Nothing",
-        "Lower_Accessory": "Black_Shoes",
-        "Oral_Fixation": "Nothing",
-        "Outfit": "Gautama_Buddha",
-        "Right_Hand": "Nothing"
-    }
+  "layers": {
+    "Body": "Yellow",
+    "Both_Hands": "Nothing",
+    "Choker": "Choker",
+    "Face": "Gautama_Buddha",
+    "Headgear": "No_Hat",
+    "Left_Hand": "Nothing",
+    "Lower_Accessory": "Black_Shoes",
+    "Oral_Fixation": "Nothing",
+    "Outfit": "Gautama_Buddha",
+    "Right_Hand": "Nothing"
+  }
 }
 ```
 
@@ -84,29 +111,4 @@ Which is encoded in the Banny's metadata json in the attributes, e.g.
    ],
 }
 
-```
-
-We want the Banny's metadata json to be onchain, so something like the [cyberbrokers](https://etherscan.deth.net/address/0x892848074ddea461a15f337250da3ce55580ca85) function
-
-```c
-  function tokenURI(uint256 tokenId) public view returns (string memory) {
-    return string(
-        abi.encodePacked(
-            abi.encodePacked(
-                bytes('data:application/json;utf8,{"name":"'),
-                getName(tokenId),
-                bytes('","description":"'),
-                getDescription(tokenId),
-                bytes('","external_url":"'),
-                getExternalUrl(tokenId),
-                ...
-            ),
-            abi.encodePacked(
-                bytes('","attributes":['),
-                getAttributes(tokenId),
-                bytes(']}')
-            )
-        )
-    );
-  }
 ```
