@@ -19,12 +19,11 @@
 	let lockPeriod = lockPeriods[0];
 	let bannyElement: SVGGElement;
 	let purse: HTMLElement;
-
-	let ready = false;
+	let spokes: string[] = getSpokes();
 
 	function initializeTilt() {
 		Tilt.init(purse, {
-			max: 100,
+			max: 75,
 			// @ts-ignore
 			speed: !navigator?.userAgentData?.mobile ? 500 : 100,
 			gyroscopeMinAngleX: -45, // This is the bottom limit of the device angle on X axis, meaning that a device rotated at this angle would tilt the element as if the mouse was on the left border of the element;
@@ -41,6 +40,15 @@
 		let lock = urlSearchParams.get('lock');
 
 		return { tokenId, lock };
+	}
+
+	function getSpokes(count = 16) {
+		const degree = 360 / (count * 2);
+		const spokes = [];
+		for (let i = 1; i <= count; i++) {
+			spokes.push(`transform: rotateY(90deg) rotateX(${degree * i}deg);`);
+		}
+		return spokes;
 	}
 
 	onMount(async () => {
@@ -61,7 +69,6 @@
 			lockPeriod = lockPeriods[parseInt(lock)];
 			barrierColor = barrierColors[parseInt(lock)];
 		}
-
 		initializeTilt();
 	});
 
@@ -92,7 +99,6 @@
 		style="pointer-events: none"
 	>
 		<div id="background">
-			<!-- TODO: pass the lockdate and jbx range (need the metadata for this) -->
 			<Background bottomText={jbxRange} topText={lockPeriod} size={320}>
 				<g id="bannyPlaceholder" bind:this={bannyElement} />
 			</Background>
@@ -100,25 +106,10 @@
 
 		<div class="barrier" style={getBarrierGlowStyle(barrierColor)} />
 
-		<!-- <div class="front" style="background-image: url('{front}')" /> -->
 		<div class="side">
-			<!-- TODO: don't just repeat, do data-driven, also dry-ify the styles for each spoke -->
-			<div class="spoke" />
-			<div class="spoke" />
-			<div class="spoke" />
-			<div class="spoke" />
-			<div class="spoke" />
-			<div class="spoke" />
-			<div class="spoke" />
-			<div class="spoke" />
-			<div class="spoke" />
-			<div class="spoke" />
-			<div class="spoke" />
-			<div class="spoke" />
-			<div class="spoke" />
-			<div class="spoke" />
-			<div class="spoke" />
-			<div class="spoke" />
+			{#each spokes as spoke}
+				<div style={spoke} class="spoke" />
+			{/each}
 		</div>
 		{#if vibe == 'zoomy-stars'}
 			<div class="sparkles" style="pointer-events: none">
@@ -201,7 +192,7 @@
 		transform: translateZ(16px);
 		mix-blend-mode: color-dodge;
 	}
-	.coin .front,
+	.coin,
 	.coin .barrier {
 		position: absolute;
 		height: 320px;
@@ -212,7 +203,7 @@
 	.coin .barrier {
 		background: #222;
 	}
-	.coin .front {
+	.coin {
 		transform: translateZ(16px);
 	}
 	.coin .barrier {
@@ -269,54 +260,6 @@
 	.coin .side .spoke:after {
 		bottom: 0;
 		transform-origin: center bottom;
-	}
-	.coin .side .spoke:nth-child(16) {
-		transform: rotateY(90deg) rotateX(180deg);
-	}
-	.coin .side .spoke:nth-child(15) {
-		transform: rotateY(90deg) rotateX(168.75deg);
-	}
-	.coin .side .spoke:nth-child(14) {
-		transform: rotateY(90deg) rotateX(157.5deg);
-	}
-	.coin .side .spoke:nth-child(13) {
-		transform: rotateY(90deg) rotateX(146.25deg);
-	}
-	.coin .side .spoke:nth-child(12) {
-		transform: rotateY(90deg) rotateX(135deg);
-	}
-	.coin .side .spoke:nth-child(11) {
-		transform: rotateY(90deg) rotateX(123.75deg);
-	}
-	.coin .side .spoke:nth-child(10) {
-		transform: rotateY(90deg) rotateX(112.5deg);
-	}
-	.coin .side .spoke:nth-child(9) {
-		transform: rotateY(90deg) rotateX(101.25deg);
-	}
-	.coin .side .spoke:nth-child(8) {
-		transform: rotateY(90deg) rotateX(90deg);
-	}
-	.coin .side .spoke:nth-child(7) {
-		transform: rotateY(90deg) rotateX(78.75deg);
-	}
-	.coin .side .spoke:nth-child(6) {
-		transform: rotateY(90deg) rotateX(67.5deg);
-	}
-	.coin .side .spoke:nth-child(5) {
-		transform: rotateY(90deg) rotateX(56.25deg);
-	}
-	.coin .side .spoke:nth-child(4) {
-		transform: rotateY(90deg) rotateX(45deg);
-	}
-	.coin .side .spoke:nth-child(3) {
-		transform: rotateY(90deg) rotateX(33.75deg);
-	}
-	.coin .side .spoke:nth-child(2) {
-		transform: rotateY(90deg) rotateX(22.5deg);
-	}
-	.coin .side .spoke:nth-child(1) {
-		transform: rotateY(90deg) rotateX(11.25deg);
 	}
 	.coin.skeleton .side .spoke,
 	.coin.skeleton .side .spoke:before,
