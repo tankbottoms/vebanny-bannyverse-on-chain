@@ -133,7 +133,7 @@ function createLayersObjectFromAttributes(attributes: Attributes) {
 	return layers;
 }
 
-async function getLayeredSvg(layers: Layers) {
+export async function getLayeredSvg({ layers }: { layers: Layers}) {
 	let svgImageString = '';
 	for (const [key, value] of Object.entries(layers)) {
 		if (!value) continue;
@@ -157,7 +157,7 @@ async function getLayeredSvg(layers: Layers) {
 
 async function getLayeredSvgFromAttributes(attributes: Attributes) {
 	const layers = createLayersObjectFromAttributes(attributes);
-	return getLayeredSvg(layers);
+	return getLayeredSvg({ layers });
 }
 
 export async function getLayeredSvgFromBannyIndex(bannyIndex: number) {

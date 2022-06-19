@@ -3,38 +3,12 @@
 	import { page } from '$app/stores';
 	import CollapsibleModal from '$lib/CollapsibleModal.svelte';
 	import { allIncompatibleAssets } from '../../store';
+	import { getLayeredSvg } from '$utils/layering';
 
 	let characters: any = {};
 	let currentCharacter: any = {};
 	let done = false;
 	let layerOptions: any = {};
-
-	const current = {
-		baseUri: '',
-		characterLayersDir: 'layers'
-	};
-
-	async function getLayerSvg({ layerValues = [] }) {
-		let layers: any[] = [];
-		let svgImageString = '';
-		for (const [key, value] of Object.entries(layerValues)) {
-			if (!value) continue;
-			const src = `${current.baseUri}/${current.characterLayersDir}/${key}/${value}.png`;
-			const response = await fetch(src);
-
-			const reader = new FileReader();
-			reader.readAsDataURL(await response.blob());
-			await new Promise((resolve) => {
-				reader.onloadend = function () {
-					const base64data = reader.result;
-					layers.push(base64data);
-					svgImageString += `<image x="50%" y="50%" width="1000" xlink:href="${base64data}" style="transform: translate(-500px, -500px)" />`;
-					resolve(true);
-				};
-			});
-		}
-		return { svgImageString, layers };
-	}
 
 	function handleIncompatibleAsset(category: string, asset: string) {
 		const incompatibleAssets = $allIncompatibleAssets as any;
@@ -88,7 +62,7 @@
 <section>
 	<a href="/secret">{'<'} Go back to Bannies</a>
 	{#if done}
-		{#await getLayerSvg({ layerValues: currentCharacter.layers })}
+		{#await getLayeredSvg({ layers: currentCharacter.layers })}
 			<p>...</p>
 		{:then data}
 			<h1>{currentCharacter.metadata.name.replaceAll('_', ' ')}</h1>
@@ -102,7 +76,7 @@
 			>
 				<!-- NOTE: This is where we're adding Banny -->
 				<g id="bannyPlaceholder">
-					{@html data.svgImageString}
+					{@html data}
 				</g>
 			</svg>
 		{/await}
@@ -110,7 +84,7 @@
 		{#each Object.keys(layerOptions) as category}
 			<h1>{category.replaceAll('_', ' ')}</h1>
 			{#each layerOptions[category] as layer}
-				{#await getLayerSvg({ layerValues: { ...currentCharacter.layers, [category]: layer } })}
+				{#await getLayeredSvg({ layers: { ...currentCharacter.layers, [category]: layer } })}
 					<p>...</p>
 				{:then data}
 					<svg
@@ -127,7 +101,7 @@
 					>
 						<!-- NOTE: This is where we're adding Banny -->
 						<g id="bannyPlaceholder">
-							{@html data.svgImageString}
+							{@html data}
 						</g>
 					</svg>
 				{/await}
