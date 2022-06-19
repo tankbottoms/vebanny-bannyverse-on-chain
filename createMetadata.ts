@@ -1,6 +1,11 @@
 import fs from "fs";
 
-function capitalizeFirstLetter(string) {
+type Attribute = {
+  trait_type: string;
+  value: string | number;
+};
+
+function capitalizeFirstLetter(string: string) {
   const listOfWords = string.split("_");
   const capitalized = listOfWords.map((item) => {
     return item.charAt(0).toUpperCase() + item.slice(1);
@@ -8,15 +13,15 @@ function capitalizeFirstLetter(string) {
   return capitalized.join(" ");
 }
 
-function format(str) {
+function format(str: string) {
   return str.replaceAll("_", " ").trim();
 }
 
 function createAttributesFromObject(obj) {
-  const attributes = [];
+  const attributes: Attribute[] = [];
   Object.keys(obj).forEach((key) => {
     if (obj[key]) {
-      const item = {};
+      const item: Attribute = { trait_type: "", value: "" };
       item["trait_type"] = format(key);
       // Check if obj[key] is a number
       if (typeof obj[key] === "number") {

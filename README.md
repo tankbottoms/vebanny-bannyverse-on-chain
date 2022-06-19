@@ -47,11 +47,15 @@ npm run dev
 
 ## Metadata
 
-Create metadata folder with a file for each Banny defined in the `characters.json` by running `createMetadata.mjs`
+Create metadata folder with a file for each Banny defined in the `characters.json` by running `createMetadata.ts`
+
+(Make sure to install ts-node globally `npm install -g ts-node`)
 
 ```sh
-node createMetadata.mjs
+ts-node --esm createMetadata.mjs
 ```
+
+NOTE: `--esm` is necessary - someone who knows how to properly setup typescript for scripts... please help. I'm dying.
 
 NOTE: Thinking these won't actually be used in the tokenURI, but are here to crosscheck when we create the function to build up the tokenURI.
 
