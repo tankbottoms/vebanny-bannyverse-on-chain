@@ -108,10 +108,23 @@ const layerList = [
 	'Right_Hand'
 ];
 
-type Layers = { [trait: string]: string; };
+export const layerOrdering = [
+	'Body',
+	'Face',
+	'Choker',
+	'Lower_Accessory',
+	'Outfit',
+	'Oral_Fixation',
+	'Headgear',
+	'Left_Hand',
+	'Right_Hand',
+	'Both_Hands'
+];
+
+type Layers = { [trait: string]: string };
 type Attributes = {
-    trait_type: string;
-    value: string;
+	trait_type: string;
+	value: string;
 }[];
 
 async function getMetadata(bannyIndex: number) {
@@ -133,9 +146,10 @@ function createLayersObjectFromAttributes(attributes: Attributes) {
 	return layers;
 }
 
-export async function getLayeredSvg({ layers }: { layers: Layers}) {
+export async function getLayeredSvg({ layers }: { layers: Layers }) {
 	let svgImageString = '';
-	for (const [key, value] of Object.entries(layers)) {
+	for (const key of layerOrdering) {
+    const value = layers[key];
 		if (!value) continue;
 		// TODO: This is where we need to get the png from the contract
 		// or like the blob data to pass to the file reader

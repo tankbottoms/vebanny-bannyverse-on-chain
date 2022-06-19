@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 	import CollapsibleModal from '$lib/CollapsibleModal.svelte';
 	import { allIncompatibleAssets } from '../../store';
-	import { getLayeredSvg } from '$utils/layering';
+	import { layerOrdering, getLayeredSvg } from '$utils/layering';
 
 	let characters: any = {};
 	let currentCharacter: any = {};
@@ -81,7 +81,7 @@
 			</svg>
 		{/await}
 
-		{#each Object.keys(layerOptions) as category}
+		{#each layerOrdering as category}
 			<h1>{category.replaceAll('_', ' ')}</h1>
 			{#each layerOptions[category] as layer}
 				{#await getLayeredSvg({ layers: { ...currentCharacter.layers, [category]: layer } })}
