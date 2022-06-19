@@ -1,4 +1,5 @@
 <script lang="ts">
+  export let styles: string = '';
   export let type: 'dot' | 'small' | 'medium' | 'large' = 'large';
   export let blinking: boolean = false;
   export let top: number;
@@ -50,6 +51,7 @@
       `
         color: ${color};
         `;
+    str += styles;
     return str;
   }
 </script>
