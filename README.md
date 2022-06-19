@@ -29,7 +29,7 @@ The JBX range is gotten from the metadata file.
 
 The Banny is created by using it's attributes from the metadata file.
 
-## Sanity check Bannies and tag incompatible assets
+## Sanity check Bannies and tag incompatible assets (i.e. the Banny Grid)
 
 TLDR;
 
