@@ -1,0 +1,79 @@
+{
+  "name": "Mario",
+  "external_link": "",
+  "description": "A plumber banana with humble beginnings, Mario is continually thrust into danger as he attempts to help the histrionic apple of his eye, Peach. They are definitely that couple in the Bannyverse: a hot mess, a dumpster fire, a drama factory. Mario will save Peach each and every time, no matter how many bodies he catches along the way. He doesn’t seem to understand that the vast majority of his relationship involves him getting cucked by Bowser. But it’s all worth it in the end, when he can reunite with his cluster-b-personality-disorder companion and lay some serious pipe. And then it starts over all again.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Mario"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Mario"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 3
+    },
+    {
+      "trait_type": "Comms",
+      "value": 4
+    },
+    {
+      "trait_type": "Grind",
+      "value": 3
+    },
+    {
+      "trait_type": "Perception",
+      "value": 2
+    },
+    {
+      "trait_type": "Strength",
+      "value": 5
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 3
+    },
+    {
+      "trait_type": "Jbx Range",
+      "value": "100,000-199,999"
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 100000
+    }
+  ]
+}

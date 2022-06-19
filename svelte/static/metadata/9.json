@@ -1,0 +1,79 @@
+{
+  "name": "Banmora",
+  "external_link": "",
+  "description": "Banmora only knows how to go at breakneck speeds: being the last of your kind will do that to you. Whether she’s ultimately on the side of truth or deception is of no consequence— she will bring the full power of her skills to the battlefield either way. Always good at keeping a Zen-like attitude in the heat of danger, she longs for little more than finding a silver companion to spend eternity with. But with so much hostility in the world and not enough Bannies to fight, how will she ever get the time to do that? Sometimes she feels like she’s fighting infinity wars.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Green"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Red Hair"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Banmora"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 4
+    },
+    {
+      "trait_type": "Comms",
+      "value": 4
+    },
+    {
+      "trait_type": "Grind",
+      "value": 3
+    },
+    {
+      "trait_type": "Perception",
+      "value": 2
+    },
+    {
+      "trait_type": "Strength",
+      "value": 4
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 4
+    },
+    {
+      "trait_type": "Jbx Range",
+      "value": "800-899"
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 100
+    }
+  ]
+}

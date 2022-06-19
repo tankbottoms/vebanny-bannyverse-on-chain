@@ -20,7 +20,7 @@
 
 	function initializeTilt() {
 		Tilt.init(purse, {
-			max: 75,
+			max: 40,
 			// @ts-ignore
 			speed: !navigator?.userAgentData?.mobile ? 500 : 100,
 			gyroscopeMinAngleX: -45, // This is the bottom limit of the device angle on X axis, meaning that a device rotated at this angle would tilt the element as if the mouse was on the left border of the element;
@@ -92,7 +92,7 @@
 		bind:this={purse}
 		data-tilt
 		data-tilt-full-page-listening
-		data-tilt-max="75"
+		data-tilt-max="40"
 		style="pointer-events: none"
 	>
 		<div id="background">

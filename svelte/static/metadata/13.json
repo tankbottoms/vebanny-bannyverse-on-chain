@@ -1,0 +1,79 @@
+{
+  "name": "Baobhan Sith",
+  "external_link": "",
+  "description": "A she-devil if there ever was one, Ms. Bhaoban Sith will charm you and disarm you in a heartbeat. She enjoys few things more than a nice scotch and good, supple company. You may see here from afar, glimmering in a nice sequin dress, or hear her angelic voice from beyond some nice idyllic hillside, and as if under a magnetic trance be attracted to this beautiful buxom vamp. The old adage rings doubly true for Ms. B: if it looks too good to be true, it is.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Baobhan Sith"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Baobhan Sith"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Baobhan Sith"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 4
+    },
+    {
+      "trait_type": "Comms",
+      "value": 2
+    },
+    {
+      "trait_type": "Grind",
+      "value": 3
+    },
+    {
+      "trait_type": "Perception",
+      "value": 4
+    },
+    {
+      "trait_type": "Strength",
+      "value": 2
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 4
+    },
+    {
+      "trait_type": "Jbx Range",
+      "value": "3,000-3,999"
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 1000
+    }
+  ]
+}

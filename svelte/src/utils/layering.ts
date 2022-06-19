@@ -94,7 +94,7 @@ const attributes = [
   Which will be used to create the layered svg.
 */
 
-const baseUrl = 'http://localhost:5500';
+const baseUrl = '';
 const layerList = [
 	'Body',
 	'Both_Hands',

@@ -1,0 +1,67 @@
+{
+  "name": "Nammu",
+  "external_link": "",
+  "description": "The Banny that started it all. The one. The only. The magnificent, majestic and magnanimous. The OG Banny. All Bannies take some part from illustrious existence. Many Bannies tell tales of a vague, distant memory— some ascribe it to pure chance, others to the supernatural. Then yet other will tell you that OG Banny is bound to come into the world, in full, fleshy banana form. Others say he has come back many times, sometimes as an apple, other times as an orange. And yet others say he is yet to come, and when he comes, existence as we know it will change. And then there’s those who say that he’s far more than any of that: he’s a historical whisper, lost for generations and whose echo reverberates around the lore he inspired. An OG, if ever there was one.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "No Hat"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "No Outfit"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 5
+    },
+    {
+      "trait_type": "Perception",
+      "value": 4
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 5
+    },
+    {
+      "trait_type": "Jbx Range",
+      "value": "1-99"
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 99
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "name": "The Witch of Endor",
+  "external_link": "",
+  "description": "She’s got all the answers, but do you really want them? The Witch of Endor is a banana most mysterious; always willing to offer advice, but with the very important caveat that she can never promise where it will take you. What is fate, really? Are her prophesies the stuff of the divine, or is the very fact that she vocalizes them enough to make them self-fulfilling? Bannies seek her out when they are in need, especially when they don’t want to turn to a more discerning source. But beware— you just may get what you wish for.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "The Witch of Endor"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "The Witch of Endor Belt"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "The Witch of Endor Broom"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 4
+    },
+    {
+      "trait_type": "Comms",
+      "value": 4
+    },
+    {
+      "trait_type": "Grind",
+      "value": 4
+    },
+    {
+      "trait_type": "Perception",
+      "value": 3
+    },
+    {
+      "trait_type": "Strength",
+      "value": 3
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 4
+    },
+    {
+      "trait_type": "Jbx Range",
+      "value": "24,000-25,999"
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 2000
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "name": "Tafari Makonnen",
+  "external_link": "",
+  "description": "There is a regal air about this banana— a hint of royalty that is lasting and enduring. Known for immediately making an impression when he walks into a room, and clad in the most dapper and stately dress, Tafari exudes grace. And he should: he’s got a lifetime under his belt of kingsmanship, and he’s a delight at a banquet or gala, as any royal should be. But just like Chronos eating his children, Tafari is walking gracefully on a tumultuous tightrope. One wonders how it will end for him, but the writing’s on the wall.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Tafari Makonnen"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Tafari Makonnen"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 1
+    },
+    {
+      "trait_type": "Comms",
+      "value": 3
+    },
+    {
+      "trait_type": "Grind",
+      "value": 2
+    },
+    {
+      "trait_type": "Perception",
+      "value": 5
+    },
+    {
+      "trait_type": "Strength",
+      "value": 3
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 2
+    },
+    {
+      "trait_type": "Jbx Range",
+      "value": "9,000-9,999"
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 1000
+    }
+  ]
+}
