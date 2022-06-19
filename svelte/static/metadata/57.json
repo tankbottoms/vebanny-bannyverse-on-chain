@@ -1,0 +1,79 @@
+{
+  "name": "Prince of Darkness",
+  "external_link": "",
+  "description": "This diabolical banny will be the first to tell you that he’s just misunderstood. After all, you’ve only heard one side of the story. Equipped with superhuman strength, telekinesis and telepathy, the Prince of Darkness will be the first to point out that he’s not even using any of them on you right now. After all, how bad can he be? Rumors that he erupted from a vessel where he was once entrapped as sentient sludge? Such silliness! And all those people he allegedly hurt? Crisis bananas, nothing more. Come make some deals with him. At the very least: listen to his time-share presentation.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Red"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "No Hat"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Pitchfork"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Prince of Darkness"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 5
+    },
+    {
+      "trait_type": "Comms",
+      "value": 5
+    },
+    {
+      "trait_type": "Grind",
+      "value": 5
+    },
+    {
+      "trait_type": "Perception",
+      "value": 4
+    },
+    {
+      "trait_type": "Strength",
+      "value": 4
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 5
+    },
+    {
+      "trait_type": "Jbx Range",
+      "value": "40,000,000-59,999,999"
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 20000000
+    }
+  ]
+}

@@ -10,7 +10,7 @@
 	let layerOptions: any = {};
 
 	const current = {
-		baseUri: 'http://localhost:5500/',
+		baseUri: '',
 		characterLayersDir: 'layers'
 	};
 
@@ -65,10 +65,10 @@
 	// Given a character, we want to display every asset on that character
 	onMount(async () => {
 		// Fetch the characters layers
-		const charResponse = await fetch('http://localhost:5500/characters.json');
+		const charResponse = await fetch('./characters.json');
 		characters = await charResponse.json();
 
-		const layerResponse = await fetch('http://localhost:5500/layerOptions.json');
+		const layerResponse = await fetch('./layerOptions.json');
 		layerOptions = await layerResponse.json();
 
 		currentCharacter = characters[$page.params.banny];

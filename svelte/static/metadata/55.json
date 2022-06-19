@@ -1,0 +1,79 @@
+{
+  "name": "Diana Banana",
+  "external_link": "",
+  "description": "Diana Banana has a storied history and a fierce set of skills. Some say she’s half-goddess, with fists that will kill you if her looks don’t. Born from clay carefully sculpted by the hands of ancient deities, and with a pedigree of Amazonian upbringing, Diana started her war-path back in the 1940s beating the living hell out of axis baddies. In the Bannyverse, she can be seen trying to right the wrongs and tip the scales of justice in all the right directions.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Diana Banana"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Diana Banana"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Diana Banana Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Diana Banana Dress"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Diana Banana"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 5
+    },
+    {
+      "trait_type": "Comms",
+      "value": 4
+    },
+    {
+      "trait_type": "Grind",
+      "value": 5
+    },
+    {
+      "trait_type": "Perception",
+      "value": 4
+    },
+    {
+      "trait_type": "Strength",
+      "value": 5
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 4
+    },
+    {
+      "trait_type": "Jbx Range",
+      "value": "10,000,000-19,999,999"
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 20000000
+    }
+  ]
+}

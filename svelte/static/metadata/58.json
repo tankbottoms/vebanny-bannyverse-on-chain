@@ -1,0 +1,79 @@
+{
+  "name": "Blondie",
+  "external_link": "",
+  "description": "Eyes squinted, a long poncho draped over a yellow phallus, and a cowboy hat with a six shooter around the girthiest part: that’s Blondie. He doesn’t say much— hell, he doesn’t need to. You know what this banana is about. With the gravel in his gut and the spit in his eye, he’s seen more than your average banana. Nothing fazes him, and nothing should— they say the rattlesnakes whimper when he crosses their path. Where he’s going, where he’s been, and what he wants, well, those are all mysteries to common folk like you or me. But one thing’s for sure: Blondie gets what he wants, and he don’t ask twice.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Blondie Hat"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Blondie"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Pistol"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 4
+    },
+    {
+      "trait_type": "Comms",
+      "value": 5
+    },
+    {
+      "trait_type": "Grind",
+      "value": 5
+    },
+    {
+      "trait_type": "Perception",
+      "value": 5
+    },
+    {
+      "trait_type": "Strength",
+      "value": 5
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 4
+    },
+    {
+      "trait_type": "Jbx Range",
+      "value": "60,000,000-99,999,999"
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 40000000
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "name": "Musa",
+  "external_link": "",
+  "description": "Sweet in nature and with a proven track record of tilling fields and reaping what he sows, Farmer Banny is popular and good-natured, and oddly attractive for apes of all species. He knows how to keep his head down and put in a good bit of elbow grease to get the job done. He’s so consistent, in fact, that one may wonder if there isn’t a second life he may be hiding. After all, who can be so put-together?",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Musa"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Mouthstraw"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Musa"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Comms",
+      "value": 2
+    },
+    {
+      "trait_type": "Grind",
+      "value": 5
+    },
+    {
+      "trait_type": "Perception",
+      "value": 2
+    },
+    {
+      "trait_type": "Strength",
+      "value": 4
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 1
+    },
+    {
+      "trait_type": "Jbx Range",
+      "value": "400-499"
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 100
+    }
+  ]
+}

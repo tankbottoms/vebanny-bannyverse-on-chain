@@ -1,0 +1,71 @@
+{
+  "name": "Pinkie Pie",
+  "external_link": "",
+  "description": "This bubbly banny is sweeter than a pound of aspartame. It’s eyebleach for all occasions. It shits rainbows and pukes butterflies. This banny works hard. This banny has beautiful round eyes that plead helplessly. This banny could go on a killing spree and people would just sit back and go, “Awwwwww! So cute!!!!” This banny gets access to important events because of how cute it looks, and this banny knows its power. This banny will fuck you up.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Pink"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "No Hat"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "No Outfit"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 3
+    },
+    {
+      "trait_type": "Comms",
+      "value": 5
+    },
+    {
+      "trait_type": "Grind",
+      "value": 5
+    },
+    {
+      "trait_type": "Strength",
+      "value": 5
+    },
+    {
+      "trait_type": "Jbx Range",
+      "value": "30,000-39,999"
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 10000
+    }
+  ]
+}

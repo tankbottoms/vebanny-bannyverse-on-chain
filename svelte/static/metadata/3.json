@@ -1,0 +1,71 @@
+{
+  "name": "Bronson",
+  "external_link": "",
+  "description": "Whether you want some fresh hummus, or a nice gyro with a side of sweet potato fries, or even just one of your enemies dismembered by a psycho with a meat cleaver who can also keep rhythm on the beat, Bronson is your banana. Cuddly and unassuming at first glance, he’ll turn up the charm if you’re been nice, and the violence if you’ve been naughty. He runs a tight ship on any kitchen, and he likes to bring the pain when he needs to. Some say the meals he makes can put any man in good spirits. He’s always wanted to cook for Farceur, who he heard was down in the dumps, but so far he’s never had a chance. Will that change in the future?",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Bronson Hat"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Bronson"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Butcher Knife"
+    },
+    {
+      "trait_type": "Comms",
+      "value": 4
+    },
+    {
+      "trait_type": "Grind",
+      "value": 4
+    },
+    {
+      "trait_type": "Perception",
+      "value": 2
+    },
+    {
+      "trait_type": "Strength",
+      "value": 3
+    },
+    {
+      "trait_type": "Jbx Range",
+      "value": "200-299"
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 100
+    }
+  ]
+}

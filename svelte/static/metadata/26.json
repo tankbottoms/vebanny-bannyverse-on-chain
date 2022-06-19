@@ -1,0 +1,79 @@
+{
+  "name": "Athos",
+  "external_link": "",
+  "description": "This banny is principled and deft with a gun and sword. While not the most chirpy musketeer banny out there, he’s among the most lethal. Ever-troubled and a banana that turns to the drink more than most, he will stick up for what’s right, even if it means killing a part of himself in the process. He still grieves from the death of his wife, Ms. Musketeer, who he had to kill when he discovered that she was on the run. Justice trumps personal feelings, but he still loves her. He knows the deep truth to his existence: the banana that lives be the gun dies by it also.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "No Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Feather Hat"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Athos"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Athos Rapier"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 3
+    },
+    {
+      "trait_type": "Comms",
+      "value": 4
+    },
+    {
+      "trait_type": "Grind",
+      "value": 3
+    },
+    {
+      "trait_type": "Perception",
+      "value": 3
+    },
+    {
+      "trait_type": "Strength",
+      "value": 3
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 3
+    },
+    {
+      "trait_type": "Jbx Range",
+      "value": "22,000-23,999"
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 2000
+    }
+  ]
+}

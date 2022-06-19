@@ -1,0 +1,75 @@
+{
+  "name": "Farceur",
+  "external_link": "",
+  "description": "A ostensibly jovial banana if ever there was one, Farceur is stuffed from end to end with silly laughs and slapstick goodness. He’s a proverbial wild-card that you can always count on to get a laugh or shock his eager audience. But something about his expression as of late seems a bit troubling— a certain ennui in the eyes that suggests he, a banana who gives all his joy for others to be entertained, may have nobody to bring joy to him. A sad clown he is not— at least, not yet. They say here and there and everywhere, across all the lands, that Farceur can make anyone laugh at will. Indeed, one day a banana sat forlorn in a confessional and, being at his wits end, confided that he was in desperate straits, and felt like there was not joy in the world. “I’m sorry you feel this way,” the father told him, “I hear that Farceur is in town, and he can make any banana laugh. Please go see his show. He will help you.” “But father,” the banana cried in anguish, “I am Farceur!”",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Farceur"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "No Outfit"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Lollipop"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 2
+    },
+    {
+      "trait_type": "Comms",
+      "value": 4
+    },
+    {
+      "trait_type": "Grind",
+      "value": 1
+    },
+    {
+      "trait_type": "Perception",
+      "value": 2
+    },
+    {
+      "trait_type": "Strength",
+      "value": 1
+    },
+    {
+      "trait_type": "Jbx Range",
+      "value": "100-199"
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 100
+    }
+  ]
+}
