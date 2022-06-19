@@ -1,7 +1,8 @@
 {
   "name": "vebanny-bannyverse-on-chain",
   "version": "1.0.0",
-  "description": "## Metadata",
+  "description": "",
+  "type": "module",
   "main": "web/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,5 +20,8 @@
   "homepage": "https://github.com/tankbottoms/vebanny-bannyverse-on-chain#readme",
   "dependencies": {
     "http-server": "^14.1.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.4"
   }
 }
