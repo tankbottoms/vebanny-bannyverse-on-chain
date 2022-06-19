@@ -34,12 +34,12 @@ The Banny is created by using it's attributes from the metadata file.
 TLDR;
 
 ```sh
-# In root of this project. Serve the assets over http.
-npm run dev
-# Then, in svelte part of the project
+# In svelte part of the project
 cd svelte
 npm run dev
 ```
+
+(NOTE: we were serving the assets over the root server, but to statically build for fleek I had to copy it into svelte.)
 
 - Go to `localhost:3000/secret` to see the grid of Bannies.
 - Click on a banny and end up on `localhost:3000/secret/{bannyIndex}` and click on the assets that are not working out.
