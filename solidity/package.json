@@ -12,6 +12,8 @@
     "@types/chai": "^4.3.1",
     "@types/mocha": "^9.1.1",
     "@types/node": "^12.20.55",
+    "@types/pako": "2.0.0",
+    "@types/uuid4": "2.0.0",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
     "chai": "^4.3.6",
@@ -27,12 +29,14 @@
     "ethers": "^5.6.9",
     "hardhat": "^2.9.9",
     "hardhat-gas-reporter": "^1.0.8",
+    "pako": "^2.0.4",
     "prettier": "^2.7.1",
     "prettier-plugin-solidity": "^1.0.0-beta.13",
     "solhint": "^3.3.7",
     "solidity-coverage": "^0.7.21",
     "ts-node": "^10.8.1",
     "typechain": "^5.2.0",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "uuid4": "^2.0.2"
   }
 }

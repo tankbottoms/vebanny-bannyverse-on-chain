@@ -18,7 +18,5 @@ interface IToken {
 
     function getAssetBase64(uint64, AssetDataType) external view returns (string memory);
 
-    function getAudioContent() external view returns (string memory);
-
     function withdrawEther() external;
 }
