@@ -26,11 +26,19 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
 
   string public contractMetadataURI;
 
-  constructor(IStorage _assets, string memory _name, string memory _symbol) ERC721Enumerable(_name, _symbol) {
+  constructor(
+    IStorage _assets,
+    string memory _name,
+    string memory _symbol
+  ) ERC721Enumerable(_name, _symbol) {
     assets = _assets;
 
     _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
   }
+
+  //*********************************************************************//
+  // ------------------------ Token Operations ------------------------- //
+  //*********************************************************************//
 
   function contractURI() public view override returns (string memory) {
     return contractMetadataURI;
@@ -40,6 +48,37 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     return dataUri(_tokenId);
   }
 
+  function transferFrom(
+    address _from,
+    address _to,
+    uint256 _tokenId
+  ) public override {
+    _beforeTokenTransfer(_from, _to, _tokenId);
+    super.transferFrom(_from, _to, _tokenId);
+  }
+
+  function safeTransferFrom(
+    address _from,
+    address _to,
+    uint256 _tokenId
+  ) public override {
+    _beforeTokenTransfer(_from, _to, _tokenId);
+    super.transferFrom(_from, _to, _tokenId);
+  }
+
+  function safeTransferFrom(
+    address _from,
+    address _to,
+    uint256 _tokenId,
+    bytes calldata _data
+  ) public override {
+    _beforeTokenTransfer(_from, _to, _tokenId);
+    super.safeTransferFrom(_from, _to, _tokenId, _data);
+  }
+
+  /**
+    @notice ERC165
+    */
   function supportsInterface(bytes4 _interfaceId)
     public
     view
@@ -49,14 +88,10 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     return super.supportsInterface(_interfaceId);
   }
 
-  // transfer
-  // transferFrom
-  // approve
-
   // view to validate traits value
 
   //*********************************************************************//
-  // ----------------------- Storage Management ------------------------ //
+  // ---------------------- Privileged Operations ---------------------- //
   //*********************************************************************//
 
   /**
@@ -130,27 +165,25 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
       );
   }
 
-  function dataUri(uint256 _tokenId) public view override returns (string memory) {
-    string memory json = Base64.encode(
+  function dataUri(uint256 _tokenId) public view override returns (string memory json) {
+    json = Base64.encode(
       abi.encodePacked(
         '{"name": "Token No.',
         Strings.toString(_tokenId),
-        '", "description": "Fully on-chain NFT", "audio": "',
-        getAssetBase64(uint64(0), AssetDataType.AUDIO_MP3),
-        '", "image": "',
+        '", "description": "Fully on-chain NFT", "image": "',
         getAssetBase64(uint64(1), AssetDataType.IMAGE_SVG),
         '", "animation_url": "',
         _getImageStack(_tokenId),
-        '#',
-        getAssetBase64(uint64(0), AssetDataType.AUDIO_MP3),
-        '#", "attributes":[{"trait_type":"TRAIT","value":"yes"}]}'
+        '#", "attributes":',
+        _getTokenTraits(_tokenId),
+        '}'
       )
     );
 
     return string(abi.encodePacked('data:application/json;base64,', json));
   }
 
-  function _getImageStack(uint256 _tokenId) internal view returns (string memory) {
+  function _getImageStack(uint256 _tokenId) internal view returns (string memory image) {
     // BODY_TRAIT_OFFSET = 0; // uint4
     // HANDS_TRAIT_OFFSET = 4; // uint4
     // CHOKER_TRAIT_OFFSET = 8; // uint4
@@ -170,39 +203,355 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     string memory handsContent = '';
     uint64 contentId = uint64(uint8(traits >> 4) & 15);
     if (contentId > 0) {
-        handsContent = getAssetBase64(contentId, AssetDataType.IMAGE_PNG);
+      handsContent = getAssetBase64(contentId, AssetDataType.IMAGE_PNG);
     }
 
-    string memory chokerContent = getAssetBase64(uint64(uint8(traits >> 8) & 15), AssetDataType.IMAGE_PNG);
-    string memory faceContent = getAssetBase64(uint64(uint8(traits >> 12)), AssetDataType.IMAGE_PNG);
-    string memory headgearContent = getAssetBase64(uint64(uint8(traits >> 20)), AssetDataType.IMAGE_PNG);
+    string memory chokerContent = getAssetBase64(
+      uint64(uint8(traits >> 8) & 15),
+      AssetDataType.IMAGE_PNG
+    );
+    string memory faceContent = getAssetBase64(
+      uint64(uint8(traits >> 12)),
+      AssetDataType.IMAGE_PNG
+    );
+    string memory headgearContent = getAssetBase64(
+      uint64(uint8(traits >> 20)),
+      AssetDataType.IMAGE_PNG
+    );
 
     string memory leftHandContent = '';
     contentId = uint64(uint8(traits >> 28));
     if (contentId > 0) {
-        leftHandContent = getAssetBase64(contentId, AssetDataType.IMAGE_PNG);
+      leftHandContent = getAssetBase64(contentId, AssetDataType.IMAGE_PNG);
     }
 
-    string memory lowerContent = getAssetBase64(uint64(uint8(traits >> 36) & 15), AssetDataType.IMAGE_PNG);
+    string memory lowerContent = getAssetBase64(
+      uint64(uint8(traits >> 36) & 15),
+      AssetDataType.IMAGE_PNG
+    );
 
     string memory oralContent = '';
     contentId = uint64(uint8(traits >> 40) & 15);
     if (contentId > 0) {
-        oralContent = getAssetBase64(contentId, AssetDataType.IMAGE_PNG);
+      oralContent = getAssetBase64(contentId, AssetDataType.IMAGE_PNG);
     }
 
-    string memory outfitContent = getAssetBase64(uint64(uint8(traits >> 44)), AssetDataType.IMAGE_PNG);
+    string memory outfitContent = getAssetBase64(
+      uint64(uint8(traits >> 44)),
+      AssetDataType.IMAGE_PNG
+    );
 
     string memory rightHandContent = '';
     contentId = uint64(uint8(traits >> 52));
     if (contentId > 0) {
-        rightHandContent = getAssetBase64(contentId, AssetDataType.IMAGE_PNG);
+      rightHandContent = getAssetBase64(contentId, AssetDataType.IMAGE_PNG);
     }
 
-    return ''; // stack layers
+    image = Base64.encode(
+      abi.encodePacked(
+        __imageTag(bodyContent),
+        __imageTag(faceContent),
+        __imageTag(chokerContent),
+        __imageTag(lowerContent),
+        __imageTag(outfitContent),
+        __imageTag(oralContent),
+        __imageTag(headgearContent),
+        __imageTag(leftHandContent),
+        __imageTag(rightHandContent),
+        __imageTag(handsContent)
+      )
+    );
   }
 
-  function _getTokenTraits(uint256 _tokenId) internal view returns (string memory) {
+  /**
+    @dev Returns packed traits JSON for a given token id.
+    */
+  function _getTokenTraits(uint256 _tokenId) internal view returns (string memory json) {
+    uint256 traits = tokenTraits[_tokenId];
 
+    string[5] memory bodyTraits = ['Yellow', 'Green', 'Pink', 'Red', 'Orange'];
+    string[5] memory handsTraits = ['Nothing', 'AK-47', 'Blue_Paint', 'M4', 'Sword_Shield'];
+    string[5] memory chokerTraits = [
+      'Choker',
+      'No_Choker',
+      'Christmas_Lights',
+      'Hawaiian',
+      'Blockchain_Necklace'
+    ];
+    string[17] memory faceTraits = [
+      'Eye_Mouth',
+      'Baobhan_Sith',
+      'Diana_Banana',
+      'Dr_Harleen_Quinzel',
+      'Harleen_Quinzel',
+      'Enlil',
+      'Gautama_Buddha',
+      'Bunny_Eyes',
+      'Princess_Peach_Toadstool_Face',
+      'Angry',
+      'Sakura',
+      'Happy',
+      'Rick_Astley',
+      'Panda_Eyes',
+      'Rose',
+      'Smile',
+      'Surprised'
+    ];
+    string[70] memory headgearTraits = [
+      'Sunglasses',
+      'Feather_Hat',
+      'Baker_Helmet',
+      'Banhovah',
+      'Red_Hair',
+      'Bannible_Lector',
+      'Banny_Ipkiss',
+      'Banny_Potter',
+      'Banny_Stark',
+      'Baobhan_Sith',
+      'Batbanny',
+      'Beatrix_Kiddo',
+      'Blondie_Hat',
+      'Bronson_Hat',
+      'Desmond_Miles',
+      'Diana_Banana',
+      'Dolly_Parton',
+      'Dotty_Gale',
+      'Dr_Harleen_Quinzel',
+      'Dr_Jonathan_Osterman',
+      'Edward_Teach',
+      'Emmett_Doc_Brown',
+      'No_Hat',
+      'Farceur',
+      'Ivar_the_Boneless',
+      'Jango_Fett',
+      'Jinx_Hair',
+      'John_Row',
+      'Headphones',
+      'Legolas_Hat',
+      'Lestat_The_Undead',
+      'Louise_Burns',
+      'Mario',
+      'Masako_Tanaka',
+      'Mick_Mulligan_Glasses',
+      'Miyamoto_Musashi_Ribbon',
+      'Musa',
+      'Naruto',
+      'Obiwan_Kenobanana',
+      'Pamela_Anderson',
+      'Pharaoh_King_Banatut',
+      'Piers_Plowman_Hat',
+      'Brown_Hair',
+      'Princess_Leia',
+      'Princess_Peach_Toadstool',
+      'Rose_Bertin_Hat',
+      'Sakura_Haruno',
+      'Green_Cap',
+      'Spider_Jerusalem_Glasses',
+      'Spock',
+      'Tafari_Makonnen',
+      'The_Witch_of_Endor',
+      'Tinkerbanny',
+      'Wade',
+      'Blue_Glasses',
+      'Firefighter_Helmet',
+      'Flash',
+      'Kiss_Musician',
+      'Hat_and_Beard',
+      'Mummy',
+      'Panda',
+      'Purple-samurai',
+      'Rick_Astley',
+      'Bruce_Lee_Hair',
+      'Discoball',
+      'Ironman_Headgear',
+      'Mowhawk',
+      'Mushroom_Hat',
+      'Nerd_Glasses',
+      'Queen_Crown'
+    ];
+    string[18] memory leftHandTraits = [
+      'Nothing',
+      'Holy_Wine',
+      'Edward_Teach_Sword',
+      'Ivar_the_Boneless_Shield',
+      'Shark_v2',
+      'Surf_Board',
+      'Katana',
+      'Pitchfork',
+      'Spider_Jerusalem_Weapon',
+      'Chibuxi',
+      'Samurai_Dagger',
+      'BOOBS_calc',
+      'Computer',
+      'Flamings',
+      "Lord_of_the_Banana's_Gandolph_Staff",
+      'Magical_Staff',
+      'Nunchucks',
+      'Shovel'
+    ];
+    string[7] memory lowerTraits = [
+      'Black_Shoes',
+      'Diana_Banana_Shoes',
+      'Dr_Jonathan_Osterman',
+      'Sandals',
+      'Legolas_Boots',
+      'Piers_Plowman_Boots',
+      'Rick_Astley_Boots'
+    ];
+    string[3] memory oralTraits = ['Nothing', 'Mouthstraw', 'Blunt_1k'];
+    string[68] memory outfitTraits = [
+      'Smoking',
+      'Athos',
+      'Baker',
+      'Banhovah',
+      'Banmora',
+      'Bannible_Lector',
+      'Banny_Ipkiss',
+      'Banny_Potter',
+      'Banny_Stark',
+      'Baobhan_Sith',
+      'Batbanny',
+      'Beatrix_Kiddo',
+      'Blondie',
+      'Bronson',
+      'Desmond_Miles',
+      'Diana_Banana_Dress',
+      'Dolly_Parton',
+      'Dotty_Gale',
+      'Dr_Harleen_Quinzel',
+      'Dr_Jonathan_Osterman',
+      'Edward_Teach',
+      'Emmett_Doc_Brown',
+      'No_Outfit',
+      'Gautama_Buddha',
+      'Jango_Fett',
+      'Jinx',
+      'John_Row_Vest',
+      'Johnny_Rotten',
+      'Johnny_Utah_T-shirt',
+      'Legolas',
+      'Lestat_The_Undead',
+      'Louise_Burns',
+      'Mario',
+      'Masako_Tanaka',
+      'Mick_Mulligan',
+      'Miyamoto_Musashi',
+      'Musa',
+      'Naruto',
+      'Obiwan_Kenobanana',
+      'Pamela_Anderson',
+      'Pharaoh_King_Banatut',
+      'Piers_Plowman',
+      'Primrose',
+      'Prince_of_Darkness',
+      'Princess_Leia',
+      'Princess_Peach_Toadstool',
+      'Rose_Bertin_Dress',
+      'Sakura_Haruno',
+      'Smalls',
+      'Spider_Jerusalem',
+      'Spock',
+      'Tafari_Makonnen',
+      'Tamar_of_Georgia',
+      'The_Witch_of_Endor_Belt',
+      'Tinkerbanny',
+      'Wade',
+      'Blue_T-Shirt',
+      'Firefighter',
+      'Flash',
+      'Hawaiian',
+      'JuiceBox_Bunny',
+      'Suit',
+      'Mummy',
+      'Panda',
+      'Purple_Samurai',
+      'Rick_Astley',
+      'Ducttape',
+      'Wings'
+    ];
+    string[35] memory rightHandTraits = [
+      'Nothing',
+      'Athos_Rapier',
+      'Katana',
+      'Pistol',
+      'Butcher_Knife',
+      'Diana_Banana',
+      'Basket',
+      'Dr_Harleen_Quinzel',
+      'Lollipop',
+      'Ivar_the_Boneless_Axe',
+      'Fishing_Pole',
+      'Wagasa',
+      'Lightsaber',
+      'Anch',
+      'Piers_Plowman_Dagger',
+      'Dagger',
+      'The_Witch_of_Endor_Broom',
+      'Firefighter',
+      'Juicebox',
+      'Triangle_guitar',
+      'Axe',
+      'Beer',
+      'Bow_and_Arrow',
+      'Bread',
+      'Fans',
+      'Fly_Swatter',
+      'Frying_Pan',
+      'Guitar',
+      'Hammer',
+      'Mace',
+      'Mini_Axe',
+      'Shark',
+      'Sword',
+      'Thanos_Glove',
+      'Wakanda'
+    ];
+
+    json = Base64.encode(
+      abi.encodePacked(
+        '[',
+        '{"trait_type":"Body","value":"',
+        bodyTraits[uint64(uint8(traits) & 15)],
+        '"},',
+        '{"trait_type":"Both_Hands","value":"',
+        handsTraits[uint64(uint8(traits >> 4) & 15)],
+        '"},',
+        '{"trait_type":"Choker","value":"',
+        chokerTraits[uint64(uint8(traits >> 8) & 15)],
+        '"},',
+        '{"trait_type":"Face","value":"',
+        faceTraits[uint64(uint8(traits >> 12))],
+        '"},',
+        '{"trait_type":"Headgear","value":"',
+        headgearTraits[uint64(uint8(traits >> 20))],
+        '"},',
+        '{"trait_type":"Left_Hand","value":"',
+        leftHandTraits[uint64(uint8(traits >> 28))],
+        '"},',
+        '{"trait_type":"Lower_Accessory","value":"',
+        lowerTraits[uint64(uint8(traits >> 36) & 15)],
+        '"},',
+        '{"trait_type":"Oral_Fixation","value":"',
+        oralTraits[uint64(uint8(traits >> 40) & 15)],
+        '"},',
+        '{"trait_type":"Outfit","value":"',
+        outfitTraits[uint64(uint8(traits >> 44))],
+        '"},',
+        '{"trait_type":"Right_Hand","value":"',
+        rightHandTraits[uint64(uint8(traits >> 52))],
+        '"}',
+        ']'
+      )
+    );
+  }
+
+  function __imageTag(string memory _content) private pure returns (string memory tag) {
+    tag = string(
+      abi.encodePacked(
+        '<image x="50%" y="50%" width="1000" xlink:href="',
+        _content,
+        '" style="transform: translate(-500px, -500px)" />'
+      )
+    );
   }
 }
