@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.6;
 
+import 'hardhat/console.sol';
+
 import '@openzeppelin/contracts/access/AccessControl.sol';
 import '@openzeppelin/contracts/utils/Counters.sol';
 import '@openzeppelin/contracts/utils/Strings.sol';
@@ -445,6 +447,7 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     }
 
     contentId = uint64(uint8(traits >> 8) & 15) << 8;
+    console.log('Content id 2', contentId);
     stack[2] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // chokerContent
 
     contentId = uint64(uint8(traits >> 12)) << 12;
@@ -454,6 +457,7 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     stack[4] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // headgearContent
 
     contentId = uint64(uint8(traits >> 28)) << 28;
+    console.log('Content id 5', contentId);
     if (contentId > 0) {
       stack[5] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // leftHandContent
     }
@@ -473,7 +477,12 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     if (contentId > 0) {
       stack[9] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // rightHandContent
     }
-
+    // TODO: I don't expect these base64 values to be empty given the test data
+    // the console log's above show that the content id is correct, i.e.
+    // something in getAssetBase64() and in turn getAssetContentForId() is not working
+    // as expected
+    console.log('stack5', stack[5]);
+    console.log('stack2', stack[9]);
     image = Base64.encode(
       abi.encodePacked(
         stack[0], // bodyContent
