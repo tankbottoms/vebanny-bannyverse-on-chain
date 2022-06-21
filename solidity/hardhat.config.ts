@@ -40,12 +40,16 @@ const config: HardhatUserConfig = {
     },
   },
   gasReporter: {
-    enabled: process.env.REPORT_GAS !== undefined,
+    enabled: true, // process.env.REPORT_GAS !== undefined,
     currency: "USD",
+    showTimeSpent: true,
   },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY,
   },
+  mocha: {
+    timeout: 5 * 60 * 1000
+  }
 };
 
 export default config;
