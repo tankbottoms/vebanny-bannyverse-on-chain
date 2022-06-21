@@ -11,11 +11,11 @@
 		const options = [];
 		for (let i = 1; i <= lockPeriod + 1; i++) {
 			options.push(`planet${i}`);
-			if (i <= 4) {
-				options.push(`star${i}`);
-				options.push(`dot${i}`);
-			}
 		}
+        for (let i = 1; i <= 4; i++) {
+            options.push(`star${i}`);
+            options.push(`dot${i}`);
+        }
 		return options;
 	}
 
