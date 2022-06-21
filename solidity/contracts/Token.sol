@@ -326,7 +326,13 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     return super.supportsInterface(_interfaceId);
   }
 
-  // view to validate traits value
+  function validateTraits(uint256 _traits) public pure override returns (bool valid) {
+    if (_traits == 0) {
+      return false;
+    }
+
+    valid = true;
+  }
 
   //*********************************************************************//
   // ---------------------- Privileged Operations ---------------------- //
@@ -433,37 +439,37 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     uint64 contentId = uint64(uint8(traits) & 15);
     stack[0] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // bodyContent
 
-    contentId = uint64(uint8(traits >> 4) & 15);
+    contentId = uint64(uint8(traits >> 4) & 15) << 4;
     if (contentId > 0) {
       stack[1] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // handsContent
     }
 
-    contentId = uint64(uint8(traits >> 8) & 15);
+    contentId = uint64(uint8(traits >> 8) & 15) << 8;
     stack[2] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // chokerContent
 
-    contentId = uint64(uint8(traits >> 12));
+    contentId = uint64(uint8(traits >> 12)) << 12;
     stack[3] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // faceContent
 
-    contentId = uint64(uint8(traits >> 20));
+    contentId = uint64(uint8(traits >> 20)) << 20;
     stack[4] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // headgearContent
 
-    contentId = uint64(uint8(traits >> 28));
+    contentId = uint64(uint8(traits >> 28)) << 28;
     if (contentId > 0) {
       stack[5] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // leftHandContent
     }
 
-    contentId = uint64(uint8(traits >> 36) & 15);
+    contentId = uint64(uint8(traits >> 36) & 15) << 36;
     stack[6] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // lowerContent
 
-    contentId = uint64(uint8(traits >> 40) & 15);
+    contentId = uint64(uint8(traits >> 40) & 15) << 40;
     if (contentId > 0) {
       stack[7] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // oralContent
     }
 
-    contentId = uint64(uint8(traits >> 44));
+    contentId = uint64(uint8(traits >> 44)) << 44;
     stack[8] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // outfitContent
 
-    contentId = uint64(uint8(traits >> 52));
+    contentId = uint64(uint8(traits >> 52)) << 52;
     if (contentId > 0) {
       stack[9] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // rightHandContent
     }
@@ -487,9 +493,8 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
   /**
     @dev Returns packed traits JSON for a given trait uint.
     */
-  function _getTokenTraits(uint256 traits) internal view returns (string memory json) {
-    json = Base64.encode(
-      abi.encodePacked(
+  function _getTokenTraits(uint256 traits) internal view returns (bytes memory json) {
+    json = abi.encodePacked(
         '[',
         '{"trait_type":"Body","value":"',
         bodyTraits[uint64(uint8(traits) & 15)],
@@ -522,7 +527,6 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
         rightHandTraits[uint64(uint8(traits >> 52))],
         '"}',
         ']'
-      )
     );
   }
 

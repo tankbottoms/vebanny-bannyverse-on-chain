@@ -19,4 +19,6 @@ interface IToken {
     function getAssetBase64(uint64, AssetDataType) external view returns (string memory);
 
     function withdrawEther() external;
+
+    function validateTraits(uint256 _traits) external pure returns (bool);
 }
