@@ -301,7 +301,7 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     uint256 _tokenId
   ) public override {
     _beforeTokenTransfer(_from, _to, _tokenId);
-    super.transferFrom(_from, _to, _tokenId);
+    super.safeTransferFrom(_from, _to, _tokenId);
   }
 
   function safeTransferFrom(
@@ -429,67 +429,57 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     // RIGHTHAND_TRAIT_OFFSET = 52; // uint8, 6 needed
     // uint4Mask = 15;
 
-    string memory bodyContent = getAssetBase64(uint64(uint8(traits) & 15), AssetDataType.IMAGE_PNG);
+    string[10] memory stack;
+    uint64 contentId = uint64(uint8(traits) & 15);
+    stack[0] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // bodyContent
 
-    string memory handsContent = '';
-    uint64 contentId = uint64(uint8(traits >> 4) & 15);
+    contentId = uint64(uint8(traits >> 4) & 15);
     if (contentId > 0) {
-      handsContent = getAssetBase64(contentId, AssetDataType.IMAGE_PNG);
+      stack[1] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // handsContent
     }
 
-    string memory chokerContent = getAssetBase64(
-      uint64(uint8(traits >> 8) & 15),
-      AssetDataType.IMAGE_PNG
-    );
-    string memory faceContent = getAssetBase64(
-      uint64(uint8(traits >> 12)),
-      AssetDataType.IMAGE_PNG
-    );
-    string memory headgearContent = getAssetBase64(
-      uint64(uint8(traits >> 20)),
-      AssetDataType.IMAGE_PNG
-    );
+    contentId = uint64(uint8(traits >> 8) & 15);
+    stack[2] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // chokerContent
 
-    string memory leftHandContent = '';
+    contentId = uint64(uint8(traits >> 12));
+    stack[3] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // faceContent
+
+    contentId = uint64(uint8(traits >> 20));
+    stack[4] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // headgearContent
+
     contentId = uint64(uint8(traits >> 28));
     if (contentId > 0) {
-      leftHandContent = getAssetBase64(contentId, AssetDataType.IMAGE_PNG);
+      stack[5] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // leftHandContent
     }
 
-    string memory lowerContent = getAssetBase64(
-      uint64(uint8(traits >> 36) & 15),
-      AssetDataType.IMAGE_PNG
-    );
+    contentId = uint64(uint8(traits >> 36) & 15);
+    stack[6] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // lowerContent
 
-    string memory oralContent = '';
     contentId = uint64(uint8(traits >> 40) & 15);
     if (contentId > 0) {
-      oralContent = getAssetBase64(contentId, AssetDataType.IMAGE_PNG);
+      stack[7] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // oralContent
     }
 
-    string memory outfitContent = getAssetBase64(
-      uint64(uint8(traits >> 44)),
-      AssetDataType.IMAGE_PNG
-    );
+    contentId = uint64(uint8(traits >> 44));
+    stack[8] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // outfitContent
 
-    string memory rightHandContent = '';
     contentId = uint64(uint8(traits >> 52));
     if (contentId > 0) {
-      rightHandContent = getAssetBase64(contentId, AssetDataType.IMAGE_PNG);
+      stack[9] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // rightHandContent
     }
 
     image = Base64.encode(
       abi.encodePacked(
-        __imageTag(bodyContent),
-        __imageTag(faceContent),
-        __imageTag(chokerContent),
-        __imageTag(lowerContent),
-        __imageTag(outfitContent),
-        __imageTag(oralContent),
-        __imageTag(headgearContent),
-        __imageTag(leftHandContent),
-        __imageTag(rightHandContent) //,
-        // __imageTag(handsContent)
+        stack[0], // bodyContent
+        stack[3], // faceContent
+        stack[2], // chokerContent
+        stack[6], // lowerContent
+        stack[8], // outfitContent
+        stack[7], // oralContent
+        stack[4], // headgearContent
+        stack[5], // leftHandContent
+        stack[9], // rightHandContent
+        stack[1] // handsContent
       )
     );
   }
@@ -536,6 +526,9 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     );
   }
 
+  /**
+    @dev incoming parameter is wrapped blindly without checking content.
+    */
   function __imageTag(string memory _content) private pure returns (string memory tag) {
     tag = string(
       abi.encodePacked(
