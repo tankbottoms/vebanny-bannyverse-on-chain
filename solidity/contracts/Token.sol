@@ -445,33 +445,33 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     }
 
     contentId = uint64(uint8(traits >> 8) & 15) << 8;
-    stack[2] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // chokerContent
+    stack[2] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // chokerContent
 
     contentId = uint64(uint8(traits >> 12)) << 12;
-    stack[3] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // faceContent
+    stack[3] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // faceContent
 
     contentId = uint64(uint8(traits >> 20)) << 20;
-    stack[4] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // headgearContent
+    stack[4] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // headgearContent
 
     contentId = uint64(uint8(traits >> 28)) << 28;
     if (contentId > 0) {
-      stack[5] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // leftHandContent
+      stack[5] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // leftHandContent
     }
 
     contentId = uint64(uint8(traits >> 36) & 15) << 36;
-    stack[6] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // lowerContent
+    stack[6] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // lowerContent
 
     contentId = uint64(uint8(traits >> 40) & 15) << 40;
     if (contentId > 0) {
-      stack[7] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // oralContent
+      stack[7] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // oralContent
     }
 
     contentId = uint64(uint8(traits >> 44)) << 44;
-    stack[8] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // outfitContent
+    stack[8] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // outfitContent
 
     contentId = uint64(uint8(traits >> 52)) << 52;
     if (contentId > 0) {
-      stack[9] = getAssetBase64(contentId, AssetDataType.IMAGE_PNG); // rightHandContent
+      stack[9] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // rightHandContent
     }
 
     image = Base64.encode(
