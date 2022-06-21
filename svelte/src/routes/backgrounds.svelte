@@ -1,11 +1,3 @@
-<!-- 
-# Backgrounds
-
-This is a page to test different backgrounds for different lock-periods.
-
-Notes:
-- There are 6 planets, and 6 lock periods
- -->
 <script lang="ts">
 	import Background from '$lib/Background.svelte';
 	import { getLayeredSvgFromBannyIndex } from '$utils/layering';
