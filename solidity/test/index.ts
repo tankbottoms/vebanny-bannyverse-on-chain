@@ -23,19 +23,6 @@ enum AssetAttrType {
     TIMESTAMP_VALUE
 }
 
-const traitsOffsets: { [key: string]: number } = {
-    'Body': 0,
-    'Both_Hands': 16,
-    'Choker': 256,
-    'Face': 4096,
-    'Headgear': 1048576,
-    'Left_Hand': 268435456,
-    'Lower_Accessory': 68719476736,
-    'Oral_Fixation': 1099511627776,
-    'Outfit': 17592186044416,
-    'Right_Hand': 4503599627370496
-};
-
 const traitsShiftOffset: { [key: string]: number } = {
     'Body': 0,
     'Both_Hands': 4,
@@ -77,50 +64,89 @@ describe("Bannyverse E2E", () => {
     });
 
     it('Asset test', async () => {
-        let trait = `0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Lower_Accessory'] / 4)}`;
-        let result = await token.getAssetBase64(trait, AssetDataType.IMAGE_PNG);
-        fs.writeFileSync(
-            path.resolve('test-output', `${trait}.png`),
-            Buffer.from(result.slice(('data:image/png;base64,').length), 'base64'));
+        const traits = [
+            `0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Lower_Accessory'] / 4)}`,
+            `0x${(17).toString(16)}${('0').repeat(traitsShiftOffset['Outfit'] / 4)}`,
+            `0x${(2).toString(16)}${('0').repeat(traitsShiftOffset['Right_Hand'] / 4)}`
+        ];
 
-        trait = `0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Outfit'] / 4)}`;
-        result = await token.getAssetBase64(trait, AssetDataType.IMAGE_PNG);
-        fs.writeFileSync(
-            path.resolve('test-output', `${trait}.png`),
-            Buffer.from(result.slice(('data:image/png;base64,').length), 'base64'));
+        for (const trait of traits) {
+            const result = await token.getAssetBase64(trait, AssetDataType.IMAGE_PNG);
+            fs.writeFileSync(
+                path.resolve('test-output', `${trait}.png`),
+                Buffer.from(result.slice(('data:image/png;base64,').length), 'base64'));
+        }
     });
 
     it('Basic mint', async () => {
-        const traits = BigNumber
-            .from(`0x0`) // Body, 0000
-            .add(`0x${(0).toString(16)}${('0').repeat(traitsShiftOffset['Both_Hands'] / 4)}`) // 0000
-            .add(`0x${(2).toString(16)}${('0').repeat(traitsShiftOffset['Choker'] / 4)}`) // 0010
+        const traits: any[] = [
+            BigNumber.from(`0x1`) // Body, 0001
+            .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Both_Hands'] / 4)}`) // 0001
+            .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Choker'] / 4)}`) // 0001
             .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Face'] / 4)}`) // 00000001
             .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Headgear'] / 4)}`) // 00000001
             .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Left_Hand'] / 4)}`) // 00000001
             .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Lower_Accessory'] / 4)}`) // 0001
             .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Oral_Fixation'] / 4)}`) // 0001
             .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Outfit'] / 4)}`) // 00000001
-            .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Right_Hand'] / 4)}`); // 1
+            .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Right_Hand'] / 4)}`), // 1
+
+            BigNumber.from(`0x2`)
+            .add(`0x${(2).toString(16)}${('0').repeat(traitsShiftOffset['Both_Hands'] / 4)}`)
+            .add(`0x${(2).toString(16)}${('0').repeat(traitsShiftOffset['Choker'] / 4)}`)
+            .add(`0x${(3).toString(16)}${('0').repeat(traitsShiftOffset['Face'] / 4)}`)
+            .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Headgear'] / 4)}`)
+            .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Left_Hand'] / 4)}`)
+            .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Lower_Accessory'] / 4)}`)
+            .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Oral_Fixation'] / 4)}`)
+            .add(`0x${(6).toString(16)}${('0').repeat(traitsShiftOffset['Outfit'] / 4)}`)
+            .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Right_Hand'] / 4)}`),
+
+            BigNumber.from(`0x5`)
+            .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Both_Hands'] / 4)}`)
+            .add(`0x${(3).toString(16)}${('0').repeat(traitsShiftOffset['Choker'] / 4)}`)
+            .add(`0x${(8).toString(16)}${('0').repeat(traitsShiftOffset['Face'] / 4)}`)
+            .add(`0x${(11).toString(16)}${('0').repeat(traitsShiftOffset['Headgear'] / 4)}`)
+            .add(`0x${(5).toString(16)}${('0').repeat(traitsShiftOffset['Left_Hand'] / 4)}`)
+            .add(`0x${(2).toString(16)}${('0').repeat(traitsShiftOffset['Lower_Accessory'] / 4)}`)
+            .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Oral_Fixation'] / 4)}`)
+            .add(`0x${(18).toString(16)}${('0').repeat(traitsShiftOffset['Outfit'] / 4)}`)
+            .add(`0x${(2).toString(16)}${('0').repeat(traitsShiftOffset['Right_Hand'] / 4)}`),
+
+            BigNumber.from(`0x3`)
+            .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Both_Hands'] / 4)}`)
+            .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Choker'] / 4)}`)
+            .add(`0x${(4).toString(16)}${('0').repeat(traitsShiftOffset['Face'] / 4)}`)
+            .add(`0x${(7).toString(16)}${('0').repeat(traitsShiftOffset['Headgear'] / 4)}`)
+            .add(`0x${(2).toString(16)}${('0').repeat(traitsShiftOffset['Left_Hand'] / 4)}`)
+            .add(`0x${(4).toString(16)}${('0').repeat(traitsShiftOffset['Lower_Accessory'] / 4)}`)
+            .add(`0x${(3).toString(16)}${('0').repeat(traitsShiftOffset['Oral_Fixation'] / 4)}`)
+            .add(`0x${(8).toString(16)}${('0').repeat(traitsShiftOffset['Outfit'] / 4)}`)
+            .add(`0x${(3).toString(16)}${('0').repeat(traitsShiftOffset['Right_Hand'] / 4)}`),
+        ];
 
         await token.connect(deployer).addMinter(deployer.address);
 
-        const tokenId = 1;
-        await expect(token.connect(deployer)
-            .mint(accounts[0].address, traits))
-            .to.emit(token, 'Transfer').withArgs(ethers.constants.AddressZero, accounts[0].address, tokenId);
+        let tokenId = 1;
+        for (const tokenTraits of traits) {
+            await expect(token.connect(deployer)
+                .mint(accounts[0].address, tokenTraits))
+                .to.emit(token, 'Transfer').withArgs(ethers.constants.AddressZero, accounts[0].address, tokenId);
 
-        expect(await token.tokenTraits(tokenId)).to.equal(traits);
+            expect(await token.tokenTraits(tokenId)).to.equal(tokenTraits);
 
-        const dataUri = await token.dataUri(tokenId);
-        fs.writeFileSync(path.resolve('test-output', `${tokenId}-data.raw`), dataUri);
+            const dataUri = await token.dataUri(tokenId);
+            fs.writeFileSync(path.resolve('test-output', `${tokenId}-data.raw`), dataUri);
 
-        let decoded = Buffer.from(dataUri.slice(('data:application/json;base64,').length), 'base64').toString();
-        fs.writeFileSync(path.resolve('test-output', `${tokenId}-2.json`), decoded);
+            let decoded = Buffer.from(dataUri.slice(('data:application/json;base64,').length), 'base64').toString();
+            fs.writeFileSync(path.resolve('test-output', `${tokenId}-2.json`), decoded);
 
-        let decodedJson = JSON.parse(decoded.toString());
-        let imageData = Buffer.from(decodedJson['image'].slice(decodedJson['image'].indexOf(',') + 1), 'base64').toString();
-        fs.writeFileSync(path.resolve('test-output', `${tokenId}-3.svg`), imageData);
+            let decodedJson = JSON.parse(decoded.toString());
+            let imageData = Buffer.from(decodedJson['image'].slice(decodedJson['image'].indexOf(',') + 1), 'base64').toString();
+            fs.writeFileSync(path.resolve('test-output', `${tokenId}-3.svg`), imageData);
+
+            tokenId++;
+        }
     });
 });
 
@@ -143,7 +169,8 @@ async function loadLayers(storage: any, deployer: SignerWithAddress) {
             if (item === 'Nothing') { continue; }
 
             const png = path.resolve(__dirname, '..', '..', 'layers', group, `${item}.png`);
-            const id = traitsOffsets[group] + i;
+            const id = BigNumber.from(`0x${(i + 1).toString(16)}${('0').repeat(traitsShiftOffset[group] / 4)}`)
+
             await loadAsset(storage, deployer, png, id.toString());
         }
     }
@@ -183,6 +210,6 @@ async function loadAsset(storage: any, signer: SignerWithAddress, asset: string,
     //     await tx.wait();
     //     console.log(`added ${asset}, compressed ${assetParts.inflatedSize} to ${assetParts.length} as ${assetId}`);
     // } else {
-    //     console.log(`added ${asset}, ${assetParts.length} as ${assetId}`);
+    //     console.log(`added ${asset}, ${assetParts.length} as ${assetId}/${Number(assetId).toString(16)}`);
     // }
 }
