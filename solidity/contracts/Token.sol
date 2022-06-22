@@ -29,8 +29,8 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
   string[5] bodyTraits = ['Yellow', 'Green', 'Pink', 'Red', 'Orange'];
   string[5] handsTraits = ['Nothing', 'AK-47', 'Blue_Paint', 'M4', 'Sword_Shield'];
   string[5] chokerTraits = [
+    'Nothing',
     'Choker',
-    'No_Choker',
     'Christmas_Lights',
     'Hawaiian',
     'Blockchain_Necklace'
@@ -55,6 +55,7 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     'Surprised'
   ];
   string[70] headgearTraits = [
+    'Nothing',
     'Sunglasses',
     'Feather_Hat',
     'Baker_Helmet',
@@ -77,7 +78,6 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     'Dr_Jonathan_Osterman',
     'Edward_Teach',
     'Emmett_Doc_Brown',
-    'No_Hat',
     'Farceur',
     'Ivar_the_Boneless',
     'Jango_Fett',
@@ -157,6 +157,7 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
   ];
   string[3] oralTraits = ['Nothing', 'Mouthstraw', 'Blunt_1k'];
   string[68] outfitTraits = [
+    'Nothing',
     'Smoking',
     'Athos',
     'Baker',
@@ -179,7 +180,6 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     'Dr_Jonathan_Osterman',
     'Edward_Teach',
     'Emmett_Doc_Brown',
-    'No_Outfit',
     'Gautama_Buddha',
     'Jango_Fett',
     'Jinx',
@@ -449,9 +449,9 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     uint64 contentId = uint64(uint8(traits) & 15);
     stack[0] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // bodyContent
 
-    contentId = uint64(uint8(traits >> 4) & 15) << 4;
-    if (contentId > 0) {
-      stack[1] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // handsContent
+    contentId = uint64(uint8(traits >> 4) & 15);
+    if (contentId > 1) {
+      stack[1] = __imageTag(getAssetBase64(contentId << 4, AssetDataType.IMAGE_PNG)); // handsContent
     }
 
     contentId = uint64(uint8(traits >> 8) & 15);
@@ -463,7 +463,9 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     stack[3] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // faceContent
 
     contentId = uint64(uint8(traits >> 20)) << 20;
-    stack[4] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // headgearContent
+    if (contentId > 1) {
+      stack[4] = __imageTag(getAssetBase64(contentId << 20, AssetDataType.IMAGE_PNG)); // headgearContent
+    }
 
     contentId = uint64(uint8(traits >> 28));
     if (contentId > 1) {
@@ -478,8 +480,10 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
       stack[7] = __imageTag(getAssetBase64(contentId << 40, AssetDataType.IMAGE_PNG)); // oralContent
     }
 
-    contentId = uint64(uint8(traits >> 44)) << 44;
-    stack[8] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // outfitContent
+    contentId = uint64(uint8(traits >> 44));
+    if (contentId > 1) {
+      stack[8] = __imageTag(getAssetBase64(contentId << 44, AssetDataType.IMAGE_PNG)); // outfitContent
+    }
 
     contentId = uint64(uint8(traits >> 52));
     if (contentId > 1) {
@@ -509,34 +513,34 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     json = abi.encodePacked(
       '[',
       '{"trait_type":"Body","value":"',
-      bodyTraits[uint64(uint8(traits) & 15)],
+      bodyTraits[uint64(uint8(traits) & 15) - 1],
       '"},',
       '{"trait_type":"Both_Hands","value":"',
-      handsTraits[uint64(uint8(traits >> 4) & 15)],
+      handsTraits[uint64(uint8(traits >> 4) & 15) - 1],
       '"},',
       '{"trait_type":"Choker","value":"',
-      chokerTraits[uint64(uint8(traits >> 8) & 15)],
+      chokerTraits[uint64(uint8(traits >> 8) & 15) - 1],
       '"},',
       '{"trait_type":"Face","value":"',
-      faceTraits[uint64(uint8(traits >> 12))],
+      faceTraits[uint64(uint8(traits >> 12)) - 1],
       '"},',
       '{"trait_type":"Headgear","value":"',
-      headgearTraits[uint64(uint8(traits >> 20))],
+      headgearTraits[uint64(uint8(traits >> 20)) - 1],
       '"},',
       '{"trait_type":"Left_Hand","value":"',
-      leftHandTraits[uint64(uint8(traits >> 28))],
+      leftHandTraits[uint64(uint8(traits >> 28)) - 1],
       '"},',
       '{"trait_type":"Lower_Accessory","value":"',
-      lowerTraits[uint64(uint8(traits >> 36) & 15)],
+      lowerTraits[uint64(uint8(traits >> 36) & 15) - 1],
       '"},',
       '{"trait_type":"Oral_Fixation","value":"',
-      oralTraits[uint64(uint8(traits >> 40) & 15)],
+      oralTraits[uint64(uint8(traits >> 40) & 15) - 1],
       '"},',
       '{"trait_type":"Outfit","value":"',
-      outfitTraits[uint64(uint8(traits >> 44))],
+      outfitTraits[uint64(uint8(traits >> 44)) - 1],
       '"},',
       '{"trait_type":"Right_Hand","value":"',
-      rightHandTraits[uint64(uint8(traits >> 52))],
+      rightHandTraits[uint64(uint8(traits >> 52)) - 1],
       '"}',
       ']'
     );
