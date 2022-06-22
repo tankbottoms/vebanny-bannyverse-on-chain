@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.6;
 
-import 'hardhat/console.sol';
-
 import '@openzeppelin/contracts/access/AccessControl.sol';
 import '@openzeppelin/contracts/utils/Counters.sol';
 import '@openzeppelin/contracts/utils/Strings.sol';
@@ -378,7 +376,7 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
   }
 
   function withdrawEther() public override onlyRole(DEFAULT_ADMIN_ROLE) {
-    require(payable(msg.sender).send(address(this).balance), 'Token: Withdraw all failed.');
+    require(payable(msg.sender).send(address(this).balance), 'withdrawEther failed');
   }
 
   //*********************************************************************//
@@ -413,15 +411,25 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
         name,
         ' No.',
         Strings.toString(_tokenId),
-        '", "description": "Fully on-chain NFT", "image": "',
-        _getImageStack(traits),
-        '#", "attributes":',
+        '", "description": "Fully on-chain NFT", "image": "data:image/svg+xml;base64,',
+        _getFramedImage(traits),
+        '", "attributes":',
         _getTokenTraits(traits),
         '}'
       )
     );
 
     return string(abi.encodePacked('data:application/json;base64,', json));
+  }
+
+  function _getFramedImage(uint256 traits) internal view returns (string memory image) {
+    image = Base64.encode(
+      abi.encodePacked(
+        '<svg id="token" width="300" height="300" viewBox="0 0 1080 1080" fill="none" xmlns="http://www.w3.org/2000/svg"> <defs><radialGradient id="paint0_radial_772_22716" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(540.094 539.992) rotate(90) scale(539.413)"><stop stop-color="#B4B4B4" /><stop offset="1" /></radialGradient><path id="textPathBottom" d="M 540 540 m -450,0 a 450,450 0 1,0 900,0"/><path id="textPathTop" d="M 540 540 m -450,0 a 450,450 0 1,1 900,0" /></defs><circle cx="540.094" cy="539.992" r="539.413" fill="url(#paint0_radial_772_22716)"/><g id="bannyPlaceholder">',
+        _getImageStack(traits),
+        '</g><text font-size="90" fill="white" text-anchor="middle" x="700" dominant-baseline="mathematical"><textPath id="topText" href="#textPathTop">10 DAYS</textPath></text><text font-size="90" fill="white" text-anchor="middle" x="710" dominant-baseline="mathematical"><textPath id="bottomText" href="#textPathBottom"></textPath></text></svg>'
+      )
+    );
   }
 
   function _getImageStack(uint256 traits) internal view returns (string memory image) {
@@ -446,9 +454,10 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
       stack[1] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // handsContent
     }
 
-    contentId = uint64(uint8(traits >> 8) & 15) << 8;
-    console.log('Content id 2', contentId);
-    stack[2] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // chokerContent
+    contentId = uint64(uint8(traits >> 8) & 15);
+    if (contentId > 1) {
+      stack[2] = __imageTag(getAssetBase64(contentId << 8, AssetDataType.IMAGE_PNG)); // chokerContent
+    }
 
     contentId = uint64(uint8(traits >> 12)) << 12;
     stack[3] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // faceContent
@@ -456,34 +465,28 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     contentId = uint64(uint8(traits >> 20)) << 20;
     stack[4] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // headgearContent
 
-    contentId = uint64(uint8(traits >> 28)) << 28;
-    console.log('Content id 5', contentId);
-    if (contentId > 0) {
-      stack[5] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // leftHandContent
+    contentId = uint64(uint8(traits >> 28));
+    if (contentId > 1) {
+      stack[5] = __imageTag(getAssetBase64(contentId << 28, AssetDataType.IMAGE_PNG)); // leftHandContent
     }
 
     contentId = uint64(uint8(traits >> 36) & 15) << 36;
     stack[6] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // lowerContent
 
-    contentId = uint64(uint8(traits >> 40) & 15) << 40;
-    if (contentId > 0) {
-      stack[7] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // oralContent
+    contentId = uint64(uint8(traits >> 40) & 15);
+    if (contentId > 1) {
+      stack[7] = __imageTag(getAssetBase64(contentId << 40, AssetDataType.IMAGE_PNG)); // oralContent
     }
 
     contentId = uint64(uint8(traits >> 44)) << 44;
     stack[8] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // outfitContent
 
-    contentId = uint64(uint8(traits >> 52)) << 52;
-    if (contentId > 0) {
-      stack[9] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // rightHandContent
+    contentId = uint64(uint8(traits >> 52));
+    if (contentId > 1) {
+      stack[9] = __imageTag(getAssetBase64(contentId << 52, AssetDataType.IMAGE_PNG)); // rightHandContent
     }
-    // TODO: I don't expect these base64 values to be empty given the test data
-    // the console log's above show that the content id is correct, i.e.
-    // something in getAssetBase64() and in turn getAssetContentForId() is not working
-    // as expected
-    console.log('stack5', stack[5]);
-    console.log('stack2', stack[9]);
-    image = Base64.encode(
+
+    image = string(
       abi.encodePacked(
         stack[0], // bodyContent
         stack[3], // faceContent
@@ -504,38 +507,38 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     */
   function _getTokenTraits(uint256 traits) internal view returns (bytes memory json) {
     json = abi.encodePacked(
-        '[',
-        '{"trait_type":"Body","value":"',
-        bodyTraits[uint64(uint8(traits) & 15)],
-        '"},',
-        '{"trait_type":"Both_Hands","value":"',
-        handsTraits[uint64(uint8(traits >> 4) & 15)],
-        '"},',
-        '{"trait_type":"Choker","value":"',
-        chokerTraits[uint64(uint8(traits >> 8) & 15)],
-        '"},',
-        '{"trait_type":"Face","value":"',
-        faceTraits[uint64(uint8(traits >> 12))],
-        '"},',
-        '{"trait_type":"Headgear","value":"',
-        headgearTraits[uint64(uint8(traits >> 20))],
-        '"},',
-        '{"trait_type":"Left_Hand","value":"',
-        leftHandTraits[uint64(uint8(traits >> 28))],
-        '"},',
-        '{"trait_type":"Lower_Accessory","value":"',
-        lowerTraits[uint64(uint8(traits >> 36) & 15)],
-        '"},',
-        '{"trait_type":"Oral_Fixation","value":"',
-        oralTraits[uint64(uint8(traits >> 40) & 15)],
-        '"},',
-        '{"trait_type":"Outfit","value":"',
-        outfitTraits[uint64(uint8(traits >> 44))],
-        '"},',
-        '{"trait_type":"Right_Hand","value":"',
-        rightHandTraits[uint64(uint8(traits >> 52))],
-        '"}',
-        ']'
+      '[',
+      '{"trait_type":"Body","value":"',
+      bodyTraits[uint64(uint8(traits) & 15)],
+      '"},',
+      '{"trait_type":"Both_Hands","value":"',
+      handsTraits[uint64(uint8(traits >> 4) & 15)],
+      '"},',
+      '{"trait_type":"Choker","value":"',
+      chokerTraits[uint64(uint8(traits >> 8) & 15)],
+      '"},',
+      '{"trait_type":"Face","value":"',
+      faceTraits[uint64(uint8(traits >> 12))],
+      '"},',
+      '{"trait_type":"Headgear","value":"',
+      headgearTraits[uint64(uint8(traits >> 20))],
+      '"},',
+      '{"trait_type":"Left_Hand","value":"',
+      leftHandTraits[uint64(uint8(traits >> 28))],
+      '"},',
+      '{"trait_type":"Lower_Accessory","value":"',
+      lowerTraits[uint64(uint8(traits >> 36) & 15)],
+      '"},',
+      '{"trait_type":"Oral_Fixation","value":"',
+      oralTraits[uint64(uint8(traits >> 40) & 15)],
+      '"},',
+      '{"trait_type":"Outfit","value":"',
+      outfitTraits[uint64(uint8(traits >> 44))],
+      '"},',
+      '{"trait_type":"Right_Hand","value":"',
+      rightHandTraits[uint64(uint8(traits >> 52))],
+      '"}',
+      ']'
     );
   }
 
@@ -545,7 +548,7 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
   function __imageTag(string memory _content) private pure returns (string memory tag) {
     tag = string(
       abi.encodePacked(
-        '<image x="50%" y="50%" width="1000" xlink:href="',
+        '<image x="50%" y="50%" width="1000" href="',
         _content,
         '" style="transform: translate(-500px, -500px)" />'
       )

@@ -8,6 +8,6 @@ module.exports = {
     'interfaces',
     'libraries'
   ],
-  configureYulOptimizer: false, // causes stack failure
+  configureYulOptimizer: false, // causes stack depth failure
   measureStatementCoverage: false,
 };

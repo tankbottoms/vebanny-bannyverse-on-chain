@@ -119,17 +119,8 @@ describe("Bannyverse E2E", () => {
         fs.writeFileSync(path.resolve('test-output', `${tokenId}-2.json`), decoded);
 
         let decodedJson = JSON.parse(decoded.toString());
-        decodedJson['image'] = Buffer.from(decodedJson['image'].slice(0, -1), 'base64').toString();
-        fs.writeFileSync(path.resolve('test-output', `${tokenId}-3.json`), JSON.stringify(decodedJson));
-
-        // decoded = Buffer.from(dataUri.slice(('data:application/json;base64,').length), 'base64')
-        // fs.writeFileSync(path.resolve('test-output', `${tokenId}-2.json`), decoded);
-
-        // const tokenContentJSON = decodeURIComponent(dataUri.slice(('data:application/json;base64,').length).slice(0, -1));
-        // fs.writeFileSync(path.resolve('test-output', `${tokenId}-2.json`), tokenContentJSON);
-
-        // let decoded = decodeURIComponent(tokenContentJSON);
-        // fs.writeFileSync(path.resolve('test-output', `${tokenId}-3.json`), decoded);
+        let imageData = Buffer.from(decodedJson['image'].slice(decodedJson['image'].indexOf(',') + 1), 'base64').toString();
+        fs.writeFileSync(path.resolve('test-output', `${tokenId}-3.svg`), imageData);
     });
 });
 
