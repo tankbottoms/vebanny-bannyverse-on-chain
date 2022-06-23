@@ -14,8 +14,8 @@
     "Sword_Shield"
   ],
   "Choker": [
+    "Nothing",
     "Choker",
-    "No_Choker",
     "Christmas_Lights",
     "Hawaiian",
     "Blockchain_Necklace"
@@ -40,6 +40,7 @@
     "Surprised"
   ],
   "Headgear": [
+    "Nothing",
     "Sunglasses",
     "Feather_Hat",
     "Baker_Helmet",
@@ -62,7 +63,6 @@
     "Dr_Jonathan_Osterman",
     "Edward_Teach",
     "Emmett_Doc_Brown",
-    "No_Hat",
     "Farceur",
     "Ivar_the_Boneless",
     "Jango_Fett",
@@ -146,6 +146,7 @@
     "Blunt_1k"
   ],
   "Outfit": [
+    "Nothing",
     "Smoking",
     "Athos",
     "Baker",
@@ -168,7 +169,6 @@
     "Dr_Jonathan_Osterman",
     "Edward_Teach",
     "Emmett_Doc_Brown",
-    "No_Outfit",
     "Gautama_Buddha",
     "Jango_Fett",
     "Jinx",
