@@ -1,5 +1,11 @@
 # README
 
+The animation part can be seen on the fleek url: [https://black-lab-1027.on.fleek.co/?banny=20&lock=5](https://black-lab-1027.on.fleek.co/?banny=20&lock=5), change the search params as wanted. The lock periods are described below, basically 0 is the minimum of 1 week and 5 is the maximum of 4 years.
+
+The grid of bannies can be seen on the url on `/secret.html`, [https://black-lab-1027.on.fleek.co/secret.html](https://black-lab-1027.on.fleek.co/secret.html). Click on Banny to see asset pairings.
+
+The proposed backgrounds depending on lock period can be seen on `/backgrounds.html`, [https://black-lab-1027.on.fleek.co/backgrounds.html](https://black-lab-1027.on.fleek.co/backgrounds.html).
+
 ## Minimal layering page
 
 To see the layering of a Banny given it's index,
