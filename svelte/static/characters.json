@@ -18,11 +18,11 @@
 			"Both_Hands": "Nothing",
 			"Choker": "Choker",
 			"Face": "Eye_Mouth",
-			"Headgear": "No_Hat",
+			"Headgear": "Nothing",
 			"Left_Hand": "Nothing",
 			"Lower_Accessory": "Black_Shoes",
 			"Oral_Fixation": "Nothing",
-			"Outfit": "No_Outfit",
+			"Outfit": "Nothing",
 			"Right_Hand": "Nothing"
 		}
 	},
@@ -49,7 +49,7 @@
 			"Left_Hand": "Nothing",
 			"Lower_Accessory": "Black_Shoes",
 			"Oral_Fixation": "Nothing",
-			"Outfit": "No_Outfit",
+			"Outfit": "Nothing",
 			"Right_Hand": "Lollipop"
 		}
 	},
@@ -99,7 +99,7 @@
 			"Both_Hands": "Nothing",
 			"Choker": "Choker",
 			"Face": "Eye_Mouth",
-			"Headgear": "No_Hat",
+			"Headgear": "Nothing",
 			"Left_Hand": "Surf_Board",
 			"Lower_Accessory": "Sandals",
 			"Oral_Fixation": "Nothing",
@@ -400,7 +400,7 @@
 			"Left_Hand": "Ivar_the_Boneless_Shield",
 			"Lower_Accessory": "Black_Shoes",
 			"Oral_Fixation": "Nothing",
-			"Outfit": "No_Outfit",
+			"Outfit": "Nothing",
 			"Right_Hand": "Ivar_the_Boneless_Axe"
 		}
 	},
@@ -583,7 +583,7 @@
 		"layers": {
 			"Body": "Yellow",
 			"Both_Hands": "Nothing",
-			"Choker": "No_Choker",
+			"Choker": "Nothing",
 			"Face": "Eye_Mouth",
 			"Headgear": "Wade",
 			"Left_Hand": "Nothing",
@@ -610,9 +610,9 @@
 		"layers": {
 			"Body": "Yellow",
 			"Both_Hands": "Nothing",
-			"Choker": "No_Choker",
+			"Choker": "Nothing",
 			"Face": "Eye_Mouth",
-			"Headgear": "No_Hat",
+			"Headgear": "Nothing",
 			"Left_Hand": "Nothing",
 			"Lower_Accessory": "Black_Shoes",
 			"Oral_Fixation": "Nothing",
@@ -664,7 +664,7 @@
 		"layers": {
 			"Body": "Yellow",
 			"Both_Hands": "Nothing",
-			"Choker": "No_Choker",
+			"Choker": "Nothing",
 			"Face": "Eye_Mouth",
 			"Headgear": "Baker_Helmet",
 			"Left_Hand": "Nothing",
@@ -691,7 +691,7 @@
 		"layers": {
 			"Body": "Yellow",
 			"Both_Hands": "Nothing",
-			"Choker": "No_Choker",
+			"Choker": "Nothing",
 			"Face": "Eye_Mouth",
 			"Headgear": "Feather_Hat",
 			"Left_Hand": "Nothing",
@@ -772,7 +772,7 @@
 		"layers": {
 			"Body": "Yellow",
 			"Both_Hands": "Nothing",
-			"Choker": "No_Choker",
+			"Choker": "Nothing",
 			"Face": "Eye_Mouth",
 			"Headgear": "Banhovah",
 			"Left_Hand": "Holy_Wine",
@@ -801,11 +801,11 @@
 			"Both_Hands": "Nothing",
 			"Choker": "Choker",
 			"Face": "Eye_Mouth",
-			"Headgear": "No_Hat",
+			"Headgear": "Nothing",
 			"Left_Hand": "Nothing",
 			"Lower_Accessory": "Black_Shoes",
 			"Oral_Fixation": "Nothing",
-			"Outfit": "No_Outfit",
+			"Outfit": "Nothing",
 			"Right_Hand": "Nothing"
 		}
 	},
@@ -880,7 +880,7 @@
 		"layers": {
 			"Body": "Yellow",
 			"Both_Hands": "Nothing",
-			"Choker": "No_Choker",
+			"Choker": "Nothing",
 			"Face": "Eye_Mouth",
 			"Headgear": "Naruto",
 			"Left_Hand": "Nothing",
@@ -1096,7 +1096,7 @@
 		"layers": {
 			"Body": "Yellow",
 			"Both_Hands": "Nothing",
-			"Choker": "No_Choker",
+			"Choker": "Nothing",
 			"Face": "Eye_Mouth",
 			"Headgear": "Banny_Stark",
 			"Left_Hand": "Nothing",
@@ -1260,11 +1260,11 @@
 			"Both_Hands": "Nothing",
 			"Choker": "Choker",
 			"Face": "Enlil",
-			"Headgear": "No_Hat",
+			"Headgear": "Nothing",
 			"Left_Hand": "Nothing",
 			"Lower_Accessory": "Black_Shoes",
 			"Oral_Fixation": "Nothing",
-			"Outfit": "No_Outfit",
+			"Outfit": "Nothing",
 			"Right_Hand": "Nothing"
 		}
 	},
@@ -1530,7 +1530,7 @@
 			"Both_Hands": "Nothing",
 			"Choker": "Choker",
 			"Face": "Eye_Mouth",
-			"Headgear": "No_Hat",
+			"Headgear": "Nothing",
 			"Left_Hand": "Pitchfork",
 			"Lower_Accessory": "Black_Shoes",
 			"Oral_Fixation": "Nothing",
@@ -1582,7 +1582,7 @@
 		"layers": {
 			"Body": "Yellow",
 			"Both_Hands": "Nothing",
-			"Choker": "No_Choker",
+			"Choker": "Nothing",
 			"Face": "Eye_Mouth",
 			"Headgear": "Dr_Jonathan_Osterman",
 			"Left_Hand": "Nothing",
@@ -1611,7 +1611,7 @@
 			"Both_Hands": "Nothing",
 			"Choker": "Choker",
 			"Face": "Gautama_Buddha",
-			"Headgear": "No_Hat",
+			"Headgear": "Nothing",
 			"Left_Hand": "Nothing",
 			"Lower_Accessory": "Black_Shoes",
 			"Oral_Fixation": "Nothing",
@@ -1625,11 +1625,11 @@
 			"Both_Hands": "Nothing",
 			"Choker": "Choker",
 			"Face": "Angry",
-			"Headgear": "No_Hat",
+			"Headgear": "Nothing",
 			"Left_Hand": "Nothing",
 			"Lower_Accessory": "Black_Shoes",
 			"Oral_Fixation": "Nothing",
-			"Outfit": "No_Outfit",
+			"Outfit": "Nothing",
 			"Right_Hand": "Nothing"
 		},
 		"metadata": { "name": "Angry_Banny" }
@@ -1685,7 +1685,7 @@
 			"Both_Hands": "Nothing",
 			"Choker": "Hawaiian",
 			"Face": "Eye_Mouth",
-			"Headgear": "No_Hat",
+			"Headgear": "Nothing",
 			"Left_Hand": "Nothing",
 			"Lower_Accessory": "Black_Shoes",
 			"Oral_Fixation": "Nothing",
@@ -1700,7 +1700,7 @@
 			"Both_Hands": "Nothing",
 			"Choker": "Choker",
 			"Face": "Sakura",
-			"Headgear": "No_Hat",
+			"Headgear": "Nothing",
 			"Left_Hand": "Nothing",
 			"Lower_Accessory": "Black_Shoes",
 			"Oral_Fixation": "Nothing",
@@ -1715,7 +1715,7 @@
 			"Both_Hands": "Nothing",
 			"Choker": "Choker",
 			"Face": "Happy",
-			"Headgear": "No_Hat",
+			"Headgear": "Nothing",
 			"Left_Hand": "Nothing",
 			"Lower_Accessory": "Black_Shoes",
 			"Oral_Fixation": "Nothing",
@@ -1730,7 +1730,7 @@
 			"Both_Hands": "Nothing",
 			"Choker": "Choker",
 			"Face": "Happy",
-			"Headgear": "No_Hat",
+			"Headgear": "Nothing",
 			"Left_Hand": "Nothing",
 			"Lower_Accessory": "Black_Shoes",
 			"Oral_Fixation": "Nothing",
@@ -1749,7 +1749,7 @@
 			"Left_Hand": "Nothing",
 			"Lower_Accessory": "Black_Shoes",
 			"Oral_Fixation": "Nothing",
-			"Outfit": "No_Outfit",
+			"Outfit": "Nothing",
 			"Right_Hand": "Triangle_guitar"
 		},
 		"metadata": { "name": "Kiss" }
@@ -1790,11 +1790,11 @@
 			"Both_Hands": "Nothing",
 			"Choker": "Choker",
 			"Face": "Eye_Mouth",
-			"Headgear": "No_Hat",
+			"Headgear": "Nothing",
 			"Left_Hand": "Nothing",
 			"Lower_Accessory": "Black_Shoes",
 			"Oral_Fixation": "Nothing",
-			"Outfit": "No_Outfit",
+			"Outfit": "Nothing",
 			"Right_Hand": "Nothing"
 		},
 		"metadata": { "name": "Orange_Banny" }
@@ -1850,7 +1850,7 @@
 			"Both_Hands": "Nothing",
 			"Choker": "Choker",
 			"Face": "Eye_Mouth",
-			"Headgear": "No_Hat",
+			"Headgear": "Nothing",
 			"Left_Hand": "Nothing",
 			"Lower_Accessory": "Black_Shoes",
 			"Oral_Fixation": "Nothing",
