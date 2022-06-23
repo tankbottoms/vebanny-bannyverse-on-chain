@@ -34,9 +34,10 @@ describe("veBanny E2E", () => {
     it('Character mint', async () => {
         const characters = processCharacters();
 
+        const characterRange = Object.keys(characters).length - 1; // expects character index to start at 1
         const testCharacters: string[] = [];
-        while (testCharacters.length < 10) {
-            testCharacters.push(Math.floor(Math.random() * 75 + 1).toString());
+        while (testCharacters.length < 5) {
+            testCharacters.push(Math.floor(Math.random() * characterRange + 1).toString());
         }
 
         await token.connect(deployer).addMinter(deployer.address);
