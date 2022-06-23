@@ -462,7 +462,7 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     contentId = uint64(uint8(traits >> 12)) << 12;
     stack[3] = __imageTag(getAssetBase64(contentId, AssetDataType.IMAGE_PNG)); // faceContent
 
-    contentId = uint64(uint8(traits >> 20)) << 20;
+    contentId = uint64(uint8(traits >> 20));
     if (contentId > 1) {
       stack[4] = __imageTag(getAssetBase64(contentId << 20, AssetDataType.IMAGE_PNG)); // headgearContent
     }
