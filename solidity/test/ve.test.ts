@@ -1,6 +1,3 @@
-/* eslint-disable dot-notation */
-/* eslint-disable prettier/prettier */
-/* eslint-disable node/no-missing-import */
 import { expect } from 'chai';
 import fs from 'fs';
 import * as path from 'path';
@@ -8,9 +5,9 @@ import { ethers } from 'hardhat';
 
 import { loadLayers, processCharacters } from './banny';
 
-describe("veBanny E2E", () => {
+describe("veBanny URI Resolver Tests", () => {
     let storage: any;
-    let token: any;
+    let uriResolver: any;
     let deployer: any;
     let accounts: any[];
 
@@ -29,50 +26,31 @@ describe("veBanny E2E", () => {
 
         await loadLayers(storage, deployer);
 
-        const tokenFactory = await ethers.getContractFactory('Token');
-        token = await tokenFactory.connect(deployer).deploy(storage.address, 'Escrow Banana', 'veNANA');
-        await token.deployed();
+        const uriResolverFactory = await ethers.getContractFactory('JBVeTokenUriResolver');
+        uriResolver = await uriResolverFactory.connect(deployer).deploy(storage.address, 'Escrow Banana', 'ipfs://metadata');
+        await uriResolver.deployed();
     });
 
-    it('Character mint', async () => {
-        const characters = processCharacters();
-        fs.writeFileSync(path.resolve('test-output', 'processedCharacters.json'), JSON.stringify(characters));
+    it('Character Definition Tests', async () => {
+        // const characters = processCharacters();
+        // fs.writeFileSync(path.resolve('test-output', 'processedCharacters.json'), JSON.stringify(characters));
 
-        let traitsMap: string = '';
-        for (const c of Object.keys(characters)) {
-            traitsMap += `[${c}] = ${characters[c]['layers']}; `;
-        }
-        fs.writeFileSync(path.resolve('test-output', 'traitsMap.txt'), traitsMap);
+        // let traitsMap: string = '';
+        // for (const c of Object.keys(characters)) {
+        //     traitsMap += `[${c}] = ${characters[c]['layers']}; `;
+        // }
+        // fs.writeFileSync(path.resolve('test-output', 'traitsMap.txt'), traitsMap);
 
-        const characterRange = Object.keys(characters).length - 1; // expects character index to start at 1
-        const testCharacters: string[] = [];
-        while (testCharacters.length < 5) {
-            testCharacters.push(Math.floor(Math.random() * characterRange + 1).toString());
-        }
+        const durations: number[] = [60*60*24*10, 60*60*24*30, 60*60*24*365]; // TODO: need actual valid durations
 
-        await token.connect(deployer).addMinter(deployer.address);
-
-        let tokenId = 1;
-        for (const c of testCharacters) {
-            console.log(`minting ${c}:${characters[c]['metadata']['name']}, ${characters[c].layers}`);
-            await expect(token.connect(deployer)
-                .mint(accounts[0].address, characters[c].layers))
-                .to.emit(token, 'Transfer').withArgs(ethers.constants.AddressZero, accounts[0].address, tokenId);
-
-            expect(await token.tokenTraits(tokenId)).to.equal(characters[c].layers);
-
-            tokenId++;
-        }
-
-        tokenId = 1;
-        for (const c of testCharacters) {
-            console.log(`dumping ${c}:${characters[c]['metadata']['name']}, ${characters[c].layers}`);
-            const dataUri = await token.dataUri(tokenId);
-            const decoded = Buffer.from(dataUri.slice(('data:application/json;base64,').length), 'base64').toString();
+        for (let i = 0; i < durations.length; i++) {
+            const tokenUri = await uriResolver.tokenURI(i, 1_000_000, durations[i], 0, durations);
+            const decoded = Buffer.from(tokenUri.slice(('data:application/json;base64,').length), 'base64').toString();
             const json = JSON.parse(decoded.toString());
             const imageData = Buffer.from(json['image'].slice(json['image'].indexOf(',') + 1), 'base64').toString();
-            fs.writeFileSync(path.resolve('test-output', `${c}-${characters[c].layers}.svg`), imageData);
-            tokenId++;
+            fs.writeFileSync(path.resolve('test-output', `ve-${durations[i]}.svg`), imageData);
+
+            // TODO: 'expect()' results
         }
     });
 });
