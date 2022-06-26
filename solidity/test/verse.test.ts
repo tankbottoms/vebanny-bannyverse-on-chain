@@ -1,3 +1,6 @@
+/* eslint-disable dot-notation */
+/* eslint-disable prettier/prettier */
+/* eslint-disable node/no-missing-import */
 import { expect } from 'chai';
 import fs from 'fs';
 import * as path from 'path';
@@ -108,11 +111,11 @@ describe("BannyVerse E2E", () => {
             const dataUri = await token.dataUri(tokenId);
             fs.writeFileSync(path.resolve('test-output', `${tokenId}-data.raw`), dataUri);
 
-            let decoded = Buffer.from(dataUri.slice(('data:application/json;base64,').length), 'base64').toString();
+            const decoded = Buffer.from(dataUri.slice(('data:application/json;base64,').length), 'base64').toString();
             fs.writeFileSync(path.resolve('test-output', `${tokenId}-2.json`), decoded);
 
-            let decodedJson = JSON.parse(decoded.toString());
-            let imageData = Buffer.from(decodedJson['image'].slice(decodedJson['image'].indexOf(',') + 1), 'base64').toString();
+            const decodedJson = JSON.parse(decoded.toString());
+            const imageData = Buffer.from(decodedJson['image'].slice(decodedJson['image'].indexOf(',') + 1), 'base64').toString();
             fs.writeFileSync(path.resolve('test-output', `${tokenId}-3.svg`), imageData);
 
             tokenId++;

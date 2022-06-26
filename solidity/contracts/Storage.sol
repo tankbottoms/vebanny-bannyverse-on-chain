@@ -61,7 +61,7 @@ contract Storage is IStorage {
         _assetList[_assetId]._nodes.push(_assetKey);
         _assetList[_assetId]._byteSize = uint64(fileSizeInBytes);
 
-        _assetCount++;
+        ++_assetCount;
         emit AssetCreated(_assetId);
     }
 

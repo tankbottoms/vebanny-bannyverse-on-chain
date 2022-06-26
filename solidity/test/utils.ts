@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable node/no-unsupported-features/es-syntax */
 import fs from 'fs';
 import { resolve } from 'path';
 import pako from 'pako';

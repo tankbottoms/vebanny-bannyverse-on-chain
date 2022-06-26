@@ -6,6 +6,8 @@ import '@openzeppelin/contracts/utils/Counters.sol';
 import '@openzeppelin/contracts/utils/Strings.sol';
 import '@openzeppelin/contracts/security/ReentrancyGuard.sol';
 
+import './components/StringHelpers.sol';
+
 import './libraries/Base64.sol';
 import './libraries/ERC721Enumerable.sol';
 import './interfaces/IToken.sol';
@@ -25,7 +27,7 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
   mapping(uint256 => uint256) public tokenTraits;
 
   string public contractMetadataURI;
-
+  // TODO: create banny library of traits
   string[5] bodyTraits = ['Yellow', 'Green', 'Pink', 'Red', 'Orange'];
   string[5] handsTraits = ['Nothing', 'AK-47', 'Blue_Paint', 'M4', 'Sword_Shield'];
   string[5] chokerTraits = [
@@ -499,6 +501,10 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
         stack[8], // outfitContent
         stack[7], // oralContent
         stack[4], // headgearContent
+        /* 
+        (stack[5] == 'Nothing' && stack[9] == 'Nothing) || stack[1] == 'Nothing' 
+        // ensure that left and right are not occupied before allowing hands to be not Nothing
+        */
         stack[5], // leftHandContent
         stack[9], // rightHandContent
         stack[1] // handsContent
@@ -510,12 +516,14 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     @dev Returns packed traits JSON for a given trait uint.
     */
   function _getTokenTraits(uint256 traits) internal view returns (bytes memory json) {
+    // TODO: replace part name underscores with space  
+    // StringHelper.replace(bodyTraits[uint64(uint8(traits) & 15) - 1], '_', trait_value)
     json = abi.encodePacked(
       '[',
       '{"trait_type":"Body","value":"',
       bodyTraits[uint64(uint8(traits) & 15) - 1],
       '"},',
-      '{"trait_type":"Both_Hands","value":"',
+      '{"trait_type":"Both Hands","value":"',
       handsTraits[uint64(uint8(traits >> 4) & 15) - 1],
       '"},',
       '{"trait_type":"Choker","value":"',
@@ -527,19 +535,19 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
       '{"trait_type":"Headgear","value":"',
       headgearTraits[uint64(uint8(traits >> 20)) - 1],
       '"},',
-      '{"trait_type":"Left_Hand","value":"',
+      '{"trait_type":"Left Hand","value":"',
       leftHandTraits[uint64(uint8(traits >> 28)) - 1],
       '"},',
-      '{"trait_type":"Lower_Accessory","value":"',
+      '{"trait_type":"Lower Accessory","value":"',
       lowerTraits[uint64(uint8(traits >> 36) & 15) - 1],
       '"},',
-      '{"trait_type":"Oral_Fixation","value":"',
+      '{"trait_type":"Oral Fixation","value":"',
       oralTraits[uint64(uint8(traits >> 40) & 15) - 1],
       '"},',
       '{"trait_type":"Outfit","value":"',
       outfitTraits[uint64(uint8(traits >> 44)) - 1],
       '"},',
-      '{"trait_type":"Right_Hand","value":"',
+      '{"trait_type":"Right Hand","value":"',
       rightHandTraits[uint64(uint8(traits >> 52)) - 1],
       '"}',
       ']'
