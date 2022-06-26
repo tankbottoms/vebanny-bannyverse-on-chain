@@ -1,3 +1,6 @@
+/* eslint-disable dot-notation */
+/* eslint-disable prettier/prettier */
+/* eslint-disable node/no-missing-import */
 import { expect } from 'chai';
 import fs from 'fs';
 import * as path from 'path';

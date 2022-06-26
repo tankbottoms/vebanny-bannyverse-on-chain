@@ -333,6 +333,10 @@ abstract contract BannyCommonUtil {
         stack[8], // outfitContent
         stack[7], // oralContent
         stack[4], // headgearContent
+        /* 
+        (stack[5] == 'Nothing' && stack[9] == 'Nothing) || stack[1] == 'Nothing' 
+        // ensure that left and right are not occupied before allowing hands to be not Nothing
+        */
         stack[5], // leftHandContent
         stack[9], // rightHandContent
         stack[1] // handsContent
@@ -349,7 +353,7 @@ abstract contract BannyCommonUtil {
       '{"trait_type":"Body","value":"',
       bodyTraits[uint64(uint8(traits) & 15) - 1],
       '"},',
-      '{"trait_type":"Both_Hands","value":"',
+      '{"trait_type":"Both Hands","value":"',
       handsTraits[uint64(uint8(traits >> 4) & 15) - 1],
       '"},',
       '{"trait_type":"Choker","value":"',
@@ -361,19 +365,19 @@ abstract contract BannyCommonUtil {
       '{"trait_type":"Headgear","value":"',
       headgearTraits[uint64(uint8(traits >> 20)) - 1],
       '"},',
-      '{"trait_type":"Left_Hand","value":"',
+      '{"trait_type":"Left Hand","value":"',
       leftHandTraits[uint64(uint8(traits >> 28)) - 1],
       '"},',
-      '{"trait_type":"Lower_Accessory","value":"',
+      '{"trait_type":"Lower Accessory","value":"',
       lowerTraits[uint64(uint8(traits >> 36) & 15) - 1],
       '"},',
-      '{"trait_type":"Oral_Fixation","value":"',
+      '{"trait_type":"Oral Fixation","value":"',
       oralTraits[uint64(uint8(traits >> 40) & 15) - 1],
       '"},',
       '{"trait_type":"Outfit","value":"',
       outfitTraits[uint64(uint8(traits >> 44)) - 1],
       '"},',
-      '{"trait_type":"Right_Hand","value":"',
+      '{"trait_type":"Right Hand","value":"',
       rightHandTraits[uint64(uint8(traits >> 52)) - 1],
       '"}',
       ']'
