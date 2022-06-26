@@ -780,7 +780,7 @@
 <style>
 	@font-face {
 		font-family: Pixel;
-		src: url('/pixel_font/pixel\ font-7.ttf');
+		src: url('/pixel_font/pixel_on_chain.ttf');
 	}
 
 	text {
