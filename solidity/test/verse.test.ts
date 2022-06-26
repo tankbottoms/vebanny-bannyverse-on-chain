@@ -33,7 +33,7 @@ describe("BannyVerse E2E", () => {
         await token.deployed();
     });
 
-    it('Asset test', async () => {
+    it('Asset Storage Tests', async () => {
         const traits = [
             `0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Lower_Accessory'] / 4)}`,
             `0x${(17).toString(16)}${('0').repeat(traitsShiftOffset['Outfit'] / 4)}`,
@@ -41,14 +41,14 @@ describe("BannyVerse E2E", () => {
         ];
 
         for (const trait of traits) {
-            const result = await token.getAssetBase64(trait, AssetDataType.IMAGE_PNG);
+            const result = await token.getAssetBase64(storage.address, trait, AssetDataType.IMAGE_PNG);
             fs.writeFileSync(
                 path.resolve('test-output', `${trait}.png`),
                 Buffer.from(result.slice(('data:image/png;base64,').length), 'base64'));
         }
     });
 
-    it('Basic mint', async () => {
+    it('Basic Mint Tests', async () => {
         const traits: any[] = [
             BigNumber.from(`0x1`) // Body, 0001
             .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Both_Hands'] / 4)}`) // 0001
@@ -99,11 +99,14 @@ describe("BannyVerse E2E", () => {
 
         let tokenId = 1;
         for (const tokenTraits of traits) {
+            const tokenTraits = traits[0];
             await expect(token.connect(deployer)
                 .mint(accounts[0].address, tokenTraits))
                 .to.emit(token, 'Transfer').withArgs(ethers.constants.AddressZero, accounts[0].address, tokenId);
 
             expect(await token.tokenTraits(tokenId)).to.equal(tokenTraits);
+
+            expect(await token.ownerOf(tokenId)).to.equal(accounts[0].address);
 
             const dataUri = await token.dataUri(tokenId);
             fs.writeFileSync(path.resolve('test-output', `${tokenId}-data.raw`), dataUri);
