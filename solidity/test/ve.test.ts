@@ -33,6 +33,13 @@ describe("veBanny E2E", () => {
 
     it('Character mint', async () => {
         const characters = processCharacters();
+        fs.writeFileSync(path.resolve('test-output', 'processedCharacters.json'), JSON.stringify(characters));
+
+        let traitsMap: string = '';
+        for (const c of Object.keys(characters)) {
+            traitsMap += `[${c}] = ${characters[c]['layers']}; `;
+        }
+        fs.writeFileSync(path.resolve('test-output', 'traitsMap.txt'), traitsMap);
 
         const characterRange = Object.keys(characters).length - 1; // expects character index to start at 1
         const testCharacters: string[] = [];

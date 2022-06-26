@@ -16,9 +16,5 @@ interface IToken {
 
     function dataUri(uint256) external view returns (string memory);
 
-    function getAssetBase64(uint64, AssetDataType) external view returns (string memory);
-
     function withdrawEther() external;
-
-    function validateTraits(uint256 _traits) external pure returns (bool);
 }
