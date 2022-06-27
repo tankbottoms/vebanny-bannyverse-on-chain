@@ -244,15 +244,15 @@ abstract contract BannyCommonUtil {
     'Wakanda'
   ];
 
-    function validateTraits(uint256 _traits) external pure returns (bool) {
-        return false;
-    }
+  function validateTraits(uint256 _traits) external pure returns (bool) {
+    return false;
+  }
 
-  function getAssetBase64(IStorage assets, uint64 _assetId, AssetDataType _assetType)
-    public
-    view
-    returns (string memory)
-  {
+  function getAssetBase64(
+    IStorage assets,
+    uint64 _assetId,
+    AssetDataType _assetType
+  ) public view returns (string memory) {
     string memory prefix = '';
 
     if (_assetType == AssetDataType.AUDIO_MP3) {
@@ -266,7 +266,11 @@ abstract contract BannyCommonUtil {
     return string(abi.encodePacked(prefix, Base64.encode(assets.getAssetContentForId(_assetId))));
   }
 
-  function _getImageStack(IStorage assets, uint256 traits) internal view returns (string memory image) {
+  function _getImageStack(IStorage assets, uint256 traits)
+    internal
+    view
+    returns (string memory image)
+  {
     // BODY_TRAIT_OFFSET = 0; // uint4
     // HANDS_TRAIT_OFFSET = 4; // uint4
     // CHOKER_TRAIT_OFFSET = 8; // uint4
@@ -396,4 +400,4 @@ abstract contract BannyCommonUtil {
       )
     );
   }
-  }
+}
