@@ -315,6 +315,11 @@ export async function loadLayers(storage: any, deployer: SignerWithAddress) {
   }
 }
 
+export async function loadFont(storage: any, deployer: SignerWithAddress, fileName: string, id = '9223372036854775809') {
+    const fontData = path.resolve(__dirname, '..', '..', 'fonts', fileName);
+    await loadAsset(storage, deployer, fontData, id);
+}
+
 /**
  *
  * @param storage Storage contract.

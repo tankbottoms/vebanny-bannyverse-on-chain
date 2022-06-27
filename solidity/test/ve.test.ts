@@ -3,7 +3,7 @@ import fs from 'fs';
 import * as path from 'path';
 import { ethers } from 'hardhat';
 
-import { loadLayers, processCharacters } from './banny';
+import { loadFont, loadLayers, processCharacters } from './banny';
 
 describe("veBanny URI Resolver Tests", () => {
     let storage: any;
@@ -24,6 +24,7 @@ describe("veBanny URI Resolver Tests", () => {
         storage = await storageFactory.connect(deployer).deploy();
         await storage.deployed();
 
+        await loadFont(storage, deployer, 'Pixel Font-7-on-chain.woff', '9223372036854775809');
         await loadLayers(storage, deployer);
 
         const uriResolverFactory = await ethers.getContractFactory('JBVeTokenUriResolver');
