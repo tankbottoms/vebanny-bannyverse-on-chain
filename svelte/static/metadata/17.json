@@ -1,0 +1,75 @@
+{
+  "name": "Sakura Haruno",
+  "external_link": "",
+  "description": "Not everything is at it seems with this saccharine banny. Sakura, while charming and wily in her own rite, has some more layers to her than one might expect at first glance. Often overlooked, she has come into her own as a banny that can dictate the pace, and do so with remarkable ease and sophistication. Her pink hair and sweet demeanor belie a complexity not often seen nor appreciated, but when the going gets tough you always know she’ll have your back. Of late she’s been a bit forlorn, like most bannies who have lost their love interest— but will she find them again soon?",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Sakura Haruno"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Sakura Haruno"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Comms",
+      "value": 2
+    },
+    {
+      "trait_type": "Grind",
+      "value": 3
+    },
+    {
+      "trait_type": "Perception",
+      "value": 4
+    },
+    {
+      "trait_type": "Strength",
+      "value": 4
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 3
+    },
+    {
+      "trait_type": "Jbx Range",
+      "value": "7,000-7,999"
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 1000
+    }
+  ]
+}

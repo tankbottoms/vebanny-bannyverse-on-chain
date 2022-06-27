@@ -1,0 +1,79 @@
+{
+  "name": "Banny Stark",
+  "external_link": "",
+  "description": "A good-humored banny with a playboy lifestyle, this superhero banana loves nothing more than a night out after saving the world. Banny Stark, like so many superheroes before him, emerged from childhood trauma with the perseverance and drive to change the world. He’s jovial and witty and not without sarcasm, and it’s always best to stay on his good side. That said, like so many superhero bannies out there, he’s nothing without a nemesis. They say a new nemesis is emerging for him, straight from the Bannyverse. Can you guess who it is?",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "No Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Banny Stark"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Banny Stark"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 3
+    },
+    {
+      "trait_type": "Comms",
+      "value": 4
+    },
+    {
+      "trait_type": "Grind",
+      "value": 4
+    },
+    {
+      "trait_type": "Perception",
+      "value": 3
+    },
+    {
+      "trait_type": "Strength",
+      "value": 5
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 3
+    },
+    {
+      "trait_type": "Jbx Range",
+      "value": "500,000-599,999"
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 100000
+    }
+  ]
+}

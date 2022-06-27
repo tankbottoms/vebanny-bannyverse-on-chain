@@ -1,0 +1,71 @@
+{
+  "name": "Rose Bertin",
+  "external_link": "",
+  "description": "Nobody has an eye for style like Rose, the most fashion-conscious Banny. Whether strapless, trapeze or princess, there isn’t a type of dress she can’t design with the utmost care and skill. Her artistry and unmatched skill means she is in demand by only the most powerful Bannies in the universe, where she also crafts find hats and serves as an advisor to the powers that be. The hats she makes have crowned royalty, but don’t get it twisted— when the going gets tough, Rose knows how to get out of dodge. When the hammer falls, it’s not Rose’s head that gets smashed to bits— but whoever’s it is may just be wearing one of her hats.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Rose Bertin Hat"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Rose Bertin Dress"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Comms",
+      "value": 4
+    },
+    {
+      "trait_type": "Grind",
+      "value": 4
+    },
+    {
+      "trait_type": "Perception",
+      "value": 2
+    },
+    {
+      "trait_type": "Strength",
+      "value": 2
+    },
+    {
+      "trait_type": "Jbx Range",
+      "value": "700-799"
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 100
+    }
+  ]
+}

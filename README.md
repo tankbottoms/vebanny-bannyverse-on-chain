@@ -1,5 +1,11 @@
 # README
 
+The animation part can be seen on the fleek url: [https://black-lab-1027.on.fleek.co/?banny=20&lock=5](https://black-lab-1027.on.fleek.co/?banny=20&lock=5), change the search params as wanted. The lock periods are described below, basically 0 is the minimum of 1 week and 5 is the maximum of 4 years.
+
+The grid of bannies can be seen on the url on `/secret.html`, [https://black-lab-1027.on.fleek.co/secret.html](https://black-lab-1027.on.fleek.co/secret.html). Click on Banny to see asset pairings.
+
+The proposed backgrounds depending on lock period can be seen on `/backgrounds.html`, [https://black-lab-1027.on.fleek.co/backgrounds.html](https://black-lab-1027.on.fleek.co/backgrounds.html).
+
 ## Minimal layering page
 
 To see the layering of a Banny given it's index,
@@ -29,17 +35,17 @@ The JBX range is gotten from the metadata file.
 
 The Banny is created by using it's attributes from the metadata file.
 
-## Sanity check Bannies and tag incompatible assets
+## Sanity check Bannies and tag incompatible assets (i.e. the Banny Grid)
 
 TLDR;
 
 ```sh
-# In root of this project. Serve the assets over http.
-npm run dev
-# Then, in svelte part of the project
+# In svelte part of the project
 cd svelte
 npm run dev
 ```
+
+(NOTE: we were serving the assets over the root server, but to statically build for fleek I had to copy it into svelte.)
 
 - Go to `localhost:3000/secret` to see the grid of Bannies.
 - Click on a banny and end up on `localhost:3000/secret/{bannyIndex}` and click on the assets that are not working out.
@@ -47,11 +53,15 @@ npm run dev
 
 ## Metadata
 
-Create metadata folder with a file for each Banny defined in the `characters.json` by running `createMetadata.mjs`
+Create metadata folder with a file for each Banny defined in the `characters.json` by running `createMetadata.ts`
+
+(Make sure to install ts-node globally `npm install -g ts-node`)
 
 ```sh
-node createMetadata.mjs
+ts-node --esm createMetadata.mjs
 ```
+
+NOTE: `--esm` is necessary - someone who knows how to properly setup typescript for scripts... please help. I'm dying.
 
 NOTE: Thinking these won't actually be used in the tokenURI, but are here to crosscheck when we create the function to build up the tokenURI.
 

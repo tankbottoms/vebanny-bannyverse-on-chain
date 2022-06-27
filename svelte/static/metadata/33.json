@@ -1,0 +1,75 @@
+{
+  "name": "Naruto",
+  "external_link": "",
+  "description": "They say character spawns from tragedy, and Naruto will tell you that this must be so. Born out of the marriage of chaos and the innocence of childhood, this banana grew up in darkness, precluded from the violence trapped inside him. But like all great heroes, he turned those overripe bananas into a banana smoothie. He learned to harness his power and to bend its will toward the good and in need. And he developed a strong crush for Sakura, a Banny he seeks out at all costs.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "No Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Naruto"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Naruto"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 3
+    },
+    {
+      "trait_type": "Comms",
+      "value": 4
+    },
+    {
+      "trait_type": "Grind",
+      "value": 4
+    },
+    {
+      "trait_type": "Perception",
+      "value": 4
+    },
+    {
+      "trait_type": "Strength",
+      "value": 4
+    },
+    {
+      "trait_type": "Jbx Range",
+      "value": "60,000-69,999"
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 10000
+    }
+  ]
+}

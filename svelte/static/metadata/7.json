@@ -1,0 +1,75 @@
+{
+  "name": "Princess Peach Toadstool",
+  "external_link": "",
+  "description": "Ostensibly always in need of rescuing, Peach has a habit of finding herself in situations that can seem a bit overwhelming. But notice— each situation is met with a hero to save her, willing to die for her. One rescue we may chalk up to unexpected trauma. Two rescues? Bad luck, to be sure. But dozens? What in her personality is bringing about these constant kidnappings? Could it be that she’s just so sweet that no kidnapper can stay away? Or is her saccharine bubbly beauty nothing more than a honey pot, the mechanisms of which we have yet to figured out?",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Princess Peach Toadstool Face"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Princess Peach Toadstool"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Princess Peach Toadstool"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 1
+    },
+    {
+      "trait_type": "Comms",
+      "value": 5
+    },
+    {
+      "trait_type": "Grind",
+      "value": 3
+    },
+    {
+      "trait_type": "Perception",
+      "value": 3
+    },
+    {
+      "trait_type": "Strength",
+      "value": 2
+    },
+    {
+      "trait_type": "Jbx Range",
+      "value": "600-699"
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 100
+    }
+  ]
+}

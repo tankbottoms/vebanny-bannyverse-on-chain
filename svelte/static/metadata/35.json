@@ -1,0 +1,79 @@
+{
+  "name": "Agent J",
+  "external_link": "",
+  "description": "Finally, a fresh-faced banny who is ready to get some real work done! Agent J may not be the most experienced secret agent banana on the roster, but he’s gung-ho and ready to take down some bad guys and investigate some extraterrestrial mischief! He tries to be a good partner, even in the face of extreme sarcasm and resting bitch face. But he may occasionally lose his temper, and in the worst case will slap a fool.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Sunglasses"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Smoking"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 3
+    },
+    {
+      "trait_type": "Comms",
+      "value": 5
+    },
+    {
+      "trait_type": "Grind",
+      "value": 3
+    },
+    {
+      "trait_type": "Perception",
+      "value": 4
+    },
+    {
+      "trait_type": "Strength",
+      "value": 3
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 3
+    },
+    {
+      "trait_type": "Jbx Range",
+      "value": "80,000-89,999"
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 10000
+    }
+  ]
+}

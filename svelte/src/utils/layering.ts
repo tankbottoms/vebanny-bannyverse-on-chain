@@ -94,7 +94,7 @@ const attributes = [
   Which will be used to create the layered svg.
 */
 
-const baseUrl = 'http://localhost:5500';
+const baseUrl = '';
 const layerList = [
 	'Body',
 	'Both_Hands',
@@ -108,10 +108,23 @@ const layerList = [
 	'Right_Hand'
 ];
 
-type Layers = { [trait: string]: string; };
+export const layerOrdering = [
+	'Body',
+	'Face',
+	'Choker',
+	'Lower_Accessory',
+	'Outfit',
+	'Oral_Fixation',
+	'Headgear',
+	'Left_Hand',
+	'Right_Hand',
+	'Both_Hands'
+];
+
+type Layers = { [trait: string]: string };
 type Attributes = {
-    trait_type: string;
-    value: string;
+	trait_type: string;
+	value: string;
 }[];
 
 async function getMetadata(bannyIndex: number) {
@@ -133,9 +146,10 @@ function createLayersObjectFromAttributes(attributes: Attributes) {
 	return layers;
 }
 
-async function getLayeredSvg(layers: Layers) {
+export async function getLayeredSvg({ layers }: { layers: Layers }) {
 	let svgImageString = '';
-	for (const [key, value] of Object.entries(layers)) {
+	for (const key of layerOrdering) {
+    const value = layers[key];
 		if (!value) continue;
 		// TODO: This is where we need to get the png from the contract
 		// or like the blob data to pass to the file reader
@@ -157,7 +171,7 @@ async function getLayeredSvg(layers: Layers) {
 
 async function getLayeredSvgFromAttributes(attributes: Attributes) {
 	const layers = createLayersObjectFromAttributes(attributes);
-	return getLayeredSvg(layers);
+	return getLayeredSvg({ layers });
 }
 
 export async function getLayeredSvgFromBannyIndex(bannyIndex: number) {

@@ -1,0 +1,79 @@
+{
+  "name": "Smalls",
+  "external_link": "",
+  "description": "Smalls isn’t a banana that strikes you as remarkable at first glance, but that’s only because it takes him a while to come into his own. He’s a moderately tempered, mellow-headed banana that experienced many rites of passage to get where he is. He may not be the first banana you think of when you need a pinch hitter at the bottom of the ninth, but you can definitely count on him being there and having your back. He’s a good banana, at a time when that old childhood innocent fun-loving life is the exception, not the rule. Wholesome, whether in a bowl of cereal or on top of a 1950’s style banana split, Smalls brings you good times and comfort.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Green Cap"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Smalls"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 1
+    },
+    {
+      "trait_type": "Comms",
+      "value": 3
+    },
+    {
+      "trait_type": "Grind",
+      "value": 2
+    },
+    {
+      "trait_type": "Perception",
+      "value": 4
+    },
+    {
+      "trait_type": "Strength",
+      "value": 1
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 3
+    },
+    {
+      "trait_type": "Jbx Range",
+      "value": "8,000-8,999"
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 1000
+    }
+  ]
+}

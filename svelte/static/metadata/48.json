@@ -1,0 +1,79 @@
+{
+  "name": "Spock",
+  "external_link": "",
+  "description": "Calm, cool and collected, Spock doesn’t make his moves out of whim or anger. Rumored to be half-banana, half-plantain, he is a cool player who does SWOT analyses about which cereal to buy for breakfast. He may not have the most bubbly or energetic personality, but when you need answers that don’t play to your emotions, Spock is your banana. Other bannies are known to seek out Spock for his excellent conflict mediation skills, but what they don’t know is that Spock’s memory is second to none. As a banana who knows everyone’s dirty laundry, his bad side is an inopportune place for you to end up on.",
+  "attributes": [
+    {
+      "trait_type": "Body",
+      "value": "Yellow"
+    },
+    {
+      "trait_type": "Both Hands",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Choker",
+      "value": "Choker"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Eye Mouth"
+    },
+    {
+      "trait_type": "Headgear",
+      "value": "Spock"
+    },
+    {
+      "trait_type": "Left Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Lower Accessory",
+      "value": "Black Shoes"
+    },
+    {
+      "trait_type": "Oral Fixation",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Outfit",
+      "value": "Spock"
+    },
+    {
+      "trait_type": "Right Hand",
+      "value": "Nothing"
+    },
+    {
+      "trait_type": "Arcana",
+      "value": 3
+    },
+    {
+      "trait_type": "Comms",
+      "value": 3
+    },
+    {
+      "trait_type": "Grind",
+      "value": 4
+    },
+    {
+      "trait_type": "Perception",
+      "value": 4
+    },
+    {
+      "trait_type": "Strength",
+      "value": 3
+    },
+    {
+      "trait_type": "Shadowiness",
+      "value": 5
+    },
+    {
+      "trait_type": "Jbx Range",
+      "value": "3,000,000-3,999,999"
+    },
+    {
+      "trait_type": "Range Width",
+      "value": 1000000
+    }
+  ]
+}
