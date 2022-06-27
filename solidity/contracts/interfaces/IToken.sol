@@ -14,7 +14,5 @@ interface IToken {
 
     function removeMinter(address) external;
 
-    function dataUri(uint256) external view returns (string memory);
-
     function withdrawEther() external;
 }

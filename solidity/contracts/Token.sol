@@ -75,7 +75,7 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl, Bann
     super.safeTransferFrom(_from, _to, _tokenId, _data);
   }
 
-  function dataUri(uint256 _tokenId) public view override returns (string memory) {
+  function dataUri(uint256 _tokenId) internal view returns (string memory) {
     uint256 traits = tokenTraits[_tokenId];
 
     string memory json = Base64.encode(
