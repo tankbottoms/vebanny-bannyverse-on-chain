@@ -1,6 +1,3 @@
-/* eslint-disable dot-notation */
-/* eslint-disable prettier/prettier */
-/* eslint-disable node/no-missing-import */
 import { expect } from 'chai';
 import fs from 'fs';
 import * as path from 'path';
@@ -10,7 +7,7 @@ import { BigNumber } from 'ethers';
 import { loadLayers, traitsShiftOffset } from './banny';
 import { AssetDataType } from './types';
 
-describe("BannyVerse E2E", () => {
+describe('BannyVerse Tests', () => {
     let storage: any;
     let token: any;
     let deployer: any;
@@ -102,7 +99,7 @@ describe("BannyVerse E2E", () => {
 
         let tokenId = 1;
         for (const tokenTraits of traits) {
-            const tokenTraits = traits[0];
+            // const tokenTraits = traits[0];
             await expect(token.connect(deployer)
                 .mint(accounts[0].address, tokenTraits))
                 .to.emit(token, 'Transfer').withArgs(ethers.constants.AddressZero, accounts[0].address, tokenId);
@@ -111,17 +108,43 @@ describe("BannyVerse E2E", () => {
 
             expect(await token.ownerOf(tokenId)).to.equal(accounts[0].address);
 
-            const dataUri = await token.dataUri(tokenId);
+            const dataUri = await token.tokenURI(tokenId);
             fs.writeFileSync(path.resolve('test-output', `${tokenId}-data.raw`), dataUri);
 
-            const decoded = Buffer.from(dataUri.slice(('data:application/json;base64,').length), 'base64').toString();
+            let decoded = Buffer.from(dataUri.slice(('data:application/json;base64,').length), 'base64').toString();
             fs.writeFileSync(path.resolve('test-output', `${tokenId}-2.json`), decoded);
 
-            const decodedJson = JSON.parse(decoded.toString());
-            const imageData = Buffer.from(decodedJson['image'].slice(decodedJson['image'].indexOf(',') + 1), 'base64').toString();
+            let decodedJson = JSON.parse(decoded.toString());
+            let imageData = Buffer.from(decodedJson['image'].slice(decodedJson['image'].indexOf(',') + 1), 'base64').toString();
             fs.writeFileSync(path.resolve('test-output', `${tokenId}-3.svg`), imageData);
 
             tokenId++;
         }
+    });
+
+    it('Permissions Tests', async () => {
+        await token.connect(deployer).addMinter(accounts[0].address);
+        await token.connect(deployer).removeMinter(accounts[0].address);
+
+        await token.connect(deployer).withdrawEther();
+    });
+
+    it('supportsInterface() Test', async () => {
+        await token.supportsInterface('0x00000001');
+    });
+
+    it('Contract Metadata Tests', async () => {
+        await expect(token.connect(deployer).setContractURI('')).to.be.revertedWith('ARGUMENT_EMPTY("_uri")');
+        await token.connect(deployer).setContractURI('ipfs://metadata.json');
+
+        expect(await token.contractURI()).to.equal('ipfs://metadata.json');
+    });
+
+    it('Transfer Tests', async () => {
+        await token.connect(accounts[0]).transferFrom(accounts[0].address, accounts[1].address, 1);
+
+        await token.connect(accounts[1])['safeTransferFrom(address,address,uint256)'](accounts[1].address, accounts[0].address, 1);
+
+        await token.connect(accounts[0])['safeTransferFrom(address,address,uint256,bytes)'](accounts[0].address, accounts[1].address, 1, '0x00');
     });
 });
