@@ -33,6 +33,7 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl, Bann
     assets = _assets;
 
     _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
+    _grantRole(MINTER_ROLE, msg.sender);
   }
 
   //*********************************************************************//
