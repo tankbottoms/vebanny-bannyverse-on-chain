@@ -126,7 +126,9 @@ contract JBVeTokenUriResolver is IJBVeTokenUriResolver, Ownable, BannyCommonUtil
     uint256, // _lockedUntil
     uint256[] memory _lockDurationOptions
   ) public view override returns (string memory) {
-    uint16 tokenTranslation = uint16((_getTokenRange(_amount) * 5 + _getTokenStakeMultiplier(_duration, _lockDurationOptions)) % 61);
+    uint16 tokenTranslation = uint16(
+      (_getTokenRange(_amount) * 5 + _getTokenStakeMultiplier(_duration, _lockDurationOptions)) % 61
+    );
     uint256 traits = tokenTraits[tokenTranslation];
 
     string memory json = Base64.encode(
@@ -146,7 +148,11 @@ contract JBVeTokenUriResolver is IJBVeTokenUriResolver, Ownable, BannyCommonUtil
     return string(abi.encodePacked('data:application/json;base64,', json));
   }
 
-  function _getFramedImage(uint256 _traits, uint256 _duration) internal view returns (string memory image) {
+  function _getFramedImage(uint256 _traits, uint256 _duration)
+    internal
+    view
+    returns (string memory image)
+  {
     uint256 dayDuration = _duration / 86_400;
     uint256 weekDuration = dayDuration / 7;
     uint256 yearDuration = weekDuration / 52;
@@ -154,21 +160,20 @@ contract JBVeTokenUriResolver is IJBVeTokenUriResolver, Ownable, BannyCommonUtil
     uint256 numericDuration;
     string memory durationTextLabel;
     if (yearDuration > 0) {
-        durationTextLabel = 'YEARS';
-        numericDuration = yearDuration;
+      durationTextLabel = 'YEARS';
+      numericDuration = yearDuration;
     } else if (dayDuration > 0) {
-        durationTextLabel = 'DAYS';
-        numericDuration = dayDuration;
+      durationTextLabel = 'DAYS';
+      numericDuration = dayDuration;
     } else if (weekDuration > 0) {
-        durationTextLabel = 'WEEKS';
-        numericDuration = weekDuration;
+      durationTextLabel = 'WEEKS';
+      numericDuration = weekDuration;
     }
 
     image = Base64.encode(
       abi.encodePacked(
         '<svg id="token" width="300" height="300" viewBox="0 0 1080 1080" fill="none" xmlns="http://www.w3.org/2000/svg"> <defs><radialGradient id="paint0_radial_772_22716" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(540.094 539.992) rotate(90) scale(539.413)"><stop stop-color="#B4B4B4" /><stop offset="1" /></radialGradient><path id="textPathBottom" d="M 540 540 m -450,0 a 450,450 0 1,0 900,0"/><path id="textPathTop" d="M 540 540 m -450,0 a 450,450 0 1,1 900,0" /><style>@font-face{font-family:"Pixel Font-7-on-chain";src:url(data:application/font-woff;charset=utf-8;base64,',
-        getAssetBase64(assets, uint64(9223372036854775809), AssetDataType.RAW_DATA)
-        ,
+        getAssetBase64(assets, uint64(9223372036854775809), AssetDataType.RAW_DATA),
         ') format("woff");font-weight:normal;font-style:normal;}</style></defs><circle cx="540.094" cy="539.992" r="539.413" fill="url(#paint0_radial_772_22716)"/><g id="bannyPlaceholder">',
         _getImageStack(assets, _traits),
         '</g><text font-family="Pixel Font-7-on-chain" font-size="90" fill="white" text-anchor="middle" x="700" dominant-baseline="mathematical"><textPath id="topText" href="#textPathTop">',
