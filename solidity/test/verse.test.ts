@@ -98,8 +98,8 @@ describe('BannyVerse Tests', () => {
         await token.connect(deployer).addMinter(deployer.address);
 
         let tokenId = 1;
-        for (const tokenTraits of traits) {
-            // const tokenTraits = traits[0];
+        // for (const tokenTraits of traits) {
+            const tokenTraits = traits[0];
             await expect(token.connect(deployer)
                 .mint(accounts[0].address, tokenTraits))
                 .to.emit(token, 'Transfer').withArgs(ethers.constants.AddressZero, accounts[0].address, tokenId);
@@ -119,7 +119,7 @@ describe('BannyVerse Tests', () => {
             fs.writeFileSync(path.resolve('test-output', `${tokenId}-3.svg`), imageData);
 
             tokenId++;
-        }
+        // }
     });
 
     it('Permissions Tests', async () => {
