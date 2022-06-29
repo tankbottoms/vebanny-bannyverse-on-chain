@@ -81,8 +81,8 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl, Bann
 
     // special case Rick
     // traits == 5666264788816401
-    // else 
-    string memory json = Base64.encode(      
+    // else
+    string memory json = Base64.encode(
       abi.encodePacked(
         '{"name": "',
         name,
@@ -93,7 +93,8 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl, Bann
         '", "attributes":',
         _getTokenTraits(traits),
         '}'
-      ));
+      )
+    );
     return string(abi.encodePacked('data:application/json;base64,', json));
   }
 
@@ -109,13 +110,15 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl, Bann
     return super.supportsInterface(_interfaceId);
   }
 
-//   function validateTraits(uint256 _traits) public pure override returns (bool valid) {
-//     if (_traits == 0) {
-//       return false;
-//     }
+  /*
+  function validateTraits(uint256 _traits) public pure override returns (bool valid) {
+    if (_traits == 0) {
+      return false;
+    }
 
-//     valid = true;
-//   }
+    valid = true;
+  }
+  */
 
   //*********************************************************************//
   // ---------------------- Privileged Operations ---------------------- //
