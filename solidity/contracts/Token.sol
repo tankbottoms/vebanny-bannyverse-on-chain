@@ -2,8 +2,9 @@
 pragma solidity ^0.8.6;
 
 import '@openzeppelin/contracts/access/AccessControl.sol';
-import '@openzeppelin/contracts/utils/Strings.sol';
 import '@openzeppelin/contracts/security/ReentrancyGuard.sol';
+import '@openzeppelin/contracts/utils/Strings.sol';
+import '@openzeppelin/contracts/utils/cryptography/MerkleProof.sol';
 
 import './libraries/Base64.sol';
 import './libraries/ERC721Enumerable.sol';
@@ -12,6 +13,8 @@ import './interfaces/IStorage.sol';
 import './BannyCommonUtil.sol';
 
 error ARGUMENT_EMPTY(string);
+error INVALID_PROOF();
+error CLAIMS_EXHAUSTED();
 
 contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl, BannyCommonUtil {
   bytes32 public constant MINTER_ROLE = keccak256('MINTER_ROLE');
@@ -25,12 +28,21 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl, Bann
 
   string public contractMetadataURI;
 
+  bytes32 public immutable merkleRoot;
+
+  /**
+    @notice Maps address to number of merkle claims that were executed.
+    */
+  mapping(address => uint256) public claimedMerkleAllowance;
+
   constructor(
     IStorage _assets,
+    bytes32 _merkleRoot,
     string memory _name,
     string memory _symbol
   ) ERC721Enumerable(_name, _symbol) {
     assets = _assets;
+    merkleRoot = _merkleRoot;
 
     _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
     _grantRole(MINTER_ROLE, msg.sender);
@@ -94,6 +106,36 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl, Bann
     );
 
     return string(abi.encodePacked('data:application/json;base64,', json));
+  }
+
+  /**
+    @notice Allows minting by anyone in the merkle root of the registered price resolver.
+    */
+  function merkleMint(
+    uint256 _index,
+    uint256 _allowance,
+    bytes32[] calldata _proof,
+    uint256 _traits
+  ) external override nonReentrant returns (uint256 tokenId) {
+    bytes32 node = keccak256(abi.encodePacked(_index, msg.sender, _allowance));
+
+    if (!MerkleProof.verify(_proof, merkleRoot, node)) {
+      revert INVALID_PROOF();
+    }
+
+    if (_allowance - claimedMerkleAllowance[msg.sender] == 0) {
+        revert CLAIMS_EXHAUSTED();
+    } else {
+        ++claimedMerkleAllowance[msg.sender];
+    }
+
+    tokenId = totalSupply() + 1;
+
+    tokenTraits[tokenId] = _traits;
+
+    _beforeTokenTransfer(address(0), msg.sender, tokenId);
+
+    _mint(msg.sender, tokenId);
   }
 
   /**
