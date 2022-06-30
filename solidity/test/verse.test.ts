@@ -6,12 +6,29 @@ import { BigNumber } from 'ethers';
 
 import { loadLayers, traitsShiftOffset } from './banny';
 import { AssetDataType } from './types';
+import * as MerkleHelper from './components/MerkleHelper';
 
 describe('BannyVerse Tests', () => {
     let storage: any;
     let token: any;
     let deployer: any;
     let accounts: any[];
+    let merkleToken: any;
+    let merkleSnapshot: { [key: string]: number };
+    let merkleData: any;
+
+    const merkleAddressOffset = 2;
+
+    const basicBananaTraits = BigNumber.from(`0x1`) // Body, 0001
+        .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Both_Hands'] / 4)}`) // 0001
+        .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Choker'] / 4)}`) // 0001
+        .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Face'] / 4)}`) // 00000001
+        .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Headgear'] / 4)}`) // 00000001
+        .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Left_Hand'] / 4)}`) // 00000001
+        .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Lower_Accessory'] / 4)}`) // 0001
+        .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Oral_Fixation'] / 4)}`) // 0001
+        .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Outfit'] / 4)}`) // 00000001
+        .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Right_Hand'] / 4)}`); // 1
 
     before(() => {
         if (!fs.existsSync('test-output')) {
@@ -28,9 +45,19 @@ describe('BannyVerse Tests', () => {
 
         await loadLayers(storage, deployer);
 
+        const merkleRoot = '0x0000000000000000000000000000000000000000000000000000000000000000';
         const tokenFactory = await ethers.getContractFactory('Token');
-        token = await tokenFactory.connect(deployer).deploy(storage.address, 'Banana', 'NANA');
+        token = await tokenFactory.connect(deployer).deploy(storage.address, merkleRoot, 'Banana', 'NANA');
         await token.deployed();
+    });
+
+    before(async () => {
+        merkleSnapshot = MerkleHelper.makeSampleSnapshot(accounts.filter((a, i) => i >= merkleAddressOffset).map(a => a.address));
+        merkleData = MerkleHelper.buildMerkleTree(merkleSnapshot);
+
+        const tokenFactory = await ethers.getContractFactory('Token');
+        merkleToken = await tokenFactory.connect(deployer).deploy(storage.address, merkleData.merkleRoot, 'Banana', 'NANA');
+        await merkleToken.deployed();
     });
 
     it('Asset Storage Tests', async () => {
@@ -50,16 +77,7 @@ describe('BannyVerse Tests', () => {
 
     it('Basic Mint Tests', async () => {
         const traits: any[] = [
-            BigNumber.from(`0x1`) // Body, 0001
-            .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Both_Hands'] / 4)}`) // 0001
-            .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Choker'] / 4)}`) // 0001
-            .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Face'] / 4)}`) // 00000001
-            .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Headgear'] / 4)}`) // 00000001
-            .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Left_Hand'] / 4)}`) // 00000001
-            .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Lower_Accessory'] / 4)}`) // 0001
-            .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Oral_Fixation'] / 4)}`) // 0001
-            .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Outfit'] / 4)}`) // 00000001
-            .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Right_Hand'] / 4)}`), // 1
+            basicBananaTraits,
 
             BigNumber.from(`0x2`)
             .add(`0x${(2).toString(16)}${('0').repeat(traitsShiftOffset['Both_Hands'] / 4)}`)
@@ -94,8 +112,6 @@ describe('BannyVerse Tests', () => {
             .add(`0x${(8).toString(16)}${('0').repeat(traitsShiftOffset['Outfit'] / 4)}`)
             .add(`0x${(3).toString(16)}${('0').repeat(traitsShiftOffset['Right_Hand'] / 4)}`),
         ];
-
-        await token.connect(deployer).addMinter(deployer.address);
 
         let tokenId = 1;
         // for (const tokenTraits of traits) {
@@ -147,4 +163,34 @@ describe('BannyVerse Tests', () => {
 
         await token.connect(accounts[0])['safeTransferFrom(address,address,uint256,bytes)'](accounts[0].address, accounts[1].address, 1, '0x00');
     });
+
+    it('Merkle Mint Tests', async () => {
+        const merkleAccount = accounts[merkleAddressOffset + 1];
+        const merkleItem = merkleData.claims[merkleAccount.address];
+
+        for (let i = 0; i < merkleItem.data; i++) {
+            const tokenId = Number(await merkleToken.totalSupply()) + 1;
+
+            await expect(merkleToken.connect(merkleAccount)
+                .merkleMint(merkleItem.index, merkleItem.data, merkleItem.proof, basicBananaTraits))
+                .to.emit(merkleToken, 'Transfer').withArgs(ethers.constants.AddressZero, merkleAccount.address, tokenId);
+
+            expect(await merkleToken.tokenTraits(tokenId)).to.equal(basicBananaTraits);
+            expect(await merkleToken.ownerOf(tokenId)).to.equal(merkleAccount.address);
+        }
+
+        await expect(merkleToken.connect(merkleAccount)
+            .merkleMint(merkleItem.index, merkleItem.data, merkleItem.proof, basicBananaTraits))
+            .to.be.revertedWith('CLAIMS_EXHAUSTED()');
+
+        expect(await merkleToken.balanceOf(merkleAccount.address)).to.equal(merkleItem.data);
+
+        await expect(merkleToken.connect(deployer)
+            .merkleMint(merkleItem.index, merkleItem.data, merkleItem.proof, basicBananaTraits))
+            .to.be.revertedWith('INVALID_PROOF()');
+
+        await expect(merkleToken.connect(accounts[0])
+            .merkleMint(merkleItem.index, merkleItem.data, merkleItem.proof, basicBananaTraits))
+            .to.be.revertedWith('INVALID_PROOF()');
+    }); 
 });
