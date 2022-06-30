@@ -89,22 +89,6 @@ contract JBVeTokenUriResolver is IJBVeTokenUriResolver, Ownable, BannyCommonUtil
     tokenTraits[58] = 18261857628328465;
     tokenTraits[59] = 4874341494821137;
     tokenTraits[60] = 4926980593054225;
-    tokenTraits[61] = 4522360314044945;
-    tokenTraits[62] = 5507522789118481;
-    tokenTraits[63] = 82086308641509905;
-    tokenTraits[64] = 5542707163304465;
-    tokenTraits[65] = 5560299290629137;
-    tokenTraits[66] = 5577891476714001;
-    tokenTraits[67] = 86642684769387025;
-    tokenTraits[68] = 5577891476718097;
-    tokenTraits[69] = 90090753293816337;
-    tokenTraits[70] = 5595486139453969;
-    tokenTraits[71] = 5613075910627857;
-    tokenTraits[72] = 4522360314008085;
-    tokenTraits[73] = 5630668097720849;
-    tokenTraits[74] = 5648262969168401;
-    tokenTraits[75] = 5666264788816401;
-    tokenTraits[76] = 5683444592939537;
   }
 
   /**
