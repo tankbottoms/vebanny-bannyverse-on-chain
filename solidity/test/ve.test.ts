@@ -33,7 +33,13 @@ describe("veBanny URI Resolver Tests", () => {
         await loadFile(storage, deployer, ['..', '..', 'fonts', 'Pixel Font-7-on-chain.woff'], '9223372036854775809');
         await loadLayers(storage, deployer);
 
-        const uriResolverFactory = await ethers.getContractFactory('JBVeTokenUriResolver');
+        const bannyCommonUtilFactory = await ethers.getContractFactory('BannyCommonUtil', deployer);
+        const bannyCommonUtilLibrary = await bannyCommonUtilFactory.connect(deployer).deploy();
+
+        const uriResolverFactory = await ethers.getContractFactory('JBVeTokenUriResolver', {
+            libraries: { BannyCommonUtil: bannyCommonUtilLibrary.address },
+            signer: deployer
+        });
         uriResolver = await uriResolverFactory.connect(deployer).deploy(storage.address, 'Escrow Banana', 'ipfs://metadata');
         await uriResolver.deployed();
 

@@ -45,8 +45,14 @@ describe('BannyVerse Tests', () => {
 
         await loadLayers(storage, deployer);
 
+        const bannyCommonUtilFactory = await ethers.getContractFactory('BannyCommonUtil', deployer);
+        const bannyCommonUtilLibrary = await bannyCommonUtilFactory.connect(deployer).deploy();
+
         const merkleRoot = '0x0000000000000000000000000000000000000000000000000000000000000000';
-        const tokenFactory = await ethers.getContractFactory('Token');
+        const tokenFactory = await ethers.getContractFactory('Token', {
+            libraries: { BannyCommonUtil: bannyCommonUtilLibrary.address },
+            signer: deployer
+        });
         token = await tokenFactory.connect(deployer).deploy(storage.address, merkleRoot, 'Banana', 'NANA');
         await token.deployed();
     });
@@ -55,24 +61,15 @@ describe('BannyVerse Tests', () => {
         merkleSnapshot = MerkleHelper.makeSampleSnapshot(accounts.filter((a, i) => i >= merkleAddressOffset).map(a => a.address));
         merkleData = MerkleHelper.buildMerkleTree(merkleSnapshot);
 
-        const tokenFactory = await ethers.getContractFactory('Token');
+        const bannyCommonUtilFactory = await ethers.getContractFactory('BannyCommonUtil', deployer);
+        const bannyCommonUtilLibrary = await bannyCommonUtilFactory.connect(deployer).deploy();
+
+        const tokenFactory = await ethers.getContractFactory('Token', {
+            libraries: { BannyCommonUtil: bannyCommonUtilLibrary.address },
+            signer: deployer
+        });
         merkleToken = await tokenFactory.connect(deployer).deploy(storage.address, merkleData.merkleRoot, 'Banana', 'NANA');
         await merkleToken.deployed();
-    });
-
-    it('Asset Storage Tests', async () => {
-        const traits = [
-            `0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Lower_Accessory'] / 4)}`,
-            `0x${(17).toString(16)}${('0').repeat(traitsShiftOffset['Outfit'] / 4)}`,
-            `0x${(2).toString(16)}${('0').repeat(traitsShiftOffset['Right_Hand'] / 4)}`
-        ];
-
-        for (const trait of traits) {
-            const result = await token.getAssetBase64(storage.address, trait, AssetDataType.IMAGE_PNG);
-            fs.writeFileSync(
-                path.resolve('test-output', `${trait}.png`),
-                Buffer.from(result.slice(('data:image/png;base64,').length), 'base64'));
-        }
     });
 
     it('Basic Mint Tests', async () => {

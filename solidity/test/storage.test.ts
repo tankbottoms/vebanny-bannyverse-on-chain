@@ -36,6 +36,12 @@ describe('Banny Asset Storage Tests', () => {
         cumulativeGas = cumulativeGas.add(gas);
     });
 
+    it('Load audio assets', async () => {
+        const gas = await loadFile(storage, deployer, ['..', '..', 'audio', 'roll15.mp3'], '9223372036854775810');
+        console.log(`total gas: ${gas.toString()}`);
+        cumulativeGas = cumulativeGas.add(gas);
+    });
+
     it('Cumulative Gas', async () => {
         console.log(`cumulative gas ${cumulativeGas.toString()}`)
     });
