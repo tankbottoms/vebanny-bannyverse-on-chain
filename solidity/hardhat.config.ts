@@ -5,6 +5,7 @@ import "@nomiclabs/hardhat-etherscan";
 import "@nomiclabs/hardhat-waffle";
 import "@typechain/hardhat";
 import "hardhat-gas-reporter";
+import 'hardhat-contract-sizer';
 import "solidity-coverage";
 
 dotenv.config();
@@ -39,10 +40,18 @@ const config: HardhatUserConfig = {
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
   },
+  contractSizer: {
+    alphaSort: true,
+    disambiguatePaths: false,
+    runOnCompile: true,
+    strict: false,
+    only: ['Token', 'Storage'],
+  },
   gasReporter: {
     enabled: true, // process.env.REPORT_GAS !== undefined,
-    currency: "USD",
-    showTimeSpent: true,
+    currency: 'USD',
+    gasPrice: 30,
+    showTimeSpent: true
   },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY,
