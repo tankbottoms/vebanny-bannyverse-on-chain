@@ -5,6 +5,7 @@ import '@openzeppelin/contracts/access/Ownable.sol';
 import '@openzeppelin/contracts/utils/Strings.sol';
 
 import './libraries/Base64.sol';
+import './interfaces/IBannyCommonUtil.sol';
 import './interfaces/IJBVeTokenUriResolver.sol';
 import './BannyCommonUtil.sol';
 import './enums/AssetDataType.sol';
@@ -17,16 +18,22 @@ import './enums/AssetDataType.sol';
 contract JBVeTokenUriResolver is IJBVeTokenUriResolver, Ownable {
   string public override contractURI;
   IStorage public assets;
+  IBannyCommonUtil private bannyUtil;
   string public name;
 
   constructor(
     IStorage _assets,
+    IBannyCommonUtil _bannyUtil,
+    address _admin,
     string memory _name,
     string memory _contractURI
   ) {
     assets = _assets;
+    bannyUtil = _bannyUtil;
     name = _name;
     contractURI = _contractURI;
+
+    _transferOwnership(_admin);
   }
 
   /**
@@ -51,7 +58,7 @@ contract JBVeTokenUriResolver is IJBVeTokenUriResolver, Ownable {
     uint16 tokenTranslation = uint16(
       (_getTokenRange(_amount) * 5 + _getTokenStakeMultiplier(_duration, _lockDurationOptions)) % 61
     );
-    uint256 traits = BannyCommonUtil.getIndexedTokenTraits(tokenTranslation);
+    uint256 traits = bannyUtil.getIndexedTokenTraits(tokenTranslation);
 
     string memory json = Base64.encode(
       abi.encodePacked(
@@ -62,7 +69,7 @@ contract JBVeTokenUriResolver is IJBVeTokenUriResolver, Ownable {
         '", "description": "Fully on-chain NFT", "image": "data:image/svg+xml;base64,',
         _getFramedImage(traits, _duration),
         '", "attributes":',
-        BannyCommonUtil.getTokenTraits(traits),
+        bannyUtil.getTokenTraits(traits),
         '}'
       )
     );
@@ -95,9 +102,9 @@ contract JBVeTokenUriResolver is IJBVeTokenUriResolver, Ownable {
     image = Base64.encode(
       abi.encodePacked(
         '<svg id="token" width="300" height="300" viewBox="0 0 1080 1080" fill="none" xmlns="http://www.w3.org/2000/svg"> <defs><radialGradient id="paint0_radial_772_22716" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(540.094 539.992) rotate(90) scale(539.413)"><stop stop-color="#B4B4B4" /><stop offset="1" /></radialGradient><path id="textPathBottom" d="M 540 540 m -450,0 a 450,450 0 1,0 900,0"/><path id="textPathTop" d="M 540 540 m -450,0 a 450,450 0 1,1 900,0" /><style>@font-face{font-family:"Pixel Font-7-on-chain";src:url(data:application/font-woff;charset=utf-8;base64,',
-        BannyCommonUtil.getAssetBase64(assets, uint64(9223372036854775809), AssetDataType.RAW_DATA),
+        bannyUtil.getAssetBase64(assets, uint64(9223372036854775809), AssetDataType.RAW_DATA),
         ') format("woff");font-weight:normal;font-style:normal;}</style></defs><circle cx="540.094" cy="539.992" r="539.413" fill="url(#paint0_radial_772_22716)"/><g id="bannyPlaceholder">',
-        BannyCommonUtil.getImageStack(assets, _traits),
+        bannyUtil.getImageStack(assets, _traits),
         '</g><text font-family="Pixel Font-7-on-chain" font-size="90" fill="white" text-anchor="middle" x="700" dominant-baseline="mathematical"><textPath id="topText" href="#textPathTop">',
         Strings.toString(numericDuration),
         ' ',

@@ -20,7 +20,7 @@ describe('Banny Asset Storage Tests', () => {
         [deployer, ...accounts] = await ethers.getSigners();
 
         const storageFactory = await ethers.getContractFactory('Storage');
-        storage = await storageFactory.connect(deployer).deploy();
+        storage = await storageFactory.connect(deployer).deploy(deployer.address);
         await storage.deployed();
     });
 

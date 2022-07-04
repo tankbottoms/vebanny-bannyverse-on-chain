@@ -342,9 +342,7 @@ export async function loadAsset(
   let sliceKey = '0x' + Buffer.from(uuid4(), 'utf-8').toString('hex').slice(-64);
   let tx: TransactionResponse = await storage
     .connect(signer)
-    .createAsset(assetId, sliceKey, assetParts.parts[0], assetParts.length, {
-      gasLimit: 5_000_000,
-    });
+    .createAsset(assetId, sliceKey, assetParts.parts[0], assetParts.length, { gasLimit: 5_000_000 });
   const receipt = await tx.wait();
   let gas = BigNumber.from(receipt.gasUsed);
 

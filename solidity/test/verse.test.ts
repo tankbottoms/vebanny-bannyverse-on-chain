@@ -40,20 +40,18 @@ describe('BannyVerse Tests', () => {
         [deployer, ...accounts] = await ethers.getSigners();
 
         const storageFactory = await ethers.getContractFactory('Storage');
-        storage = await storageFactory.connect(deployer).deploy();
+        storage = await storageFactory.connect(deployer).deploy(deployer.address);
         await storage.deployed();
 
         await loadLayers(storage, deployer);
 
         const bannyCommonUtilFactory = await ethers.getContractFactory('BannyCommonUtil', deployer);
         const bannyCommonUtilLibrary = await bannyCommonUtilFactory.connect(deployer).deploy();
+        await bannyCommonUtilLibrary.deployed();
 
         const merkleRoot = '0x0000000000000000000000000000000000000000000000000000000000000000';
-        const tokenFactory = await ethers.getContractFactory('Token', {
-            libraries: { BannyCommonUtil: bannyCommonUtilLibrary.address },
-            signer: deployer
-        });
-        token = await tokenFactory.connect(deployer).deploy(storage.address, merkleRoot, 'Banana', 'NANA');
+        const tokenFactory = await ethers.getContractFactory('Token');
+        token = await tokenFactory.connect(deployer).deploy(storage.address, bannyCommonUtilLibrary.address, deployer.address, merkleRoot, 'Banana', 'NANA');
         await token.deployed();
     });
 
@@ -63,12 +61,10 @@ describe('BannyVerse Tests', () => {
 
         const bannyCommonUtilFactory = await ethers.getContractFactory('BannyCommonUtil', deployer);
         const bannyCommonUtilLibrary = await bannyCommonUtilFactory.connect(deployer).deploy();
+        await bannyCommonUtilLibrary.deployed();
 
-        const tokenFactory = await ethers.getContractFactory('Token', {
-            libraries: { BannyCommonUtil: bannyCommonUtilLibrary.address },
-            signer: deployer
-        });
-        merkleToken = await tokenFactory.connect(deployer).deploy(storage.address, merkleData.merkleRoot, 'Banana', 'NANA');
+        const tokenFactory = await ethers.getContractFactory('Token');
+        merkleToken = await tokenFactory.connect(deployer).deploy(storage.address, bannyCommonUtilLibrary.address, deployer.address, merkleData.merkleRoot, 'Banana', 'NANA');
         await merkleToken.deployed();
     });
 

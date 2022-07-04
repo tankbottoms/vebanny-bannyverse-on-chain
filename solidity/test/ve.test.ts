@@ -27,7 +27,7 @@ describe("veBanny URI Resolver Tests", () => {
         [deployer, ...accounts] = await ethers.getSigners();
 
         const storageFactory = await ethers.getContractFactory('Storage');
-        storage = await storageFactory.connect(deployer).deploy();
+        storage = await storageFactory.connect(deployer).deploy(deployer.address);
         await storage.deployed();
 
         await loadFile(storage, deployer, ['..', '..', 'fonts', 'Pixel Font-7-on-chain.woff'], '9223372036854775809');
@@ -35,12 +35,10 @@ describe("veBanny URI Resolver Tests", () => {
 
         const bannyCommonUtilFactory = await ethers.getContractFactory('BannyCommonUtil', deployer);
         const bannyCommonUtilLibrary = await bannyCommonUtilFactory.connect(deployer).deploy();
+        await bannyCommonUtilLibrary.deployed();
 
-        const uriResolverFactory = await ethers.getContractFactory('JBVeTokenUriResolver', {
-            libraries: { BannyCommonUtil: bannyCommonUtilLibrary.address },
-            signer: deployer
-        });
-        uriResolver = await uriResolverFactory.connect(deployer).deploy(storage.address, 'Escrow Banana', 'ipfs://metadata');
+        const uriResolverFactory = await ethers.getContractFactory('JBVeTokenUriResolver');
+        uriResolver = await uriResolverFactory.connect(deployer).deploy(storage.address, bannyCommonUtilLibrary.address, deployer.address, 'Escrow Banana', 'ipfs://metadata');
         await uriResolver.deployed();
 
         console.log(`Contracts deployed in ${formatMills(mark(start)[0])}`);
