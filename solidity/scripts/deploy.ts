@@ -7,7 +7,7 @@ async function main() {
     const [deployer] = await ethers.getSigners();
 
     const storageFactory = await ethers.getContractFactory('Storage');
-    const storage = await storageFactory.connect(deployer).deploy();
+    const storage = await storageFactory.connect(deployer).deploy(deployer.address);
     await storage.deployed();
 
     const bannyCommonUtilFactory = await ethers.getContractFactory('BannyCommonUtil', deployer);
@@ -15,20 +15,20 @@ async function main() {
     await bannyCommonUtilLibrary.deployed();
 
     const merkleRoot = '0x0000000000000000000000000000000000000000000000000000000000000000';
-    const tokenFactory = await ethers.getContractFactory('Token', {
-        libraries: { BannyCommonUtil: bannyCommonUtilLibrary.address },
-        signer: deployer
-    });
-    const token = await tokenFactory.connect(deployer).deploy(storage.address, merkleRoot, 'Banana', 'NANA');
+    const tokenName = 'Banana';
+    const tokenSymbol = 'NANA';
+
+    const tokenFactory = await ethers.getContractFactory('Token');
+    const token = await tokenFactory.connect(deployer).deploy(storage.address, bannyCommonUtilLibrary.address, deployer.address, merkleRoot, tokenName, tokenSymbol);
     await token.deployed();
 
     console.log(`storage: ${storage.address}`);
     console.log(`banny lib ${bannyCommonUtilLibrary.address}`);
     console.log(`token: ${token.address}`);
 
-    await hre.run("verify:verify", { address: storage.address, constructorArguments: [] });
+    await hre.run("verify:verify", { address: storage.address, constructorArguments: [deployer.address] });
     await hre.run("verify:verify", { address: bannyCommonUtilLibrary.address, constructorArguments: [] });
-    await hre.run("verify:verify", { address: token.address, constructorArguments: [storage.address, merkleRoot, 'Banana', 'NANA'] });
+    await hre.run("verify:verify", { address: token.address, constructorArguments: [storage.address, bannyCommonUtilLibrary.address, deployer.address, merkleRoot, tokenName, tokenSymbol] });
 
     await loadLayers(storage, deployer);
 }
