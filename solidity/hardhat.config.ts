@@ -34,10 +34,9 @@ const config: HardhatUserConfig = {
       chainId: 31337,
       blockGasLimit: 1_000_000_000
     },
-    ropsten: {
-      url: process.env.ROPSTEN_URL || "",
-      accounts:
-        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    rinkeby: {
+      url: `${process.env.RINKEBY_URL}/${process.env.ALCHEMY_RINKEBY_KEY}`,
+      accounts: [ `${process.env.PRIVATE_KEY}` ]
     },
   },
   contractSizer: {
@@ -45,16 +44,17 @@ const config: HardhatUserConfig = {
     disambiguatePaths: false,
     runOnCompile: true,
     strict: false,
-    only: ['Token', 'Storage'],
+    only: ['Token$', 'Storage$', 'Resolver$', 'BannyCommonUtil'],
   },
   gasReporter: {
-    enabled: true, // process.env.REPORT_GAS !== undefined,
+    enabled: process.env.REPORT_GAS !== undefined,
     currency: 'USD',
     gasPrice: 30,
-    showTimeSpent: true
+    showTimeSpent: true,
+    coinmarketcap: `${process.env.COINMARKETCAP_KEY}`
   },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY,
+    apiKey: `${process.env.ETHERSCAN_KEY}`,
   },
   mocha: {
     timeout: 30 * 60 * 1000
