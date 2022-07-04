@@ -7,6 +7,7 @@ import "@typechain/hardhat";
 import "hardhat-gas-reporter";
 import 'hardhat-contract-sizer';
 import "solidity-coverage";
+import 'solidity-docgen';
 
 dotenv.config();
 
@@ -58,7 +59,8 @@ const config: HardhatUserConfig = {
   },
   mocha: {
     timeout: 30 * 60 * 1000
-  }
+  },
+  docgen: { }
 };
 
 export default config;
