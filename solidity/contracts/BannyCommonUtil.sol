@@ -2,15 +2,16 @@
 pragma solidity 0.8.6;
 
 import './libraries/Base64.sol';
+import './interfaces/IBannyCommonUtil.sol';
 import './interfaces/IStorage.sol';
 import './enums/AssetDataType.sol';
 
-library BannyCommonUtil {
-  function validateTraits(uint256 _traits) public pure returns (bool) {
+contract BannyCommonUtil is IBannyCommonUtil {
+  function validateTraits(uint256 _traits) public override pure returns (bool) {
     return false;
   }
 
-  function getIndexedTokenTraits(uint256 _index) public pure returns (uint256) {
+  function getIndexedTokenTraits(uint256 _index) public override pure returns (uint256) {
     uint64[77] memory indexedTraits = [
       0,
       // escrow
@@ -100,7 +101,7 @@ library BannyCommonUtil {
     IStorage assets,
     uint64 _assetId,
     AssetDataType _assetType
-  ) public view returns (string memory) {
+  ) public override view returns (string memory) {
     string memory prefix = '';
 
     if (_assetType == AssetDataType.AUDIO_MP3) {
@@ -115,7 +116,7 @@ library BannyCommonUtil {
   }
 
   function getImageStack(IStorage assets, uint256 traits)
-    internal
+    public override
     view
     returns (string memory image)
   {
@@ -199,7 +200,7 @@ library BannyCommonUtil {
   /**
     @dev Returns packed traits JSON for a given trait uint.
     */
-  function getTokenTraits(uint256 traits) public pure returns (bytes memory json) {
+  function getTokenTraits(uint256 traits) public override pure returns (bytes memory json) {
     json = abi.encodePacked(
       '[',
       '{"trait_type":"Body","value":"',
@@ -249,17 +250,17 @@ library BannyCommonUtil {
     );
   }
 
-  function bodyTraits(uint256 _index) public pure returns (string memory) {
+  function bodyTraits(uint256 _index) public override pure returns (string memory) {
     string[5] memory traits = ['Yellow', 'Green', 'Pink', 'Red', 'Orange'];
     return traits[_index];
   }
 
-  function handsTraits(uint256 _index) public pure returns (string memory) {
+  function handsTraits(uint256 _index) public override pure returns (string memory) {
     string[5] memory traits = ['Nothing', 'AK-47', 'Blue_Paint', 'M4', 'Sword_Shield'];
     return traits[_index];
   }
 
-  function chokerTraits(uint256 _index) public pure returns (string memory) {
+  function chokerTraits(uint256 _index) public override pure returns (string memory) {
     string[5] memory traits = [
       'Nothing',
       'Choker',
@@ -270,7 +271,7 @@ library BannyCommonUtil {
     return traits[_index];
   }
 
-  function faceTraits(uint256 _index) public pure returns (string memory) {
+  function faceTraits(uint256 _index) public override pure returns (string memory) {
     string[17] memory traits = [
       'Eye_Mouth',
       'Baobhan_Sith',
@@ -293,7 +294,7 @@ library BannyCommonUtil {
     return traits[_index];
   }
 
-  function headgearTraits(uint256 _index) public pure returns (string memory) {
+  function headgearTraits(uint256 _index) public override pure returns (string memory) {
     string[70] memory traits = [
       'Nothing',
       'Sunglasses',
@@ -369,7 +370,7 @@ library BannyCommonUtil {
     return traits[_index];
   }
 
-  function leftHandTraits(uint256 _index) public pure returns (string memory) {
+  function leftHandTraits(uint256 _index) public override pure returns (string memory) {
     string[18] memory traits = [
       'Nothing',
       'Holy_Wine',
@@ -393,7 +394,7 @@ library BannyCommonUtil {
     return traits[_index];
   }
 
-  function lowerTraits(uint256 _index) public pure returns (string memory) {
+  function lowerTraits(uint256 _index) public override pure returns (string memory) {
     string[7] memory traits = [
       'Black_Shoes',
       'Diana_Banana_Shoes',
@@ -406,12 +407,12 @@ library BannyCommonUtil {
     return traits[_index];
   }
 
-  function oralTraits(uint256 _index) public pure returns (string memory) {
+  function oralTraits(uint256 _index) public override pure returns (string memory) {
     string[3] memory traits = ['Nothing', 'Mouthstraw', 'Blunt_1k'];
     return traits[_index];
   }
 
-  function outfitTraits(uint256 _index) public pure returns (string memory) {
+  function outfitTraits(uint256 _index) public override pure returns (string memory) {
     string[68] memory traits = [
       'Nothing',
       'Smoking',
@@ -485,7 +486,7 @@ library BannyCommonUtil {
     return traits[_index];
   }
 
-  function rightHandTraits(uint256 _index) public pure returns (string memory) {
+  function rightHandTraits(uint256 _index) public override pure returns (string memory) {
     string[35] memory traits = [
       'Nothing',
       'Athos_Rapier',

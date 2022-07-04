@@ -38,8 +38,8 @@ contract Storage is IStorage {
     mapping(uint64 => Asset) private _assetList;
     uint64 private _assetCount;
 
-    constructor() {
-        _owner = msg.sender;
+    constructor(address _admin) {
+        _owner = _admin;
     }
 
     function createAsset(

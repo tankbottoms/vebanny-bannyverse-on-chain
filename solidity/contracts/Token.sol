@@ -10,7 +10,7 @@ import './libraries/Base64.sol';
 import './libraries/ERC721Enumerable.sol';
 import './interfaces/IToken.sol';
 import './interfaces/IStorage.sol';
-import './BannyCommonUtil.sol';
+import './interfaces/IBannyCommonUtil.sol';
 
 error ARGUMENT_EMPTY(string);
 error INVALID_PROOF();
@@ -20,6 +20,7 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
   bytes32 public constant MINTER_ROLE = keccak256('MINTER_ROLE');
 
   IStorage public assets;
+  IBannyCommonUtil private bannyUtil;
 
   /**
     @notice Maps token id to packed traits definition.
@@ -37,15 +38,18 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
 
   constructor(
     IStorage _assets,
+    IBannyCommonUtil _bannyUtil,
+    address _admin,
     bytes32 _merkleRoot,
     string memory _name,
     string memory _symbol
   ) ERC721Enumerable(_name, _symbol) {
     assets = _assets;
+    bannyUtil = _bannyUtil;
     merkleRoot = _merkleRoot;
 
-    _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
-    _grantRole(MINTER_ROLE, msg.sender);
+    _grantRole(DEFAULT_ADMIN_ROLE, _admin);
+    _grantRole(MINTER_ROLE, _admin);
   }
 
   //*********************************************************************//
@@ -100,7 +104,7 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
         '", "description": "Fully on-chain NFT", "image": "data:image/svg+xml;base64,',
         _getFramedImage(traits),
         '", "attributes":',
-        BannyCommonUtil.getTokenTraits(traits),
+        bannyUtil.getTokenTraits(traits),
         '}'
       )
     );
@@ -199,7 +203,7 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     image = Base64.encode(
       abi.encodePacked(
         '<svg id="token" width="300" height="300" viewBox="0 0 1080 1080" fill="none" xmlns="http://www.w3.org/2000/svg"> <defs><radialGradient id="paint0_radial_772_22716" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(540.094 539.992) rotate(90) scale(539.413)"><stop stop-color="#B4B4B4" /><stop offset="1" /></radialGradient></defs><circle cx="540.094" cy="539.992" r="539.413" fill="url(#paint0_radial_772_22716)"/><g id="bannyPlaceholder">',
-        BannyCommonUtil.getImageStack(assets, _traits),
+        bannyUtil.getImageStack(assets, _traits),
         '</g></svg>'
       )
     );
