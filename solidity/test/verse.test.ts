@@ -4,7 +4,7 @@ import * as path from 'path';
 import { ethers } from 'hardhat';
 import { BigNumber } from 'ethers';
 
-import { loadLayers, traitsShiftOffset } from './banny';
+import { loadFile, loadLayers, traitsShiftOffset } from './banny';
 import { AssetDataType } from './types';
 import * as MerkleHelper from './components/MerkleHelper';
 
@@ -29,6 +29,7 @@ describe('BannyVerse Tests', () => {
         .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Oral_Fixation'] / 4)}`) // 0001
         .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Outfit'] / 4)}`) // 00000001
         .add(`0x${(1).toString(16)}${('0').repeat(traitsShiftOffset['Right_Hand'] / 4)}`); // 1
+    const specialBananaTraits = BigNumber.from('5666264788816401');
 
     before(() => {
         if (!fs.existsSync('test-output')) {
@@ -44,6 +45,7 @@ describe('BannyVerse Tests', () => {
         await storage.deployed();
 
         await loadLayers(storage, deployer);
+        await loadFile(storage, deployer, ['..', '..', 'audio', 'roll15.mp3'], '9223372036854775810');
 
         const bannyCommonUtilFactory = await ethers.getContractFactory('BannyCommonUtil', deployer);
         const bannyCommonUtilLibrary = await bannyCommonUtilFactory.connect(deployer).deploy();
@@ -161,8 +163,9 @@ describe('BannyVerse Tests', () => {
         const merkleAccount = accounts[merkleAddressOffset + 1];
         const merkleItem = merkleData.claims[merkleAccount.address];
 
-        for (let i = 0; i < merkleItem.data; i++) {
-            const tokenId = Number(await merkleToken.totalSupply()) + 1;
+        let tokenId = 0;
+        for (let i = 0; i < merkleItem.data - 1; i++) {
+            tokenId = Number(await merkleToken.totalSupply()) + 1;
 
             await expect(merkleToken.connect(merkleAccount)
                 .merkleMint(merkleItem.index, merkleItem.data, merkleItem.proof, basicBananaTraits))
@@ -171,6 +174,16 @@ describe('BannyVerse Tests', () => {
             expect(await merkleToken.tokenTraits(tokenId)).to.equal(basicBananaTraits);
             expect(await merkleToken.ownerOf(tokenId)).to.equal(merkleAccount.address);
         }
+
+        tokenId = Number(await merkleToken.totalSupply()) + 1;
+        await expect(merkleToken.connect(merkleAccount)
+            .merkleMint(merkleItem.index, merkleItem.data, merkleItem.proof, specialBananaTraits))
+            .to.emit(merkleToken, 'Transfer').withArgs(ethers.constants.AddressZero, merkleAccount.address, tokenId);
+
+        expect(await merkleToken.tokenTraits(tokenId)).to.equal(specialBananaTraits);
+        const tokenData = await merkleToken.tokenURI(tokenId);
+        const decoded = Buffer.from(tokenData.slice(('data:application/json;base64,').length), 'base64').toString();
+        expect(JSON.parse(decoded)['animation_url'].slice(('data:audio/mp3;base64,').length).length).to.equal(160836);
 
         await expect(merkleToken.connect(merkleAccount)
             .merkleMint(merkleItem.index, merkleItem.data, merkleItem.proof, basicBananaTraits))

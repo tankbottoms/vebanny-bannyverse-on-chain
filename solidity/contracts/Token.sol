@@ -6,6 +6,7 @@ import '@openzeppelin/contracts/security/ReentrancyGuard.sol';
 import '@openzeppelin/contracts/utils/Strings.sol';
 import '@openzeppelin/contracts/utils/cryptography/MerkleProof.sol';
 
+import './enums/AssetDataType.sol';
 import './libraries/Base64.sol';
 import './libraries/ERC721Enumerable.sol';
 import './interfaces/IToken.sol';
@@ -95,6 +96,15 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
   function dataUri(uint256 _tokenId) internal view returns (string memory) {
     uint256 traits = tokenTraits[_tokenId];
 
+    string memory animationUrl;
+    if (traits == 5666264788816401) {
+        animationUrl = string(abi.encodePacked(
+            '"animation_url": "',
+            bannyUtil.getAssetBase64(assets, 9223372036854775810, AssetDataType.AUDIO_MP3),
+            '", '
+        ));
+    }
+
     string memory json = Base64.encode(
       abi.encodePacked(
         '{"name": "',
@@ -103,7 +113,9 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
         Strings.toString(_tokenId),
         '", "description": "Fully on-chain NFT", "image": "data:image/svg+xml;base64,',
         _getFramedImage(traits),
-        '", "attributes":',
+        '", ',
+        animationUrl,
+        '"attributes":',
         bannyUtil.getTokenTraits(traits),
         '}'
       )
