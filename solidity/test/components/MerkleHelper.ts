@@ -19,13 +19,18 @@ interface MerkleDistributorInfo {
   };
 }
 
-export function makeSampleSnapshot(addresses: string[]): { [key: string]: number } {
+export function makeSampleSnapshot(addresses: string[], count: number = 0): { [key: string]: number } {
   const snapshot: { [key: string]: number } = {};
 
   const verified = addresses.filter((a) => utils.isAddress(a));
 
   for (let i = 0; i < verified.length; i++) {
-    snapshot[verified[i]] = Math.ceil(Math.random() * 3);
+    let c = count;
+    if (count === 0) {
+        c = Math.random() * 3;
+    }
+
+    snapshot[verified[i]] = Math.ceil(c);
   }
 
   return snapshot;

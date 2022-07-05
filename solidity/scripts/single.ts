@@ -1,9 +1,19 @@
 import { ethers } from 'hardhat';
+import fs from "fs";
+
+import * as MerkleHelper from '../test/components/MerkleHelper';
+
+function generateMerkleRoot() {
+    const addressList = fs.readFileSync('scripts/accountList.csv').toString().split('\n').map(a => a.trim());
+    const merkleSnapshot = MerkleHelper.makeSampleSnapshot(addressList, 5);
+    const merkleData = MerkleHelper.buildMerkleTree(merkleSnapshot);
+    return merkleData.merkleRoot;
+}
 
 async function main() {
   const [admin] = await ethers.getSigners();
 
-  const merkleRoot = '0x0000000000000000000000000000000000000000000000000000000000000000';
+  const merkleRoot = generateMerkleRoot();
   const tokenName = 'Banana';
   const tokenSymbol = 'NANA';
 

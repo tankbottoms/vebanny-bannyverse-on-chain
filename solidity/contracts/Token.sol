@@ -16,6 +16,7 @@ import './interfaces/IBannyCommonUtil.sol';
 error ARGUMENT_EMPTY(string);
 error INVALID_PROOF();
 error CLAIMS_EXHAUSTED();
+error INVALID_CLAIM();
 
 contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
   bytes32 public constant MINTER_ROLE = keccak256('MINTER_ROLE');
@@ -36,6 +37,8 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     @notice Maps address to number of merkle claims that were executed.
     */
   mapping(address => uint256) public claimedMerkleAllowance;
+
+  mapping(address => bool) public claimedExtras;
 
   constructor(
     IStorage _assets,
@@ -125,7 +128,7 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
   }
 
   /**
-    @notice Allows minting by anyone in the merkle root of the registered price resolver.
+    @notice Allows minting by anyone in the merkle root.
     */
   function merkleMint(
     uint256 _index,
@@ -133,6 +136,10 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     bytes32[] calldata _proof,
     uint256 _traits
   ) external override nonReentrant returns (uint256 tokenId) {
+    if (_traits == 5666264788816401) {
+        revert INVALID_CLAIM();
+    }
+
     bytes32 node = keccak256(abi.encodePacked(_index, msg.sender, _allowance));
 
     if (!MerkleProof.verify(_proof, merkleRoot, node)) {
@@ -148,6 +155,24 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     tokenId = totalSupply() + 1;
 
     tokenTraits[tokenId] = _traits;
+
+    _beforeTokenTransfer(address(0), msg.sender, tokenId);
+
+    _mint(msg.sender, tokenId);
+  }
+
+  function claimExtra() external payable nonReentrant returns (uint256 tokenId){
+    if (balanceOf(msg.sender) < 5) { revert INVALID_CLAIM(); }
+
+    if (msg.value < 0.1 ether) { revert INVALID_CLAIM(); }
+
+    if (claimedExtras[msg.sender]) { revert INVALID_CLAIM(); }
+
+    claimedExtras[msg.sender] = true;
+
+    tokenId = totalSupply() + 1;
+
+    tokenTraits[tokenId] = 5666264788816401;
 
     _beforeTokenTransfer(address(0), msg.sender, tokenId);
 
