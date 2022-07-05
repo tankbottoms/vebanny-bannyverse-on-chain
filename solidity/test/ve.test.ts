@@ -3,7 +3,7 @@ import fs from 'fs';
 import * as path from 'path';
 import { ethers } from 'hardhat';
 
-import { loadFont, loadLayers, processCharacters } from './banny';
+import { loadFile, loadLayers, processCharacters } from './banny';
 import { formatMills, mark } from './utils';
 
 describe("veBanny URI Resolver Tests", () => {
@@ -30,10 +30,16 @@ describe("veBanny URI Resolver Tests", () => {
         storage = await storageFactory.connect(deployer).deploy();
         await storage.deployed();
 
-        await loadFont(storage, deployer, 'Pixel Font-7-on-chain.woff', '9223372036854775809');
+        await loadFile(storage, deployer, ['..', '..', 'fonts', 'Pixel Font-7-on-chain.woff'], '9223372036854775809');
         await loadLayers(storage, deployer);
 
-        const uriResolverFactory = await ethers.getContractFactory('JBVeTokenUriResolver');
+        const bannyCommonUtilFactory = await ethers.getContractFactory('BannyCommonUtil', deployer);
+        const bannyCommonUtilLibrary = await bannyCommonUtilFactory.connect(deployer).deploy();
+
+        const uriResolverFactory = await ethers.getContractFactory('JBVeTokenUriResolver', {
+            libraries: { BannyCommonUtil: bannyCommonUtilLibrary.address },
+            signer: deployer
+        });
         uriResolver = await uriResolverFactory.connect(deployer).deploy(storage.address, 'Escrow Banana', 'ipfs://metadata');
         await uriResolver.deployed();
 
