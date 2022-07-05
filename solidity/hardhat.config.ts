@@ -37,7 +37,7 @@ const config: HardhatUserConfig = {
     },
     rinkeby: {
       url: `${process.env.RINKEBY_URL}/${process.env.ALCHEMY_RINKEBY_KEY}`,
-      accounts: [ `${process.env.PRIVATE_KEY}` ]
+      // accounts: [ `${process.env.PRIVATE_KEY}` ]
     },
   },
   contractSizer: {

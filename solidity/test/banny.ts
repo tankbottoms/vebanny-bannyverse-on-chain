@@ -310,6 +310,7 @@ export async function loadLayers(storage: any, deployer: SignerWithAddress): Pro
   return gas;
 }
 
+// eslint-disable-next-line prettier/prettier
 export async function loadFile(storage: any, deployer: SignerWithAddress, pathInfo: string[], id = '9223372036854775809'): Promise<BigNumber> {
     const fontData = path.resolve(__dirname, ...pathInfo);
     return await loadAsset(storage, deployer, fontData, id);
@@ -342,6 +343,7 @@ export async function loadAsset(
   let sliceKey = '0x' + Buffer.from(uuid4(), 'utf-8').toString('hex').slice(-64);
   let tx: TransactionResponse = await storage
     .connect(signer)
+    // eslint-disable-next-line prettier/prettier
     .createAsset(assetId, sliceKey, assetParts.parts[0], assetParts.length, { gasLimit: 5_000_000 });
   const receipt = await tx.wait();
   let gas = BigNumber.from(receipt.gasUsed);

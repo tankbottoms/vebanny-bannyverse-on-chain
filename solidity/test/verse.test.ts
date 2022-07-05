@@ -1,3 +1,5 @@
+/* eslint-disable node/no-missing-import */
+/* eslint-disable dot-notation */
 import { expect } from 'chai';
 import fs from 'fs';
 import * as path from 'path';
@@ -6,6 +8,7 @@ import { BigNumber } from 'ethers';
 
 import { loadFile, loadLayers, traitsShiftOffset } from './banny';
 import { AssetDataType } from './types';
+// eslint-disable-next-line node/no-missing-import
 import * as MerkleHelper from './components/MerkleHelper';
 
 describe('BannyVerse Tests', () => {
