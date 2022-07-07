@@ -131,7 +131,7 @@ contract BannyCommonUtil is IBannyCommonUtil {
     // OUTFIT_TRAIT_OFFSET = 44; // uint8, 7 needed
     // RIGHTHAND_TRAIT_OFFSET = 52; // uint8, 6 needed
     // uint4Mask = 15;
-
+    
     string[10] memory stack;
     uint64 contentId = uint64(uint8(traits) & 15);
     stack[0] = __imageTag(getAssetBase64(assets, contentId, AssetDataType.IMAGE_PNG)); // bodyContent
