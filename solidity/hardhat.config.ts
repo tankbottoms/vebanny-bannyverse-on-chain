@@ -37,7 +37,7 @@ const config: HardhatUserConfig = {
     },
     rinkeby: {
       url: `${process.env.RINKEBY_URL}/${process.env.ALCHEMY_RINKEBY_KEY}`,
-      // accounts: [ `${process.env.PRIVATE_KEY}` ]
+      accounts: [ `${process.env.PRIVATE_KEY}` ]
     },
   },
   contractSizer: {
@@ -45,7 +45,7 @@ const config: HardhatUserConfig = {
     disambiguatePaths: false,
     runOnCompile: true,
     strict: false,
-    only: ['Token$', 'Storage$', 'Resolver$', 'BannyCommonUtil'],
+    only: ['Token$', 'Storage$', 'Resolver$', 'BannyCommonUtil', 'Delegate$'],
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,
