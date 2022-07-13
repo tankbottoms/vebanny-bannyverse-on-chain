@@ -185,7 +185,7 @@ describe('BannyVerse Tests', () => {
             .to.be.revertedWith('CLAIMS_EXHAUSTED()');
 
         expect(await merkleToken.balanceOf(merkleAccount.address)).to.equal(merkleItem.data);
-        console.log('aaa 1')
+
         await expect(merkleToken.connect(deployer)
             .merkleMint(merkleItem.index, merkleItem.data, merkleItem.proof, basicBananaTraits))
             .to.be.revertedWith('INVALID_PROOF()');
