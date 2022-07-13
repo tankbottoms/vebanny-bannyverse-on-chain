@@ -99,11 +99,6 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
   function dataUri(uint256 _tokenId) internal view returns (string memory) {
     uint256 traits = tokenTraits[_tokenId];
 
-<<<<<<< HEAD
-    // special case Rick
-    // traits == 5666264788816401
-    // else
-=======
     string memory animationUrl;
     if (traits == 5666264788816401) {
         animationUrl = string(abi.encodePacked(
@@ -113,7 +108,6 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
         ));
     }
 
->>>>>>> aee390d3b97082d15a001d8876e9e7dfcc9c0384
     string memory json = Base64.encode(
       abi.encodePacked(
         '{"name": "',
