@@ -1,13 +1,19 @@
 import { ethers } from 'hardhat';
-import fs from "fs";
+import fs from 'fs';
 
+// eslint-disable-next-line node/no-missing-import
 import * as MerkleHelper from '../test/components/MerkleHelper';
 
 function generateMerkleRoot() {
-    const addressList = fs.readFileSync('scripts/accountList.csv').toString().split('\n').map(a => a.trim());
-    const merkleSnapshot = MerkleHelper.makeSampleSnapshot(addressList, 5);
-    const merkleData = MerkleHelper.buildMerkleTree(merkleSnapshot);
-    return merkleData.merkleRoot;
+  // eslint-disable-next-line prettier/prettier
+  const addressList = fs
+    .readFileSync('scripts/accountList.csv')
+    .toString()
+    .split('\n')
+    .map((a) => a.trim());
+  const merkleSnapshot = MerkleHelper.makeSampleSnapshot(addressList, 5);
+  const merkleData = MerkleHelper.buildMerkleTree(merkleSnapshot);
+  return merkleData.merkleRoot;
 }
 
 async function main() {
