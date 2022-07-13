@@ -1,5 +1,3 @@
-/* eslint-disable node/no-missing-import */
-/* eslint-disable dot-notation */
 import { expect } from 'chai';
 import fs from 'fs';
 import * as path from 'path';
@@ -7,8 +5,6 @@ import { ethers } from 'hardhat';
 import { BigNumber } from 'ethers';
 
 import { loadFile, loadLayers, traitsShiftOffset } from './banny';
-import { AssetDataType } from './types';
-// eslint-disable-next-line node/no-missing-import
 import * as MerkleHelper from './components/MerkleHelper';
 
 describe('BannyVerse Tests', () => {
@@ -61,7 +57,8 @@ describe('BannyVerse Tests', () => {
     });
 
     before(async () => {
-        merkleSnapshot = MerkleHelper.makeSampleSnapshot(accounts.filter((a, i) => i >= merkleAddressOffset).map(a => a.address));
+        const merkleSubset = accounts.filter((a, i) => i >= merkleAddressOffset).map(a => a.address);
+        merkleSnapshot = MerkleHelper.makeSampleSnapshot(merkleSubset);
         merkleData = MerkleHelper.buildMerkleTree(merkleSnapshot);
 
         const bannyCommonUtilFactory = await ethers.getContractFactory('BannyCommonUtil', deployer);
@@ -167,7 +164,7 @@ describe('BannyVerse Tests', () => {
         const merkleItem = merkleData.claims[merkleAccount.address];
 
         let tokenId = 0;
-        for (let i = 0; i < merkleItem.data - 1; i++) {
+        for (let i = 0; i < merkleItem.data; i++) {
             tokenId = Number(await merkleToken.totalSupply()) + 1;
 
             await expect(merkleToken.connect(merkleAccount)
@@ -181,19 +178,14 @@ describe('BannyVerse Tests', () => {
         tokenId = Number(await merkleToken.totalSupply()) + 1;
         await expect(merkleToken.connect(merkleAccount)
             .merkleMint(merkleItem.index, merkleItem.data, merkleItem.proof, specialBananaTraits))
-            .to.emit(merkleToken, 'Transfer').withArgs(ethers.constants.AddressZero, merkleAccount.address, tokenId);
-
-        expect(await merkleToken.tokenTraits(tokenId)).to.equal(specialBananaTraits);
-        const tokenData = await merkleToken.tokenURI(tokenId);
-        const decoded = Buffer.from(tokenData.slice(('data:application/json;base64,').length), 'base64').toString();
-        expect(JSON.parse(decoded)['animation_url'].slice(('data:audio/mp3;base64,').length).length).to.equal(160836);
+            .to.be.revertedWith('INVALID_CLAIM()');
 
         await expect(merkleToken.connect(merkleAccount)
             .merkleMint(merkleItem.index, merkleItem.data, merkleItem.proof, basicBananaTraits))
             .to.be.revertedWith('CLAIMS_EXHAUSTED()');
 
         expect(await merkleToken.balanceOf(merkleAccount.address)).to.equal(merkleItem.data);
-
+        console.log('aaa 1')
         await expect(merkleToken.connect(deployer)
             .merkleMint(merkleItem.index, merkleItem.data, merkleItem.proof, basicBananaTraits))
             .to.be.revertedWith('INVALID_PROOF()');
@@ -201,5 +193,28 @@ describe('BannyVerse Tests', () => {
         await expect(merkleToken.connect(accounts[0])
             .merkleMint(merkleItem.index, merkleItem.data, merkleItem.proof, basicBananaTraits))
             .to.be.revertedWith('INVALID_PROOF()');
-    }); 
+    });
+
+    it('Extra Claim Tests', async () => {
+        await expect(token.connect(deployer).mint(accounts[1].address, basicBananaTraits)).to.emit(token, 'Transfer');
+        await expect(token.connect(deployer).mint(accounts[1].address, basicBananaTraits)).to.emit(token, 'Transfer');
+        await expect(token.connect(deployer).mint(accounts[1].address, basicBananaTraits)).to.emit(token, 'Transfer');
+        await expect(token.connect(deployer).mint(accounts[1].address, basicBananaTraits)).to.emit(token, 'Transfer');
+        await expect(token.connect(deployer).claimExtra()).to.be.revertedWith('INVALID_CLAIM()');
+
+        await expect(token.connect(deployer).mint(accounts[1].address, basicBananaTraits)).to.emit(token, 'Transfer');
+        await expect(token.connect(deployer).claimExtra()).to.be.revertedWith('INVALID_CLAIM()');
+
+        const tokenId = Number(await token.totalSupply()) + 1;
+        await expect(token.connect(accounts[1])
+            .claimExtra({ value: ethers.utils.parseEther('0.1') }))
+            .to.emit(token, 'Transfer').withArgs(ethers.constants.AddressZero, accounts[1].address, tokenId);
+
+        expect(await token.tokenTraits(tokenId)).to.equal(specialBananaTraits);
+        const tokenData = await token.tokenURI(tokenId);
+        const decoded = Buffer.from(tokenData.slice(('data:application/json;base64,').length), 'base64').toString();
+        expect(JSON.parse(decoded)['animation_url'].slice(('data:audio/mp3;base64,').length).length).to.equal(160836);
+
+        await expect(token.connect(deployer).claimExtra()).to.be.revertedWith('INVALID_CLAIM()');
+    });
 });
