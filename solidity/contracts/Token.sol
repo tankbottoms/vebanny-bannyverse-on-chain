@@ -98,8 +98,8 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
 
   function dataUri(uint256 _tokenId) internal view returns (string memory) {
     uint256 traits = tokenTraits[_tokenId];
-
-    string memory animationUrl;
+    /*
+string memory animationUrl;
     if (traits == 5666264788816401) {
         animationUrl = string(abi.encodePacked(
             '"animation_url": "',
@@ -107,7 +107,10 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
             '", '
         ));
     }
-
+*/
+    // special case Rick
+    // traits == 5666264788816401
+    // else
     string memory json = Base64.encode(
       abi.encodePacked(
         '{"name": "',
@@ -136,7 +139,7 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     uint256 _traits
   ) external override nonReentrant returns (uint256 tokenId) {
     if (_traits == 5666264788816401) {
-        revert INVALID_CLAIM();
+      revert INVALID_CLAIM();
     }
 
     bytes32 node = keccak256(abi.encodePacked(_index, msg.sender, _allowance));
@@ -146,9 +149,9 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     }
 
     if (_allowance - claimedMerkleAllowance[msg.sender] == 0) {
-        revert CLAIMS_EXHAUSTED();
+      revert CLAIMS_EXHAUSTED();
     } else {
-        ++claimedMerkleAllowance[msg.sender];
+      ++claimedMerkleAllowance[msg.sender];
     }
 
     tokenId = totalSupply() + 1;
@@ -160,12 +163,18 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     _mint(msg.sender, tokenId);
   }
 
-  function claimExtra() external payable nonReentrant returns (uint256 tokenId){
-    if (balanceOf(msg.sender) < 5) { revert INVALID_CLAIM(); }
+  function claimExtra() external payable nonReentrant returns (uint256 tokenId) {
+    if (balanceOf(msg.sender) < 5) {
+      revert INVALID_CLAIM();
+    }
 
-    if (msg.value < 0.1 ether) { revert INVALID_CLAIM(); }
+    if (msg.value < 0.1 ether) {
+      revert INVALID_CLAIM();
+    }
 
-    if (claimedExtras[msg.sender]) { revert INVALID_CLAIM(); }
+    if (claimedExtras[msg.sender]) {
+      revert INVALID_CLAIM();
+    }
 
     claimedExtras[msg.sender] = true;
 
@@ -189,6 +198,16 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
   {
     return super.supportsInterface(_interfaceId);
   }
+
+  /*
+  function validateTraits(uint256 _traits) public pure override returns (bool valid) {
+    if (_traits == 0) {
+      return false;
+    }
+
+    valid = true;
+  }
+  */
 
   //*********************************************************************//
   // ---------------------- Privileged Operations ---------------------- //
