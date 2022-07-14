@@ -1,0 +1,65 @@
+const layerOrder = {
+  diamondHands: [
+    'Backgrounds',
+    'Fur',
+    'Ears',
+    'Brows',
+    'Eyes',
+    'Nose',
+    'Shirt',
+    'Tie',
+    'Blazer',
+    'Headwear',
+    'Glasses',
+    'Signature',
+  ],
+  naked: [
+    'Background',
+    'Fur',
+    'Ears',
+    'Brows',
+    'Eyes',
+    'Nose',
+    'Nipples',
+    'Headwear',
+    'Glasses',
+    'Collar',
+    'Signature',
+    'Juicebox',
+  ],
+  tShirt: [
+    'Background',
+    'Fur',
+    'Ears',
+    'Brows',
+    'Eyes',
+    'Nose',
+    'T-shirt',
+    'Pattern',
+    'Headwear',
+    'Glasses',
+    'Signature',
+    'Juicebox',
+  ],
+  shirt: [
+    'Background',
+    'Fur',
+    'Ears',
+    'Brows',
+    'Eyes',
+    'Nose',
+    'Shirt',
+    'Tie',
+    'Blazer',
+    'Headwear',
+    'Glasses',
+    'Signature',
+    'Juicebox',
+  ],
+};
+
+async function main() {
+  console.log(layerOrder.diamondHands, layerOrder.naked, layerOrder.tShirt, layerOrder.shirt);
+}
+
+main();
