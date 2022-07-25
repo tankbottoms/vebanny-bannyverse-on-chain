@@ -8,7 +8,28 @@ import './enums/AssetDataType.sol';
 
 contract BannyCommonUtil is IBannyCommonUtil {
   function validateTraits(uint256 _traits) public override pure returns (bool) {
-    return false;
+    uint8[10] memory offsets = [0, 4, 8, 12, 20, 28, 36, 40, 44, 52];
+    uint8[10] memory cardinality = [5, 5, 5, 17, 70, 18, 7, 3, 68, 35];
+
+    for (uint8 i = 0; i != 9; ) {
+        if (uint8(_traits >> offsets[i]) > cardinality[i]) {
+            return false;
+        }
+        ++i;
+    }
+
+    return true;
+  }
+
+  function generateTraits(uint256 _seed) public pure returns (uint256 traits) {
+    uint8[10] memory offsets = [0, 4, 8, 12, 20, 28, 36, 40, 44, 52];
+    uint8[10] memory cardinality = [5, 5, 5, 17, 70, 18, 7, 3, 68, 35];
+
+    traits = uint256(uint8(_seed) % cardinality[0]);
+    for (uint8 i = 1; i != 9; ) {
+      traits &= uint256((uint8(_seed >> offsets[i]) % cardinality[i]) << offsets[i]);
+      ++i;
+    }
   }
 
   function getIndexedTokenTraits(uint256 _index) public override pure returns (uint256) {
@@ -250,9 +271,13 @@ contract BannyCommonUtil is IBannyCommonUtil {
     );
   }
 
-  function bodyTraits(uint256 _index) public override pure returns (string memory) {
+  function bodyTraits(uint256 _index) public override pure returns (string memory trait) {
     string[5] memory traits = ['Yellow', 'Green', 'Pink', 'Red', 'Orange'];
-    return traits[_index];
+    if (_index > traits.length) {
+        trait = '';
+    } else {
+        trait = traits[_index];
+    }
   }
 
   function handsTraits(uint256 _index) public override pure returns (string memory) {
