@@ -2,11 +2,14 @@
 pragma solidity ^0.8.6;
 
 import '@jbx-protocol/contracts-v2/contracts/JBETHERC20ProjectPayer.sol';
+import '@jbx-protocol/contracts-v2/contracts/interfaces/IJBDirectory.sol';
+import '@jbx-protocol/contracts-v2/contracts/libraries/JBTokens.sol';
 import '@openzeppelin/contracts/utils/Strings.sol';
 import '@rari-capital/solmate/src/utils/ReentrancyGuard.sol';
 import '@uniswap/v3-periphery/contracts/interfaces/IQuoter.sol';
 
 import './libraries/ERC721Enumerable.sol';
+import './BannyAuctionMachineUtil.sol';
 
 interface IWETH9 is IERC20 {
   function deposit() external payable;
@@ -15,7 +18,9 @@ interface IWETH9 is IERC20 {
 }
 
 /**
-  @notice blah
+  @notice An NFT contract with a built-in periodic auction mechanism that pays proceeds to a Juicebox project.
+
+  Tokens are not minted directly but are instead auctioned off on a specific period starting at some base price. Winning bidder is then sent the NFT when the new auction starts.
 
   @dev Loosely based on https://github.com/austintgriffith/banana-auction/blob/v3/packages/hardhat/contracts/NFTAuctionMachine.sol
  */
@@ -41,6 +46,12 @@ contract BannyAuctionMachine is ERC721Enumerable, Ownable, ReentrancyGuard {
 
   /** @notice Juicebox directory for payment terminal lookup */
   IJBDirectory public immutable jbxDirectory;
+
+  /** @notice Util contract with banny trait management features. */
+  BannyAuctionMachineUtil public bannyUtil;
+
+  string public ipfsGateway;
+  string public ipfsRoot;
 
   /** @notice Token supply cap. */
   uint256 public maxSupply;
@@ -83,6 +94,9 @@ contract BannyAuctionMachine is ERC721Enumerable, Ownable, ReentrancyGuard {
     string memory _symbol,
     uint256 _projectId,
     IJBDirectory _jbDirectory,
+    BannyAuctionMachineUtil _bannyUtil,
+    string memory _ipfsGateway,
+    string memory _ipfsRoot,
     uint256 _maxSupply,
     uint256 _duration,
     uint256 _basePrice,
@@ -103,6 +117,10 @@ contract BannyAuctionMachine is ERC721Enumerable, Ownable, ReentrancyGuard {
     auctionDuration = _duration;
     jbxProjectId = _projectId;
     jbxDirectory = _jbDirectory;
+    bannyUtil = _bannyUtil;
+    ipfsGateway = _ipfsGateway;
+    ipfsRoot = _ipfsRoot;
+
     maxSupply = _maxSupply;
     contractMetadataURI = _contractMetadataURI;
     basePrice = _basePrice;
@@ -118,7 +136,9 @@ contract BannyAuctionMachine is ERC721Enumerable, Ownable, ReentrancyGuard {
   }
 
   function tokenURI(uint256 _tokenId) public view override returns (string memory) {
-    return '';
+    uint256 traits = tokenTraits[_tokenId];
+
+    return bannyUtil.getImageStack(ipfsGateway, ipfsRoot, traits);
   }
 
   function transferFrom(
@@ -184,7 +204,7 @@ contract BannyAuctionMachine is ERC721Enumerable, Ownable, ReentrancyGuard {
 
       terminal.pay(jbxProjectId, currentBid, JBTokens.ETH, currentBidder, 0, false, string(abi.encodePacked('')), '');
 
-        uint256 tokenId = totalSupply() + 1;
+      uint256 tokenId = totalSupply() + 1;
       _beforeTokenTransfer(address(0), currentBidder, tokenId);
       _mint(msg.sender, tokenId);
 
@@ -227,7 +247,8 @@ contract BannyAuctionMachine is ERC721Enumerable, Ownable, ReentrancyGuard {
   //*********************************************************************//
 
   // TODO: consider allowing changing addresses for dai, weth, jbx directory, quoter
-  // TODO: consider allowing chaning baseprice, contract uri
+  // TODO: consider allowing changing baseprice, contract uri, ipfs gateway & root
+  // TODO: consider allowing transfer of owned tokens from failed auctions
 
   //*********************************************************************//
   // ----------------------- Private Operations ------------------------ //
@@ -246,7 +267,7 @@ contract BannyAuctionMachine is ERC721Enumerable, Ownable, ReentrancyGuard {
   }
 
   function startNewAuction() internal {
-    uint256 traits = generateSeed(msg.sender, block.number);
+    uint256 traits = bannyUtil.generateTraits(generateSeed(msg.sender, block.number));
     uint256 tokenId = totalSupply() + 1;
     tokenTraits[tokenId] = traits;
 
