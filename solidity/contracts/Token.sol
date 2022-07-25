@@ -11,7 +11,7 @@ import './libraries/Base64.sol';
 import './libraries/ERC721Enumerable.sol';
 import './interfaces/IToken.sol';
 import './interfaces/IStorage.sol';
-import './interfaces/IBannyCommonUtil.sol';
+import './BannyCommonUtil.sol';
 
 error ARGUMENT_EMPTY(string);
 error INVALID_PROOF();
@@ -22,7 +22,7 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
   bytes32 public constant MINTER_ROLE = keccak256('MINTER_ROLE');
 
   IStorage public assets;
-  IBannyCommonUtil private bannyUtil;
+  BannyCommonUtil private bannyUtil;
 
   /**
     @notice Maps token id to packed traits definition.
@@ -42,7 +42,7 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
 
   constructor(
     IStorage _assets,
-    IBannyCommonUtil _bannyUtil,
+    BannyCommonUtil _bannyUtil,
     address _admin,
     bytes32 _merkleRoot,
     string memory _name,
@@ -123,6 +123,7 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
         '}'
       )
     );
+
     return string(abi.encodePacked('data:application/json;base64,', json));
   }
 
