@@ -3,8 +3,10 @@ pragma solidity ^0.8.6;
 
 import '@jbx-protocol/contracts-v2/contracts/JBETHERC20ProjectPayer.sol';
 import '@openzeppelin/contracts/utils/Strings.sol';
-import '@rari-capital/solmate/src/tokens/ERC721.sol';
 import '@rari-capital/solmate/src/utils/ReentrancyGuard.sol';
+import '@uniswap/v3-periphery/contracts/interfaces/IQuoter.sol';
+
+import './libraries/ERC721Enumerable.sol';
 
 interface IWETH9 is IERC20 {
   function deposit() external payable;
@@ -17,52 +19,53 @@ interface IWETH9 is IERC20 {
 
   @dev Loosely based on https://github.com/austintgriffith/banana-auction/blob/v3/packages/hardhat/contracts/NFTAuctionMachine.sol
  */
-contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard, JBETHERC20ProjectPayer {
+contract BannyAuctionMachine is ERC721Enumerable, Ownable, ReentrancyGuard {
   using Strings for uint256;
-
-
 
   error INVALID_DURATION();
   error INVALID_SUPPLY();
   error INVALID_PRICE();
-
-
-
-
-  error AUCTION_NOT_OVER();
-  error AUCTION_OVER();
-  error BID_TOO_LOW();
-  error ALREADY_HIGHEST_BIDDER();
-  error INVALID_TOKEN_ID();
-  error METADATA_IS_IMMUTABLE();
-  error TOKEN_TRANSFER_FAILURE();
-  error MAX_SUPPLY_REACHED();
+  error INVALID_BID();
+  error PAYMENT_FAILURE();
+  error SUPPLY_EXHAUSTED();
 
   IWETH9 public constant WETH9 = IWETH9(address(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2));
+  address public constant DAI = address(0x6B175474E89094C44Da98b954EedeAC495271d0F);
+  IQuoter public constant uniswapQuoter = IQuoter(0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6);
 
   /** @notice Duration of auctions in seconds. */
   uint256 public immutable auctionDuration;
 
   /** @notice Juicebox project id that will receive auction proceeds */
-  uint256 public immutable projectId;
+  uint256 public immutable jbxProjectId;
+
+  /** @notice Juicebox directory for payment terminal lookup */
+  IJBDirectory public immutable jbxDirectory;
 
   /** @notice Token supply cap. */
   uint256 public maxSupply;
 
+  /** @notice OpenSea-style metadata source. */
+  string public contractMetadataURI;
+
+  /** @notice Auction starting price. */
+  uint256 public basePrice;
+
+  /** @notice Maps token id to packed traits definition. */
+  mapping(uint256 => uint256) public tokenTraits;
+
   /** @notice Current auction ending time. */
   uint256 public auctionExpiration;
-  
+
   /** @notice Current highest bid. */
   uint256 public currentBid;
-  
+
   /** @notice Current highest bidder. */
   address public currentBidder;
 
-  uint256 public totalSupply; // TODO
-
   event Bid(address indexed bidder, uint256 amount, uint256 tokenId);
-  event AuctionStarted(uint256 indexed auctionEndingAt, uint256 tokenId);
-  event AuctionEnded(uint256 indexed auctionEndingAt, uint256 tokenId);
+  event AuctionStarted(uint256 expiration, uint256 tokenId);
+  event AuctionEnded(address winner, uint256 price, uint256 tokenId);
 
   /**
     @notice Creates a new instance of BannyAuctionMachine.
@@ -73,7 +76,7 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard, JBETHERC20Proj
     @param _jbDirectory JB Directory contract address
     @param _maxSupply Maximum supply of NFTs.
     @param _duration Duration of the auction.
-    @param _basePrice blah
+    @param _basePrice Auction starting price.
      */
   constructor(
     string memory _name,
@@ -82,20 +85,9 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard, JBETHERC20Proj
     IJBDirectory _jbDirectory,
     uint256 _maxSupply,
     uint256 _duration,
-    uint256 _basePrice
-  )
-    ERC721(_name, _symbol)
-    JBETHERC20ProjectPayer(
-      _projectId,
-      payable(msg.sender),
-      false,
-      string(abi.encodePacked(_name, ' auction proceeds')),
-      '',
-      false,
-      IJBDirectory(_jbDirectory),
-      address(this)
-    )
-  {
+    uint256 _basePrice,
+    string memory _contractMetadataURI
+  ) ERC721Enumerable(_name, _symbol) {
     if (_duration == 0) {
       revert INVALID_DURATION();
     }
@@ -109,41 +101,110 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard, JBETHERC20Proj
     }
 
     auctionDuration = _duration;
-    projectId = _projectId;
+    jbxProjectId = _projectId;
+    jbxDirectory = _jbDirectory;
     maxSupply = _maxSupply;
+    contractMetadataURI = _contractMetadataURI;
+    basePrice = _basePrice;
+  }
+
+  //*********************************************************************//
+  // ------------------------ Token Operations ------------------------- //
+  //*********************************************************************//
+
+  function contractURI() public view returns (string memory) {
+    // TODO: IBannyAuctionMachine
+    return contractMetadataURI;
+  }
+
+  function tokenURI(uint256 _tokenId) public view override returns (string memory) {
+    return '';
+  }
+
+  function transferFrom(
+    address _from,
+    address _to,
+    uint256 _tokenId
+  ) public override {
+    _beforeTokenTransfer(_from, _to, _tokenId);
+    super.transferFrom(_from, _to, _tokenId);
+  }
+
+  function safeTransferFrom(
+    address _from,
+    address _to,
+    uint256 _tokenId
+  ) public override {
+    _beforeTokenTransfer(_from, _to, _tokenId);
+    super.safeTransferFrom(_from, _to, _tokenId);
+  }
+
+  function safeTransferFrom(
+    address _from,
+    address _to,
+    uint256 _tokenId,
+    bytes calldata _data
+  ) public override {
+    _beforeTokenTransfer(_from, _to, _tokenId);
+    super.safeTransferFrom(_from, _to, _tokenId, _data);
   }
 
   /**
     @notice Manages auction state for token.
 
-    // if no auction, generate token traits, start auction
-    // if auction is not over, bid
-    // if auction is over, settle, generate token traits, start auction
+    - if no auction, generate token traits, start auction
+    - if auction is not over, bid
+    - if auction is over, settle, generate token traits, start auction
    */
   function mint() external payable {
-    //
-  }
-
-  function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
-    if (tokenId > totalSupply) {
-      revert INVALID_TOKEN_ID();
+    if (msg.value < basePrice) {
+      revert INVALID_BID();
     }
 
-    return '';
+    if (currentBidder == address(0) && currentBid == 0) {
+      // no auction, create new
+
+      startNewAuction();
+    } else if (auctionExpiration > block.timestamp && currentBid < msg.value) {
+      // new high bid
+
+      payable(currentBidder).transfer(currentBid); // TODO: check success
+      currentBidder = msg.sender;
+      currentBid = msg.value;
+
+      uint256 tokenId = totalSupply() + 1;
+      emit Bid(msg.sender, msg.value, tokenId);
+    } else if (auctionExpiration <= block.timestamp && currentBid >= basePrice && currentBidder != address(0)) {
+      // auction concluded with bids, settle, start new auction
+
+      IJBPaymentTerminal terminal = jbxDirectory.primaryTerminalOf(jbxProjectId, JBTokens.ETH);
+      if (address(terminal) == address(0)) {
+        revert PAYMENT_FAILURE(); // NOTE: this will prevent future auctions from starting
+      }
+
+      terminal.pay(jbxProjectId, currentBid, JBTokens.ETH, currentBidder, 0, false, string(abi.encodePacked('')), '');
+
+        uint256 tokenId = totalSupply() + 1;
+      _beforeTokenTransfer(address(0), currentBidder, tokenId);
+      _mint(msg.sender, tokenId);
+
+      emit AuctionEnded(currentBidder, currentBid, tokenId);
+
+      startNewAuction();
+    } else if (auctionExpiration <= block.timestamp && currentBid < basePrice) {
+      // auction concluded without bids, new start new auction
+
+      uint256 tokenId = totalSupply() + 1;
+      _beforeTokenTransfer(address(0), address(this), tokenId);
+      _mint(msg.sender, tokenId);
+
+      startNewAuction();
+    }
   }
 
-  function supportsInterface(bytes4 interfaceId)
-    public
-    view
-    override(JBETHERC20ProjectPayer, ERC721)
-    returns (bool)
-  {
-    return
-      JBETHERC20ProjectPayer.supportsInterface(interfaceId) ||
-      ERC721.supportsInterface(interfaceId);
-  }
-
-
+  //*********************************************************************//
+  // --------------------------- Public Views -------------------------- //
+  //*********************************************************************//
 
   /**
     @notice Returns time remaining in the auction.
@@ -156,86 +217,48 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard, JBETHERC20Proj
     }
   }
 
-  /**
-    @dev Allows users to bid & send eth to the contract.
-    */
-  function bid() public payable nonReentrant {
-    if (block.timestamp > auctionExpiration) {
-      revert AUCTION_OVER();
-    }
-    if (msg.value < (currentBid + 0.001 ether)) {
-      revert BID_TOO_LOW();
-    }
-    if (msg.sender == currentBidder) {
-      revert ALREADY_HIGHEST_BIDDER();
-    }
-
-    uint256 lastAmount = currentBid;
-    address lastBidder = currentBidder;
-
-    currentBid = msg.value;
-    currentBidder = msg.sender;
-
-    if (lastAmount > 0) {
-      (bool sent, ) = lastBidder.call{value: lastAmount, gas: 20000}('');
-      if (!sent) {
-        WETH9.deposit{value: lastAmount}();
-        bool success = WETH9.transfer(lastBidder, lastAmount);
-        if (!success) {
-          revert TOKEN_TRANSFER_FAILURE();
-        }
-      }
-    }
-
-    emit Bid(msg.sender, msg.value, 0); // TODO
+  /** @notice ERC165 */
+  function supportsInterface(bytes4 interfaceId) public view override returns (bool) {
+    return ERC721Enumerable.supportsInterface(interfaceId);
   }
 
-  /**
-    @dev Allows anyone to mint the nft to the highest bidder/burn if there were no bids & restart the auction with a new end time.
-    */
-  function finalize() external {
-    if (block.timestamp <= auctionExpiration) {
-      revert AUCTION_NOT_OVER();
-    }
-    if (totalSupply == maxSupply) {
-      revert MAX_SUPPLY_REACHED();
-    }
+  //*********************************************************************//
+  // ---------------------- Privileged Operations ---------------------- //
+  //*********************************************************************//
 
+  // TODO: consider allowing changing addresses for dai, weth, jbx directory, quoter
+  // TODO: consider allowing chaning baseprice, contract uri
+
+  //*********************************************************************//
+  // ----------------------- Private Operations ------------------------ //
+  //*********************************************************************//
+
+  function generateSeed(address _account, uint256 _blockNumber) internal returns (uint256 seed) {
+    uint256 ethPrice = uniswapQuoter.quoteExactInputSingle(
+      address(WETH9),
+      DAI,
+      3000, // fee
+      1 ether,
+      0 // sqrtPriceLimitX96
+    );
+
+    seed = uint256(keccak256(abi.encodePacked(_account, _blockNumber, ethPrice)));
+  }
+
+  function startNewAuction() internal {
+    uint256 traits = generateSeed(msg.sender, block.number);
+    uint256 tokenId = totalSupply() + 1;
+    tokenTraits[tokenId] = traits;
+
+    if (msg.value >= basePrice) {
+      currentBidder = msg.sender;
+      currentBid = msg.value;
+    } else {
+      currentBidder = address(0);
+      currentBid = 0;
+    }
     auctionExpiration = block.timestamp + auctionDuration;
 
-    if (currentBidder == address(0)) {
-      // If the auction received no bids, emit burn event and iterate totalSupply
-      unchecked {
-        totalSupply++;
-      }
-      uint256 tokenId = totalSupply;
-      emit Transfer(address(0), address(0), tokenId);
-    } else {
-      uint256 lastAmount = currentBid;
-      address lastBidder = currentBidder;
-
-      currentBid = 0;
-      currentBidder = address(0);
-
-      _pay(
-        projectId, //uint256 _projectId,
-        JBTokens.ETH, // address _token
-        lastAmount, //uint256 _amount,
-        18, //uint256 _decimals,
-        lastBidder, //address _beneficiary,
-        0, //uint256 _minReturnedTokens,
-        false, //bool _preferClaimedTokens,
-        'nft mint', //string calldata _memo, // TODO: Add your own memo here. Links to image å are displayed on the Juicebox project page as images.
-        '' //bytes calldata _metadata
-      );
-
-      unchecked {
-        totalSupply++;
-      }
-      uint256 tokenId = totalSupply;
-      _mint(lastBidder, tokenId);
-      emit AuctionStarted(auctionExpiration, tokenId + 1);
-    }
+    emit AuctionStarted(auctionExpiration, tokenId);
   }
-
 }
