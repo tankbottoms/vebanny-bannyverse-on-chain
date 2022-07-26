@@ -138,7 +138,7 @@ contract BannyAuctionMachine is ERC721Enumerable, Ownable, ReentrancyGuard {
   function tokenURI(uint256 _tokenId) public view override returns (string memory) {
     uint256 traits = tokenTraits[_tokenId];
 
-    return bannyUtil.getImageStack(ipfsGateway, ipfsRoot, traits);
+    return dataUri(traits);
   }
 
   function transferFrom(
@@ -226,9 +226,7 @@ contract BannyAuctionMachine is ERC721Enumerable, Ownable, ReentrancyGuard {
   // --------------------------- Public Views -------------------------- //
   //*********************************************************************//
 
-  /**
-    @notice Returns time remaining in the auction.
-    */
+  /** @notice Time to auction expiration. */
   function timeLeft() public view returns (uint256) {
     if (block.timestamp > auctionExpiration) {
       return 0;
@@ -242,12 +240,29 @@ contract BannyAuctionMachine is ERC721Enumerable, Ownable, ReentrancyGuard {
     return ERC721Enumerable.supportsInterface(interfaceId);
   }
 
+  /** @notice Returns an image for a given set of traits, unattached to a token id. */
+  function previewTraits(uint256 _traits) public view returns (string memory) {
+    return dataUri(_traits);
+  }
+
   //*********************************************************************//
   // ---------------------- Privileged Operations ---------------------- //
   //*********************************************************************//
 
+  function setIPFSGatewayURI(string calldata _uri) external onlyOwner {
+    ipfsGateway = _uri;
+  }
+
+  function setIPFSRoot(string calldata _root) external onlyOwner {
+    ipfsRoot = _root;
+  }
+
+  function setContractURI(string calldata _uri) external onlyOwner {
+    contractMetadataURI = _uri;
+  }
+
   // TODO: consider allowing changing addresses for dai, weth, jbx directory, quoter
-  // TODO: consider allowing changing baseprice, contract uri, ipfs gateway & root
+  // TODO: consider allowing changing baseprice
   // TODO: consider allowing transfer of owned tokens from failed auctions
 
   //*********************************************************************//
@@ -281,5 +296,16 @@ contract BannyAuctionMachine is ERC721Enumerable, Ownable, ReentrancyGuard {
     auctionExpiration = block.timestamp + auctionDuration;
 
     emit AuctionStarted(auctionExpiration, tokenId);
+  }
+
+  function dataUri(uint256 _traits) internal view returns (string memory) {
+    return
+      string(
+        abi.encodePacked(
+          '<svg id="token" width="300" height="300" viewBox="0 0 1080 1080" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="bannyPlaceholder">',
+          bannyUtil.getImageStack(ipfsGateway, ipfsRoot, _traits),
+          '</g></svg>'
+        )
+      );
   }
 }
