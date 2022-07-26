@@ -77,7 +77,7 @@ contract BannyAuctionMachineUtil is BannyBaseUtil {
   }
 
   /**
-    @notice Constructs and svg image tag by appending the parameters with a .png extension.
+    @notice Constructs and svg image tag by appending the parameters.
 
     @param _ipfsGateway HTTP IPFS gateway. The url must contain the trailing slash.
     @param _ipfsRoot IPFS path, must contain tailing slash.
@@ -90,7 +90,7 @@ contract BannyAuctionMachineUtil is BannyBaseUtil {
         _ipfsGateway,
         _ipfsRoot,
         Strings.toString(_imageIndex),
-        '.png" style="transform: translate(-500px, -500px)" />'
+        '" style="transform: translate(-500px, -500px)" />'
       )
     );
   }
