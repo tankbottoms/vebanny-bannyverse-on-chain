@@ -1,21 +1,15 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.6;
 
-import '@jbx-protocol/contracts-v2/contracts/JBETHERC20ProjectPayer.sol';
-import '@jbx-protocol/contracts-v2/contracts/interfaces/IJBDirectory.sol';
+import '@jbx-protocol/contracts-v2/contracts/interfaces/IJBPaymentTerminal.sol';
 import '@jbx-protocol/contracts-v2/contracts/libraries/JBTokens.sol';
+import '@openzeppelin/contracts/access/Ownable.sol';
 import '@openzeppelin/contracts/utils/Strings.sol';
 import '@rari-capital/solmate/src/tokens/ERC721.sol';
 import '@rari-capital/solmate/src/utils/ReentrancyGuard.sol';
 import '@uniswap/v3-periphery/contracts/interfaces/IQuoter.sol';
 
 import './BannyAuctionMachineUtil.sol';
-
-interface IWETH9 is IERC20 {
-  function deposit() external payable;
-
-  function withdraw(uint256) external;
-}
 
 /**
   @notice An NFT contract with a built-in periodic auction mechanism that pays proceeds to a Juicebox project.
@@ -30,22 +24,21 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
   error INVALID_DURATION();
   error INVALID_PRICE();
   error INVALID_BID();
-  error PAYMENT_FAILURE();
   error SUPPLY_EXHAUSTED();
   error AUCTION_ACTIVE();
 
-  IWETH9 public constant WETH9 = IWETH9(address(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2));
+  address public constant WETH9 = address(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
   address public constant DAI = address(0x6B175474E89094C44Da98b954EedeAC495271d0F);
   IQuoter public constant uniswapQuoter = IQuoter(0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6);
 
   /** @notice Duration of auctions in seconds. */
-  uint256 public immutable auctionDuration;
+  uint256 public auctionDuration;
 
   /** @notice Juicebox project id that will receive auction proceeds */
-  uint256 public immutable jbxProjectId;
+  uint256 public jbxProjectId;
 
-  /** @notice Juicebox directory for payment terminal lookup */
-  IJBDirectory public immutable jbxDirectory;
+  /** @notice Juicebox terminal for send proceeds to */
+  IJBPaymentTerminal public jbxTerminal;
 
   /** @notice Util contract with banny trait management features. */
   BannyAuctionMachineUtil public bannyUtil;
@@ -86,7 +79,7 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
     @param _name Name.
     @param _symbol Symbol.
     @param _projectId JB Project ID of a particular project to pay to.
-    @param _jbDirectory JB Directory contract address
+    @param _jbTerminal JB Terminal for proceeds deposit.
     @param _maxSupply Maximum supply of NFTs, value of 0 means "unlimited".
     @param _duration Duration of the auction.
     @param _basePrice Auction starting price.
@@ -95,7 +88,7 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
     string memory _name,
     string memory _symbol,
     uint256 _projectId,
-    IJBDirectory _jbDirectory,
+    IJBPaymentTerminal _jbTerminal,
     BannyAuctionMachineUtil _bannyUtil,
     string memory _ipfsGateway,
     string memory _ipfsRoot,
@@ -114,7 +107,7 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
 
     auctionDuration = _duration;
     jbxProjectId = _projectId;
-    jbxDirectory = _jbDirectory;
+    jbxTerminal = _jbTerminal;
     bannyUtil = _bannyUtil;
     ipfsGateway = _ipfsGateway;
     ipfsRoot = _ipfsRoot;
@@ -162,27 +155,26 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
 
   function settle() external {
     if (auctionExpiration > block.timestamp) {
-        revert AUCTION_ACTIVE();
+      revert AUCTION_ACTIVE();
     }
 
     if (currentBidder != address(0)) {
       // auction concluded with bids, settle
 
-      IJBPaymentTerminal terminal = jbxDirectory.primaryTerminalOf(jbxProjectId, JBTokens.ETH);
-      if (address(terminal) == address(0)) {
-        revert PAYMENT_FAILURE(); // NOTE: this will prevent future auctions from starting
+      jbxTerminal.pay(jbxProjectId, currentBid, JBTokens.ETH, currentBidder, 0, false, string(abi.encodePacked('')), ''); // TODO: send relevant memo to terminal
+
+      unchecked {
+        ++totalSupply;
       }
-
-      terminal.pay(jbxProjectId, currentBid, JBTokens.ETH, currentBidder, 0, false, string(abi.encodePacked('')), ''); // TODO: send relevant memo to terminal
-
-      unchecked { ++totalSupply; }
       _mint(msg.sender, totalSupply);
 
       emit AuctionEnded(currentBidder, currentBid, totalSupply);
     } else {
       // auction concluded without bids
 
-      unchecked { ++totalSupply; }
+      unchecked {
+        ++totalSupply;
+      }
       _mint(msg.sender, totalSupply);
     }
 
@@ -218,6 +210,10 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
   // ---------------------- Privileged Operations ---------------------- //
   //*********************************************************************//
 
+  function setPaymentTerminal(IJBPaymentTerminal _jbTerminal) external onlyOwner {
+    jbxTerminal = _jbTerminal;
+  }
+
   function setIPFSGatewayURI(string calldata _uri) external onlyOwner {
     ipfsGateway = _uri;
   }
@@ -240,7 +236,7 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
 
   function generateSeed(address _account, uint256 _blockNumber) internal returns (uint256 seed) {
     uint256 ethPrice = uniswapQuoter.quoteExactInputSingle(
-      address(WETH9),
+      WETH9,
       DAI,
       3000, // fee
       1 ether,
@@ -252,7 +248,7 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
 
   function startNewAuction() internal {
     if (maxSupply != 0 && totalSupply == maxSupply) {
-        revert SUPPLY_EXHAUSTED();
+      revert SUPPLY_EXHAUSTED();
     }
 
     uint256 traits = bannyUtil.generateTraits(generateSeed(msg.sender, block.number));
