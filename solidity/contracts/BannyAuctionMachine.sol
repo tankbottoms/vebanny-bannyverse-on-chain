@@ -5,10 +5,10 @@ import '@jbx-protocol/contracts-v2/contracts/JBETHERC20ProjectPayer.sol';
 import '@jbx-protocol/contracts-v2/contracts/interfaces/IJBDirectory.sol';
 import '@jbx-protocol/contracts-v2/contracts/libraries/JBTokens.sol';
 import '@openzeppelin/contracts/utils/Strings.sol';
+import '@rari-capital/solmate/src/tokens/ERC721.sol';
 import '@rari-capital/solmate/src/utils/ReentrancyGuard.sol';
 import '@uniswap/v3-periphery/contracts/interfaces/IQuoter.sol';
 
-import './libraries/ERC721Enumerable.sol';
 import './BannyAuctionMachineUtil.sol';
 
 interface IWETH9 is IERC20 {
@@ -24,7 +24,7 @@ interface IWETH9 is IERC20 {
 
   @dev Loosely based on https://github.com/austintgriffith/banana-auction/blob/v3/packages/hardhat/contracts/NFTAuctionMachine.sol
  */
-contract BannyAuctionMachine is ERC721Enumerable, Ownable, ReentrancyGuard {
+contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
   using Strings for uint256;
 
   error INVALID_DURATION();
@@ -55,6 +55,8 @@ contract BannyAuctionMachine is ERC721Enumerable, Ownable, ReentrancyGuard {
 
   /** @notice Token supply cap. */
   uint256 public maxSupply;
+
+  uint256 public totalSupply;
 
   /** @notice OpenSea-style metadata source. */
   string public contractMetadataURI;
@@ -101,7 +103,7 @@ contract BannyAuctionMachine is ERC721Enumerable, Ownable, ReentrancyGuard {
     uint256 _duration,
     uint256 _basePrice,
     string memory _contractMetadataURI
-  ) ERC721Enumerable(_name, _symbol) {
+  ) ERC721(_name, _symbol) {
     if (_duration == 0) {
       revert INVALID_DURATION();
     }
@@ -141,34 +143,6 @@ contract BannyAuctionMachine is ERC721Enumerable, Ownable, ReentrancyGuard {
     return dataUri(traits);
   }
 
-  function transferFrom(
-    address _from,
-    address _to,
-    uint256 _tokenId
-  ) public override {
-    _beforeTokenTransfer(_from, _to, _tokenId);
-    super.transferFrom(_from, _to, _tokenId);
-  }
-
-  function safeTransferFrom(
-    address _from,
-    address _to,
-    uint256 _tokenId
-  ) public override {
-    _beforeTokenTransfer(_from, _to, _tokenId);
-    super.safeTransferFrom(_from, _to, _tokenId);
-  }
-
-  function safeTransferFrom(
-    address _from,
-    address _to,
-    uint256 _tokenId,
-    bytes calldata _data
-  ) public override {
-    _beforeTokenTransfer(_from, _to, _tokenId);
-    super.safeTransferFrom(_from, _to, _tokenId, _data);
-  }
-
   /**
     @notice Manages auction state for token.
 
@@ -192,7 +166,7 @@ contract BannyAuctionMachine is ERC721Enumerable, Ownable, ReentrancyGuard {
       currentBidder = msg.sender;
       currentBid = msg.value;
 
-      uint256 tokenId = totalSupply() + 1;
+      uint256 tokenId = totalSupply + 1;
       emit Bid(msg.sender, msg.value, tokenId);
     } else if (auctionExpiration <= block.timestamp && currentBid >= basePrice && currentBidder != address(0)) {
       // auction concluded with bids, settle, start new auction
@@ -204,19 +178,18 @@ contract BannyAuctionMachine is ERC721Enumerable, Ownable, ReentrancyGuard {
 
       terminal.pay(jbxProjectId, currentBid, JBTokens.ETH, currentBidder, 0, false, string(abi.encodePacked('')), '');
 
-      uint256 tokenId = totalSupply() + 1;
-      _beforeTokenTransfer(address(0), currentBidder, tokenId);
-      _mint(msg.sender, tokenId);
+      unchecked { ++totalSupply; }
+      _mint(msg.sender, totalSupply);
 
-      emit AuctionEnded(currentBidder, currentBid, tokenId);
+      emit AuctionEnded(currentBidder, currentBid, totalSupply);
 
       startNewAuction();
     } else if (auctionExpiration <= block.timestamp && currentBid < basePrice) {
       // auction concluded without bids, new start new auction
 
-      uint256 tokenId = totalSupply() + 1;
-      _beforeTokenTransfer(address(0), address(this), tokenId);
-      _mint(msg.sender, tokenId);
+      unchecked { ++totalSupply; }
+      _mint(msg.sender, totalSupply);
+      
 
       startNewAuction();
     }
@@ -237,7 +210,7 @@ contract BannyAuctionMachine is ERC721Enumerable, Ownable, ReentrancyGuard {
 
   /** @notice ERC165 */
   function supportsInterface(bytes4 interfaceId) public view override returns (bool) {
-    return ERC721Enumerable.supportsInterface(interfaceId);
+    return ERC721.supportsInterface(interfaceId);
   }
 
   /** @notice Returns an image for a given set of traits, unattached to a token id. */
@@ -283,7 +256,7 @@ contract BannyAuctionMachine is ERC721Enumerable, Ownable, ReentrancyGuard {
 
   function startNewAuction() internal {
     uint256 traits = bannyUtil.generateTraits(generateSeed(msg.sender, block.number));
-    uint256 tokenId = totalSupply() + 1;
+    uint256 tokenId = totalSupply + 1;
     tokenTraits[tokenId] = traits;
 
     if (msg.value >= basePrice) {
