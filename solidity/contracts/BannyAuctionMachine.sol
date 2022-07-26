@@ -28,11 +28,11 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
   using Strings for uint256;
 
   error INVALID_DURATION();
-  error INVALID_SUPPLY();
   error INVALID_PRICE();
   error INVALID_BID();
   error PAYMENT_FAILURE();
   error SUPPLY_EXHAUSTED();
+  error AUCTION_ACTIVE();
 
   IWETH9 public constant WETH9 = IWETH9(address(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2));
   address public constant DAI = address(0x6B175474E89094C44Da98b954EedeAC495271d0F);
@@ -87,7 +87,7 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
     @param _symbol Symbol.
     @param _projectId JB Project ID of a particular project to pay to.
     @param _jbDirectory JB Directory contract address
-    @param _maxSupply Maximum supply of NFTs.
+    @param _maxSupply Maximum supply of NFTs, value of 0 means "unlimited".
     @param _duration Duration of the auction.
     @param _basePrice Auction starting price.
      */
@@ -106,10 +106,6 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
   ) ERC721(_name, _symbol) {
     if (_duration == 0) {
       revert INVALID_DURATION();
-    }
-
-    if (_maxSupply == 0) {
-      revert INVALID_SUPPLY();
     }
 
     if (_basePrice == 0) {
@@ -143,14 +139,7 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
     return dataUri(traits);
   }
 
-  /**
-    @notice Manages auction state for token.
-
-    - if no auction, generate token traits, start auction
-    - if auction is not over, bid
-    - if auction is over, settle, generate token traits, start auction
-   */
-  function mint() external payable {
+  function bid() external payable {
     if (msg.value < basePrice) {
       revert INVALID_BID();
     }
@@ -168,29 +157,36 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
 
       uint256 tokenId = totalSupply + 1;
       emit Bid(msg.sender, msg.value, tokenId);
-    } else if (auctionExpiration <= block.timestamp && currentBid >= basePrice && currentBidder != address(0)) {
-      // auction concluded with bids, settle, start new auction
+    }
+  }
+
+  function settle() external {
+    if (auctionExpiration > block.timestamp) {
+        revert AUCTION_ACTIVE();
+    }
+
+    if (currentBidder != address(0)) {
+      // auction concluded with bids, settle
 
       IJBPaymentTerminal terminal = jbxDirectory.primaryTerminalOf(jbxProjectId, JBTokens.ETH);
       if (address(terminal) == address(0)) {
         revert PAYMENT_FAILURE(); // NOTE: this will prevent future auctions from starting
       }
 
-      terminal.pay(jbxProjectId, currentBid, JBTokens.ETH, currentBidder, 0, false, string(abi.encodePacked('')), '');
+      terminal.pay(jbxProjectId, currentBid, JBTokens.ETH, currentBidder, 0, false, string(abi.encodePacked('')), ''); // TODO: send relevant memo to terminal
 
       unchecked { ++totalSupply; }
       _mint(msg.sender, totalSupply);
 
       emit AuctionEnded(currentBidder, currentBid, totalSupply);
-
-      startNewAuction();
-    } else if (auctionExpiration <= block.timestamp && currentBid < basePrice) {
-      // auction concluded without bids, new start new auction
+    } else {
+      // auction concluded without bids
 
       unchecked { ++totalSupply; }
       _mint(msg.sender, totalSupply);
-      
+    }
 
+    if (maxSupply == 0 || totalSupply + 1 <= maxSupply) {
       startNewAuction();
     }
   }
@@ -255,8 +251,13 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
   }
 
   function startNewAuction() internal {
+    if (maxSupply != 0 && totalSupply == maxSupply) {
+        revert SUPPLY_EXHAUSTED();
+    }
+
     uint256 traits = bannyUtil.generateTraits(generateSeed(msg.sender, block.number));
     uint256 tokenId = totalSupply + 1;
+
     tokenTraits[tokenId] = traits;
 
     if (msg.value >= basePrice) {
