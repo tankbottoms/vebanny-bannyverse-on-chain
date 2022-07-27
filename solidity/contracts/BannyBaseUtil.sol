@@ -22,7 +22,7 @@ contract BannyBaseUtil {
 
     traits = uint256(uint8(_seed) % cardinality[0]);
     for (uint8 i = 1; i != 9; ) {
-      traits &= uint256((uint8(_seed >> offsets[i]) % cardinality[i]) << offsets[i]);
+      traits |= uint256((uint8(_seed >> offsets[i]) % cardinality[i])) << offsets[i];
       ++i;
     }
   }
