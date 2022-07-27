@@ -24,6 +24,7 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
   error INVALID_DURATION();
   error INVALID_PRICE();
   error INVALID_BID();
+  error AUCTION_ENDED();
   error SUPPLY_EXHAUSTED();
   error AUCTION_ACTIVE();
 
@@ -133,14 +134,12 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
   }
 
   function bid() external payable {
-    if (msg.value < basePrice) {
-      revert INVALID_BID();
-    }
-
     if (currentBidder == address(0) && currentBid == 0) {
       // no auction, create new
 
       startNewAuction();
+    } else if (currentBid >= msg.value) {
+      revert INVALID_BID();
     } else if (auctionExpiration > block.timestamp && currentBid < msg.value) {
       // new high bid
 
@@ -150,6 +149,8 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
 
       uint256 tokenId = totalSupply + 1;
       emit Bid(msg.sender, msg.value, tokenId);
+    } else {
+        revert AUCTION_ENDED();
     }
   }
 
@@ -166,7 +167,7 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
       unchecked {
         ++totalSupply;
       }
-      _mint(msg.sender, totalSupply);
+      _mint(currentBidder, totalSupply);
 
       emit AuctionEnded(currentBidder, currentBid, totalSupply);
     } else {
@@ -175,7 +176,7 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
       unchecked {
         ++totalSupply;
       }
-      _mint(msg.sender, totalSupply);
+      _mint(owner(), totalSupply); // mint to contract owner to make the tokens giftable
     }
 
     if (maxSupply == 0 || totalSupply + 1 <= maxSupply) {
@@ -191,9 +192,19 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
   function timeLeft() public view returns (uint256) {
     if (block.timestamp > auctionExpiration) {
       return 0;
-    } else {
-      return auctionExpiration - block.timestamp;
     }
+
+    return auctionExpiration - block.timestamp;
+  }
+
+  function traitsOnAuction() public view returns (uint256) {
+    if (auctionExpiration <= block.timestamp) {
+      revert AUCTION_ENDED();
+    }
+
+    uint256 tokenId = totalSupply + 1;
+
+    return tokenTraits[tokenId];
   }
 
   /** @notice ERC165 */
@@ -226,22 +237,27 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
     contractMetadataURI = _uri;
   }
 
-  // TODO: consider allowing changing addresses for dai, weth, jbx directory, quoter
+  function giftToken(address _account, uint256 _tokenId) external onlyOwner {
+    transferFrom(owner(), _account, _tokenId);
+  }
+
+  // TODO: consider allowing changing addresses for dai, weth, quoter
   // TODO: consider allowing changing baseprice
-  // TODO: consider allowing transfer of owned tokens from failed auctions
 
   //*********************************************************************//
   // ----------------------- Private Operations ------------------------ //
   //*********************************************************************//
 
   function generateSeed(address _account, uint256 _blockNumber) internal returns (uint256 seed) {
-    uint256 ethPrice = uniswapQuoter.quoteExactInputSingle(
-      WETH9,
-      DAI,
-      3000, // fee
-      1 ether,
-      0 // sqrtPriceLimitX96
-    );
+    // uint256 ethPrice = uniswapQuoter.quoteExactInputSingle(
+    //   WETH9,
+    //   DAI,
+    //   3000, // fee
+    //   1 ether,
+    //   0 // sqrtPriceLimitX96
+    // );
+
+    uint256 ethPrice = 0;
 
     seed = uint256(keccak256(abi.encodePacked(_account, _blockNumber, ethPrice)));
   }
