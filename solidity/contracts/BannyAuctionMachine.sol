@@ -4,6 +4,7 @@ pragma solidity ^0.8.6;
 import '@jbx-protocol/contracts-v2/contracts/interfaces/IJBPaymentTerminal.sol';
 import '@jbx-protocol/contracts-v2/contracts/libraries/JBTokens.sol';
 import '@openzeppelin/contracts/access/Ownable.sol';
+import '@openzeppelin/contracts/utils/Base64.sol';
 import '@openzeppelin/contracts/utils/Strings.sol';
 import '@rari-capital/solmate/src/tokens/ERC721.sol';
 import '@rari-capital/solmate/src/utils/ReentrancyGuard.sol';
@@ -130,7 +131,7 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
   function tokenURI(uint256 _tokenId) public view override returns (string memory) {
     uint256 traits = tokenTraits[_tokenId];
 
-    return dataUri(traits);
+    return dataUri(traits, _tokenId);
   }
 
   function bid() external payable {
@@ -214,7 +215,7 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
 
   /** @notice Returns an image for a given set of traits, unattached to a token id. */
   function previewTraits(uint256 _traits) public view returns (string memory) {
-    return dataUri(_traits);
+    return dataUri(_traits, 0);
   }
 
   //*********************************************************************//
@@ -284,14 +285,29 @@ contract BannyAuctionMachine is ERC721, Ownable, ReentrancyGuard {
     emit AuctionStarted(auctionExpiration, tokenId);
   }
 
-  function dataUri(uint256 _traits) internal view returns (string memory) {
-    return
-      string(
+  function dataUri(uint256 _traits, uint256 _tokenId) internal view returns (string memory) {
+      string memory image = string(
         abi.encodePacked(
           '<svg id="token" width="300" height="300" viewBox="0 0 1080 1080" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="bannyPlaceholder">',
           bannyUtil.getImageStack(ipfsGateway, ipfsRoot, _traits),
           '</g></svg>'
         )
       );
+
+      string memory json = Base64.encode(
+      abi.encodePacked(
+        '{"name": "',
+        name,
+        ' No. ',
+        Strings.toString(_tokenId),
+        '", "description": "Fully on-chain NFT", "image": "data:image/svg+xml;base64,',
+        image,
+        '", "attributes":',
+        '{}' // TODO: metadata
+        '}'
+      )
+    );
+
+    return string(abi.encodePacked('data:application/json;base64,', json));
   }
 }
