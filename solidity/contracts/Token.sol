@@ -114,7 +114,7 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
         name,
         ' No.',
         Strings.toString(_tokenId),
-        '", "description": "Fully on-chain NFT", "image": "data:image/svg+xml;base64,',
+        '", "description": "Juicebox voting escrow positions represented by Banny characters.", "image": "data:image/svg+xml;base64,',
         _getFramedImage(traits),
         '", ',
         animationUrl,
@@ -236,10 +236,20 @@ contract Token is IToken, ERC721Enumerable, ReentrancyGuard, AccessControl {
     require(payable(msg.sender).send(address(this).balance), 'withdrawEther failed');
   }
 
+  function _getUnFramedImage(uint256 _traits) internal view returns (string memory image) {
+    image = Base64.encode(
+      abi.encodePacked(
+        '<svg id="token" width="300" height="300" viewBox="0 0 1080 1080" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="placeholder">',
+        bannyUtil.getImageStack(assets, _traits),
+        '</g></svg>'
+      )
+    );
+  }
+
   function _getFramedImage(uint256 _traits) internal view returns (string memory image) {
     image = Base64.encode(
       abi.encodePacked(
-        '<svg id="token" width="300" height="300" viewBox="0 0 1080 1080" fill="none" xmlns="http://www.w3.org/2000/svg"> <defs><radialGradient id="paint0_radial_772_22716" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(540.094 539.992) rotate(90) scale(539.413)"><stop stop-color="#B4B4B4" /><stop offset="1" /></radialGradient></defs><circle cx="540.094" cy="539.992" r="539.413" fill="url(#paint0_radial_772_22716)"/><g id="bannyPlaceholder">',
+        '<svg id="token" width="300" height="300" viewBox="0 0 1080 1080" fill="none" xmlns="http://www.w3.org/2000/svg"> <defs><radialGradient id="paint0_radial_772_22716" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(540.094 539.992) rotate(90) scale(539.413)"><stop stop-color="#B4B4B4" /><stop offset="1" /></radialGradient></defs><circle cx="540.094" cy="539.992" r="539.413" fill="url(#paint0_radial_772_22716)"/><g id="placeholder">',
         bannyUtil.getImageStack(assets, _traits),
         '</g></svg>'
       )
