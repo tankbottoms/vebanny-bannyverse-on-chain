@@ -247,16 +247,16 @@ export const traitDefinition: { [key: string]: string[] } = {
 };
 
 export const traitsShiftOffset: { [key: string]: number } = {
-  Body: 0,
-  Both_Hands: 4,
-  Choker: 8,
-  Face: 12,
-  Headgear: 20,
-  Left_Hand: 28,
-  Lower_Accessory: 36,
-  Oral_Fixation: 40,
-  Outfit: 44,
-  Right_Hand: 52,
+  Body: 0, // uint4
+  Both_Hands: 4, // uint4
+  Choker: 8, // uint4
+  Face: 12, // uint8, 6 needed
+  Headgear: 20, // uint8, 7 needed
+  Left_Hand: 28, // uint8, 5 needed
+  Lower_Accessory: 36, // uint4, 3 needed
+  Oral_Fixation: 40, // uint4, 2 needed
+  Outfit: 44, // uint8, 7 needed
+  Right_Hand: 52, // uint8, 6 needed
 };
 
 export function processCharacters(): { [key: string]: any } {
@@ -285,18 +285,10 @@ export function processCharacters(): { [key: string]: any } {
   return reduced;
 }
 
-export async function loadLayers(storage: any, deployer: SignerWithAddress) {
+export async function loadLayers(storage: any, deployer: SignerWithAddress): Promise<BigNumber> {
   const layers = JSON.parse(fs.readFileSync('../layerOptions.json').toString());
-  // BODY_TRAIT_OFFSET = 0; // uint4
-  // HANDS_TRAIT_OFFSET = 4; // uint4
-  // CHOKER_TRAIT_OFFSET = 8; // uint4
-  // FACE_TRAIT_OFFSET = 12; // uint8, 6 needed
-  // HEADGEAR_TRAIT_OFFSET = 20; // uint8, 7 needed
-  // LEFTHAND_TRAIT_OFFSET = 28; // uint8, 5 needed
-  // LOWER_TRAIT_OFFSET = 36; // uint4, 3 needed
-  // ORAL_TRAIT_OFFSET = 40; // uint4, 2 needed
-  // OUTFIT_TRAIT_OFFSET = 44; // uint8, 7 needed
-  // RIGHTHAND_TRAIT_OFFSET = 52; // uint8, 6 needed
+
+  let gas = BigNumber.from(0);
 
   for (const group of Object.keys(layers)) {
     for (let i = 0; i < layers[group].length; i++) {
@@ -310,9 +302,18 @@ export async function loadLayers(storage: any, deployer: SignerWithAddress) {
         `0x${(i + 1).toString(16)}${'0'.repeat(traitsShiftOffset[group] / 4)}`,
       );
 
-      await loadAsset(storage, deployer, png, id.toString());
+      const incrementalGas = await loadAsset(storage, deployer, png, id.toString());
+      gas = gas.add(incrementalGas);
     }
   }
+
+  return gas;
+}
+
+// eslint-disable-next-line prettier/prettier
+export async function loadFile(storage: any, deployer: SignerWithAddress, pathInfo: string[], id = '9223372036854775809'): Promise<BigNumber> {
+    const fontData = path.resolve(__dirname, ...pathInfo);
+    return await loadAsset(storage, deployer, fontData, id);
 }
 
 /**
@@ -327,7 +328,7 @@ export async function loadAsset(
   signer: SignerWithAddress,
   asset: string,
   assetId: string,
-) {
+): Promise<BigNumber> {
   let assetParts: any;
   let inflatedSize = 0;
 
@@ -342,17 +343,18 @@ export async function loadAsset(
   let sliceKey = '0x' + Buffer.from(uuid4(), 'utf-8').toString('hex').slice(-64);
   let tx: TransactionResponse = await storage
     .connect(signer)
-    .createAsset(assetId, sliceKey, assetParts.parts[0], assetParts.length, {
-      gasLimit: 5_000_000,
-    });
-  await tx.wait();
+    // eslint-disable-next-line prettier/prettier
+    .createAsset(assetId, sliceKey, assetParts.parts[0], assetParts.length, { gasLimit: 5_000_000 });
+  const receipt = await tx.wait();
+  let gas = BigNumber.from(receipt.gasUsed);
 
   for (let i = 1; i < assetParts.parts.length; i++) {
     sliceKey = '0x' + Buffer.from(uuid4(), 'utf-8').toString('hex').slice(-64);
     tx = await storage
       .connect(signer)
       .appendAssetContent(assetId, sliceKey, assetParts.parts[i], { gasLimit: 5_000_000 });
-    await tx.wait();
+    const receipt = await tx.wait();
+    gas = gas.add(receipt.gasUsed);
   }
 
   // if (inflatedSize != assetParts.length) {
@@ -362,4 +364,6 @@ export async function loadAsset(
   // } else {
   //     console.log(`added ${asset}, ${assetParts.length} as ${assetId}/${Number(assetId).toString(16)}`);
   // }
+
+  return gas;
 }

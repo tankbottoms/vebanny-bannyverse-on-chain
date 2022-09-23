@@ -4,21 +4,22 @@ pragma solidity ^0.8.6;
 import '../enums/AssetDataType.sol';
 
 interface IToken {
-    function contractURI() external view returns (string memory);
+  function contractURI() external view returns (string memory);
 
-    function mint(address, uint256) external returns (uint256);
+  function mint(address, uint256) external returns (uint256);
 
-    function setContractURI(string calldata) external;
+  function merkleMint(
+    uint256,
+    uint256,
+    bytes32[] calldata,
+    uint256
+  ) external returns (uint256);
 
-    function addMinter(address) external;
+  function setContractURI(string calldata) external;
 
-    function removeMinter(address) external;
+  function addMinter(address) external;
 
-    function dataUri(uint256) external view returns (string memory);
+  function removeMinter(address) external;
 
-    function getAssetBase64(uint64, AssetDataType) external view returns (string memory);
-
-    function withdrawEther() external;
-
-    function validateTraits(uint256 _traits) external pure returns (bool);
+  function withdrawEther() external;
 }

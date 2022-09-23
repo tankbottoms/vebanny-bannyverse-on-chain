@@ -53,24 +53,52 @@ export function smallIntToBytes32(value: number): string {
 
 export function bufferToArrayBuffer(buffer: Buffer) {
     return Array.from(buffer);
-  }
-  
-  /**
-   * @param Buffer buffer
-   * @returns string[] hexStringArray
-   */
-  export function bufferTo32ArrayBuffer(buffer: Buffer) {
+}
+
+/**
+ * @param Buffer buffer
+ * @returns string[] hexStringArray
+ */
+export function bufferTo32ArrayBuffer(buffer: Buffer) {
     const arrayBuffer = Array.from(buffer);
     const uint256ArrayBuffer: string[] = [];
-  
+
     for (let i = 0; i < arrayBuffer.length; i++) {
-      if (uint256ArrayBuffer.length === 0 || uint256ArrayBuffer[uint256ArrayBuffer.length - 1].length >= 64) uint256ArrayBuffer.push('');
-      uint256ArrayBuffer[uint256ArrayBuffer.length - 1] += (arrayBuffer[i] || 0).toString(16).padStart(2, '0');
+        if (uint256ArrayBuffer.length === 0 || uint256ArrayBuffer[uint256ArrayBuffer.length - 1].length >= 64) uint256ArrayBuffer.push('');
+        uint256ArrayBuffer[uint256ArrayBuffer.length - 1] += (arrayBuffer[i] || 0).toString(16).padStart(2, '0');
     }
-  
+
     for (let i = 0; i < uint256ArrayBuffer.length; i++) {
-      uint256ArrayBuffer[i] = '0x' + uint256ArrayBuffer[i].padEnd(64, '0');
+        uint256ArrayBuffer[i] = '0x' + uint256ArrayBuffer[i].padEnd(64, '0');
     }
     return uint256ArrayBuffer;
-  }
-  
+}
+
+/**
+ * Returns formatted hrtime result. If start param is present, returns time since then in the first element of the array in terms of millis. If the start param is not present, returns raw hrtime output for later use.
+ * 
+ * @param start Time pair from process.hrtime
+ */
+export function mark(start?: [number, number]): [number, number] {
+    if (!start) {
+        return process.hrtime();
+    }
+
+    const end = process.hrtime(start);
+    return [Math.round((end[0] * 1000) + (end[1] / 1000000)), 0];
+}
+
+export function formatMills(millis: number): string {
+    const secs = millis / 1000;
+    const mins = secs / 60;
+
+    if (secs < 5) {
+        return `${millis}ms`;
+    }
+
+    if (secs < 91) {
+        return `${secs}s`;
+    }
+
+    return `${Math.ceil(mins)}m`
+}
